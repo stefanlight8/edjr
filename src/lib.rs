@@ -1,3 +1,4 @@
+pub mod async_read;
 pub mod entry;
 pub mod error;
 pub mod event;
