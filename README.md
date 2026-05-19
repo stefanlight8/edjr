@@ -1,0 +1,206 @@
+# edjr
+Elite Dangerous Journal Reader
+
+A library for parsing Elite Dangerous's journal files.
+
+## Features
+- `tokio`: provide tokio-based journal reader. 
+
+## Resources
+- [Examples](./examples)
+
+## Supported events
+- [x] AfmuRepairs
+- [x] ApproachBody
+- [x] ApproachSettlement
+- [x] Backpack
+- [x] BackpackChange
+- [x] BookTaxi
+- [x] Bounty
+- [x] BuyAmmo
+- [x] BuyDrones
+- [x] BuyWeapon
+- [x] Cargo
+- [x] CargoDepot
+- [x] CargoTransfer
+- [x] CarrierJump
+- [x] ChangeCrewRole
+- [x] ClearImpound
+- [x] CockpitBreached
+- [x] CodexEntry
+- [x] CollectCargo
+- [x] CollectItems
+- [x] ColonisationConstructionDepot
+- [x] Commander
+- [x] CommitCrime
+- [x] CommunityGoal
+- [x] CommunityGoalDiscard
+- [x] CommunityGoalJoin
+- [x] CommunityGoalReward
+- [x] CrewAssign
+- [x] CrewLaunchFighter
+- [x] CrewMemberJoins
+- [x] CrewMemberQuits
+- [x] CrewMemberRoleChange
+- [x] CrimeVictim
+- [x] DataScanned
+- [x] DatalinkScan
+- [x] DatalinkVoucher
+- [x] Died
+- [x] Disembark
+- [x] DockFighter
+- [x] DockSRV
+- [x] Docked
+- [x] DockingCancelled
+- [x] DockingDenied
+- [x] DockingGranted
+- [x] DockingRequested
+- [x] DockingTimeout
+- [x] EjectCargo
+- [x] Embark
+- [x] EndCrewSession
+- [x] EngineerContribution
+- [x] EngineerCraft
+- [x] EngineerProgress
+- [x] EscapeInterdiction
+- [x] FCMaterials
+- [x] FSDJump
+- [x] FSDTarget
+- [x] FSSAllBodiesFound
+- [x] FSSBodySignals
+- [x] FSSDiscoveryScan
+- [x] FSSSignalDiscovered
+- [x] FactionKillBond
+- [x] FetchRemoteModule
+- [x] FighterDestroyed
+- [x] FighterRebuilt
+- [x] Fileheader
+- [x] Friends
+- [x] FuelScoop
+- [x] HeatDamage
+- [x] HeatWarning
+- [x] HullDamage
+- [x] Interdicted
+- [x] Interdiction
+- [x] InvitedToSquadron
+- [x] JetConeBoost
+- [x] JetConeDamage
+- [x] JoinACrew
+- [x] JoinedSquadron
+- [x] LaunchDrone
+- [x] LaunchFighter
+- [x] LaunchSRV
+- [x] LeaveBody
+- [x] LeftSquadron
+- [x] Liftoff
+- [x] LoadGame
+- [x] Loadout
+- [x] Location
+- [x] Market
+- [x] MarketBuy
+- [x] MarketSell
+- [x] MassModuleStore
+- [ ] MaterialCollected
+- [ ] MaterialDiscovered
+- [ ] MaterialTrade
+- [ ] Materials
+- [ ] MissionAbandoned
+- [ ] MissionAccepted
+- [ ] MissionCompleted
+- [ ] MissionFailed
+- [ ] MissionRedirected
+- [ ] Missions
+- [ ] ModuleBuy
+- [ ] ModuleBuyAndStore
+- [ ] ModuleInfo
+- [ ] ModuleRetrieve
+- [ ] ModuleSell
+- [ ] ModuleSellRemote
+- [ ] ModuleStore
+- [ ] ModuleSwap
+- [ ] MultiSellExplorationData
+- [ ] Music
+- [ ] NavBeaconScan
+- [ ] NavRoute
+- [ ] NavRouteClear
+- [ ] NewCommander
+- [ ] NpcCrewPaidWage
+- [ ] Outfitting
+- [ ] PVPKill
+- [ ] Passengers
+- [ ] PayBounties
+- [ ] PayFines
+- [ ] Powerplay
+- [ ] PowerplayCollect
+- [ ] PowerplayMerits
+- [ ] PowerplayRank
+- [ ] Progress
+- [ ] Promotion
+- [ ] QuitACrew
+- [ ] Rank
+- [ ] RebootRepair
+- [ ] ReceiveText
+- [ ] RedeemVoucher
+- [ ] RefuelAll
+- [ ] RefuelPartial
+- [ ] Repair
+- [ ] RepairAll
+- [ ] RepairDrone
+- [ ] Reputation
+- [ ] RequestPowerMicroResources
+- [ ] ReservoirReplenished
+- [ ] RestockVehicle
+- [ ] Resupply
+- [ ] Resurrect
+- [ ] SAAScanComplete
+- [ ] SAASignalsFound
+- [ ] SRVDestroyed
+- [ ] Scan
+- [ ] ScanBaryCentre
+- [ ] ScanOrganic
+- [ ] Scanned
+- [ ] Screenshot
+- [ ] SearchAndRescue
+- [ ] SelfDestruct
+- [ ] SellDrones
+- [ ] SellOrganicData
+- [ ] SellWeapon
+- [ ] SendText
+- [ ] SetUserShipName
+- [ ] ShieldState
+- [ ] ShipLocker
+- [ ] ShipTargeted
+- [ ] Shipyard
+- [ ] ShipyardBuy
+- [ ] ShipyardNew
+- [ ] ShipyardSell
+- [ ] ShipyardSwap
+- [ ] ShipyardTransfer
+- [ ] Shutdown
+- [ ] SquadronCreated
+- [ ] SquadronStartup
+- [ ] StartJump
+- [ ] Statistics
+- [ ] StoredModules
+- [ ] StoredShips
+- [ ] SuitLoadout
+- [ ] SupercruiseDestinationDrop
+- [ ] SupercruiseEntry
+- [ ] SupercruiseExit
+- [ ] SwitchSuitLoadout
+- [ ] Synthesis
+- [ ] SystemsShutdown
+- [ ] TechnologyBroker
+- [ ] Touchdown
+- [ ] USSDrop
+- [ ] UnderAttack
+- [ ] Undocked
+- [ ] UseConsumable
+- [ ] VehicleSwitch
+- [ ] WingAdd
+- [ ] WingInvite
+- [ ] WingJoin
+- [ ] WingLeave
+
+## Installation
+Currently edjr is not available on crates.io, but you can use `cargo add --git https://github.com/stefanligh8/edjr`
