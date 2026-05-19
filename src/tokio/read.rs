@@ -1,9 +1,10 @@
-use tokio::{
-    fs::File,
-    io::{AsyncBufReadExt, BufReader},
+use {
+    crate::{Journal, async_read::AsyncRead, entry::JournalEntry, error::JournalReadError},
+    tokio::{
+        fs::File,
+        io::{AsyncBufReadExt, BufReader},
+    },
 };
-
-use crate::{Journal, async_read::AsyncRead, entry::JournalEntry, error::JournalReadError};
 
 impl AsyncRead for Journal<File> {
     async fn read_all(&mut self) -> Result<Vec<JournalEntry>, JournalReadError> {
