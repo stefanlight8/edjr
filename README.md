@@ -5,6 +5,7 @@ A library for parsing Elite Dangerous's journal files.
 
 ## Features
 - `tokio`: provide tokio-based journal reader. 
+- `stream`: provides stream for journal reader.
 
 ## Resources
 - [Examples](./examples)
