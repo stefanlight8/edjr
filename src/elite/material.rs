@@ -1,0 +1,34 @@
+use serde::Deserialize;
+
+#[derive(Debug, Deserialize)]
+pub enum MaterialCategory {
+    #[serde(alias = "$MICRORESOURCE_CATEGORY_Encoded;")]
+    Encoded,
+    #[serde(alias = "$MICRORESOURCE_CATEGORY_Manufactured;")]
+    Manufactured,
+    #[serde(alias = "$MICRORESOURCE_CATEGORY_Elements;")]
+    Raw,
+    // I'm not sure that is a good thing to edit MaterialCategory
+    // only because of MaterialsReward field in MissionCompleted,
+    // but I'm quite good about to provide unified API.
+}
+
+#[derive(Debug, Deserialize)]
+#[serde(rename_all = "PascalCase")]
+pub struct Material {
+    category: Option<MaterialCategory>,
+    #[serde(alias = "Material")]
+    name: String,
+    #[serde(alias = "Material_Localised", alias = "Name_Localised")]
+    name_display: Option<String>,
+    #[serde(alias = "Quantity")]
+    count: Option<u64>,
+}
+
+#[derive(Debug, Deserialize)]
+#[serde(rename_all = "lowercase")]
+pub enum TraderType {
+    Encoded,
+    Manufactured,
+    Raw,
+}

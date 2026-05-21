@@ -6,7 +6,7 @@ use {
 
 #[derive(Debug, Deserialize)]
 pub struct JournalEntry {
-    timestamp: DateTime<Utc>,
+    pub timestamp: DateTime<Utc>,
     #[serde(flatten)]
-    event: JournalEvent,
+    pub event: JournalEvent,
 }

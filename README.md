@@ -100,53 +100,53 @@ A library for parsing Elite Dangerous's journal files.
 - [x] MarketBuy
 - [x] MarketSell
 - [x] MassModuleStore
-- [ ] MaterialCollected
-- [ ] MaterialDiscovered
-- [ ] MaterialTrade
-- [ ] Materials
-- [ ] MissionAbandoned
-- [ ] MissionAccepted
-- [ ] MissionCompleted
-- [ ] MissionFailed
-- [ ] MissionRedirected
-- [ ] Missions
-- [ ] ModuleBuy
-- [ ] ModuleBuyAndStore
-- [ ] ModuleInfo
-- [ ] ModuleRetrieve
-- [ ] ModuleSell
-- [ ] ModuleSellRemote
-- [ ] ModuleStore
-- [ ] ModuleSwap
-- [ ] MultiSellExplorationData
-- [ ] Music
-- [ ] NavBeaconScan
-- [ ] NavRoute
-- [ ] NavRouteClear
-- [ ] NewCommander
-- [ ] NpcCrewPaidWage
-- [ ] Outfitting
-- [ ] PVPKill
-- [ ] Passengers
-- [ ] PayBounties
-- [ ] PayFines
-- [ ] Powerplay
-- [ ] PowerplayCollect
-- [ ] PowerplayMerits
-- [ ] PowerplayRank
-- [ ] Progress
-- [ ] Promotion
-- [ ] QuitACrew
-- [ ] Rank
-- [ ] RebootRepair
-- [ ] ReceiveText
-- [ ] RedeemVoucher
-- [ ] RefuelAll
-- [ ] RefuelPartial
-- [ ] Repair
-- [ ] RepairAll
-- [ ] RepairDrone
-- [ ] Reputation
+- [x] MaterialCollected
+- [x] MaterialDiscovered
+- [x] MaterialTrade
+- [x] Materials
+- [x] MissionAbandoned
+- [x] MissionAccepted
+- [x] MissionCompleted
+- [x] MissionFailed
+- [x] MissionRedirected
+- [x] Missions
+- [x] ModuleBuy
+- [x] ModuleBuyAndStore
+- [x] ModuleInfo
+- [x] ModuleRetrieve
+- [x] ModuleSell
+- [x] ModuleSellRemote
+- [x] ModuleStore
+- [x] ModuleSwap
+- [x] MultiSellExplorationData
+- [x] Music
+- [x] NavBeaconScan
+- [x] NavRoute
+- [x] NavRouteClear
+- [x] NewCommander
+- [x] NpcCrewPaidWage
+- [x] Outfitting
+- [x] PVPKill
+- [x] Passengers
+- [x] PayBounties
+- [x] PayFines
+- [x] Powerplay
+- [x] PowerplayCollect
+- [x] PowerplayMerits
+- [x] PowerplayRank
+- [x] Progress
+- [x] Promotion
+- [x] QuitACrew
+- [x] Rank
+- [x] RebootRepair
+- [x] ReceiveText
+- [x] RedeemVoucher
+- [x] RefuelAll
+- [x] RefuelPartial
+- [x] Repair
+- [x] RepairAll
+- [x] RepairDrone
+- [x] Reputation
 - [ ] RequestPowerMicroResources
 - [ ] ReservoirReplenished
 - [ ] RestockVehicle
@@ -161,7 +161,7 @@ A library for parsing Elite Dangerous's journal files.
 - [ ] Scanned
 - [ ] Screenshot
 - [ ] SearchAndRescue
-- [ ] SelfDestruct
+- [x] SelfDestruct
 - [ ] SellDrones
 - [ ] SellOrganicData
 - [ ] SellWeapon
@@ -192,15 +192,15 @@ A library for parsing Elite Dangerous's journal files.
 - [ ] SystemsShutdown
 - [ ] TechnologyBroker
 - [ ] Touchdown
-- [ ] USSDrop
-- [ ] UnderAttack
-- [ ] Undocked
-- [ ] UseConsumable
-- [ ] VehicleSwitch
-- [ ] WingAdd
-- [ ] WingInvite
-- [ ] WingJoin
-- [ ] WingLeave
+- [x] USSDrop
+- [x] UnderAttack
+- [x] Undocked
+- [x] UseConsumable
+- [x] VehicleSwitch
+- [x] WingAdd
+- [x] WingInvite
+- [x] WingJoin
+- [x] WingLeave
 
 ## Installation
 Currently edjr is not available on crates.io, but you can use `cargo add --git https://github.com/stefanligh8/edjr`

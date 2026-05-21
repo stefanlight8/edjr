@@ -1,106 +1,30 @@
-use serde::Deserialize;
-
-#[derive(Debug, Deserialize)]
-pub enum Allegiance {
-    PilotsFederation,
-    Alliance,
-    Empire,
-    Federation,
-    Independent,
-    Guardian,
-    Thargoid,
-}
-
-#[derive(Debug, Deserialize)]
-#[serde(rename_all = "PascalCase")]
-pub struct StationEconomy {
-    name: String,
-    #[serde(alias = "Name_Localised")]
-    name_display: Option<String>,
-}
-
-#[derive(Debug, Deserialize)]
-pub enum FactionState {
-    Boom,
-    Bust,
-    Election,
-    Expansion,
-    Investment,
-    None,
-    #[serde(other)]
-    Unknown,
-}
-
-#[derive(Debug, Deserialize)]
-#[serde(rename_all = "PascalCase")]
-pub struct Faction {
-    name: String,
-    faction_state: Option<FactionState>,
-}
-
-#[derive(Debug, Deserialize)]
-#[serde(rename_all = "lowercase")]
-pub enum StationService {
-    Dock,
-    Autodock,
-    BlackMarket,
-    Commodities,
-    Contacts,
-    Exploration,
-    Rearm,
-    Missions,
-    #[serde(other)]
-    Unknown,
-}
-
-#[derive(Debug, Deserialize)]
-pub enum Vessel {
-    Ship,
-    #[serde(alias = "SRV")]
-    Srv,
-}
-
-#[derive(Debug, Deserialize)]
-pub enum BodyType {
-    Null,
-    Planet,
-    PlanetaryRing,
-    Star,
-    Station,
-    StellarRing,
-}
-
-#[derive(Debug, Deserialize)]
-#[serde(rename_all = "PascalCase")]
-pub struct Station {
-    station_allegiance: Allegiance,
-    station_economies: Vec<StationEconomy>,
-    station_economy: String,
-    #[serde(alias = "SystemEconomy_Localised")]
-    station_economy_display: String,
-    system_second_economy: Option<String>,
-    #[serde(alias = "SystemSecondEconomy_Localised")]
-    system_second_economy_display: Option<String>,
-    station_faction: Faction,
-    station_goverment: String,
-    #[serde(alias = "SystemGoverment_Localised")]
-    station_goverment_localised: String,
-    station_services: Vec<StationService>,
-    station_state: Option<StationState>,
-    station_type: Option<StationType>,
-    system_security: Option<String>,
-    #[serde(alias = "SystemSecurity_Localised")]
-    system_security_display: Option<String>,
-}
-
-#[derive(Debug, Deserialize)]
-#[serde(rename_all = "PascalCase")]
-pub struct Consumable {
-    name: String,
-    #[serde(alias = "Name_Localised")]
-    name_display: Option<String>,
-    owner_id: u64,
-}
+use {
+    crate::elite::{
+        allegiance::Allegiance,
+        backpack::BackpackItem,
+        body::BodyType,
+        combat::Killer,
+        commander::{Commander, CommanderPackage},
+        community_goal::CommunityGoal,
+        crew::{Crew, CrewRole},
+        crime::CrimeType,
+        engineer::Engineer,
+        faction::Faction,
+        fleet_carriers::DockingAccess,
+        material::{Material, TraderType},
+        mission::{FactionEffect, Mission},
+        module::ModuleEngineering,
+        passenger::PassengerType,
+        powerplay::Powerplay,
+        rank::{EmpireRank, FederationRank, Rank},
+        ship::{FuelCapacity, Ship, ShipModule},
+        signal::{Signal, SignalType},
+        station::{Station, StationType},
+        system::System,
+        vessel::Vessel,
+    },
+    serde::Deserialize,
+};
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
@@ -115,41 +39,8 @@ pub struct Cargo {
     #[serde(alias = "Name", alias = "Type")]
     name: String,
     #[serde(alias = "Name_Localised", alias = "Type_Localised")]
-    name_display: String,
-    count: u64,
-}
-
-#[derive(Debug, Deserialize)]
-#[serde(rename_all = "PascalCase")]
-pub struct PowerplayConflict {
-    power: String,
-    conflict_progress: f64,
-}
-
-#[derive(Debug, Deserialize, Default)]
-pub enum PowerplayState {
-    Exploited,
-    #[default]
-    Unoccupied,
-}
-
-#[derive(Debug, Deserialize)]
-#[serde(rename_all = "PascalCase")]
-pub struct Powerplay {
-    powerplay_conflict_progress: Vec<PowerplayConflict>,
-    powerplay_state: PowerplayState,
-    powerplay_state_control_progress: f64,
-    powerplay_state_reinforcement: u64,
-    powerplay_state_undermining: u64,
-    powers: Vec<String>,
-}
-
-#[derive(Debug, Deserialize)]
-pub enum CrewRole {
-    FighterCon,
-    FireCon,
-    Helm,
-    Idle,
+    name_display: Option<String>,
+    count: Option<u64>,
 }
 
 #[derive(Debug, Deserialize)]
@@ -158,88 +49,9 @@ pub struct Resource {
     name: String,
     #[serde(alias = "Name_Localised")]
     name_display: Option<String>,
-    count: u64,
-}
-
-#[derive(Debug, Deserialize)]
-#[serde(rename_all = "camelCase")]
-pub enum CrimeType {
-    Assault,
-    CollidedAtSpeedInNoFireZone,
-    CollidedAtSpeedInNoFireZoneHullDamage,
-    DockingMajorBlockingAirlock,
-    DockingMajorBlockingLandingPad,
-    DockingMajorTresspass,
-    DockingMinorBlockingAirlock,
-    DockingMinorBlockingLandingPad,
-    DockingMinorTresspass,
-    FireInNoFireZone,
-    Inderdiction,
-    Murder,
-    #[serde(alias = "onFoot_damagingDefences")]
-    OnFootDamagingDefences,
-    #[serde(alias = "onFoot_identifyTheft")]
-    OnFootIdentifyTheft,
-    #[serde(alias = "onFoot_murder")]
-    OnFootMurder,
-    #[serde(alias = "onFoot_trespass")]
-    OnFootTrespass,
-    RecklessWeaponsDischarge,
-    ShuttleDestruction,
-}
-
-#[derive(Debug, Deserialize)]
-#[serde(rename_all = "PascalCase")]
-pub struct CommunityGoal {
-    #[serde(alias = "CGID")]
-    cgid: u64,
-    title: String,
-}
-
-#[derive(Debug, Deserialize)]
-pub enum CombatRank {
-    Harmless,
-    MostlyHarmless,
-    Novice,
-    Competent,
-    Expert,
-    Master,
-    Dangerous,
-    Deadly,
-    Elite,
-}
-
-#[derive(Debug, Deserialize)]
-#[serde(rename_all = "PascalCase")]
-pub struct Killer {
-    name: String,
-    ship: String,
-    rank: CombatRank,
-}
-
-#[derive(Debug, Deserialize)]
-pub enum StationType {
-    Coriolis,
-    Dodec,
-    Orbis,
-    Ocellus,
-    Outpost,
-    CraterOutpost,
-    CraterPort,
-    SurfaceStation,
-    OnFootSettlement,
-    MegaShip,
-    FleetCarrier,
-    Bernal,
-    AsteroidBase,
-    PlanetaryConstructionDepot,
-    SpaceConstructionDepot,
-}
-
-#[derive(Debug, Deserialize)]
-pub enum StationState {
-    Construction,
-    UnderAttack,
+    payment: u64,
+    required_amount: u64,
+    provided_amount: u64,
 }
 
 #[derive(Debug, Deserialize)]
@@ -248,56 +60,6 @@ pub struct LandingPads {
     large: u64,
     medium: u64,
     small: u64,
-}
-
-#[derive(Debug, Deserialize)]
-#[serde(rename_all = "PascalCase")]
-pub struct Modifier {
-    label: String,
-    value: f64,
-    original_value: f64,
-}
-
-#[derive(Debug, Deserialize)]
-#[serde(rename_all = "PascalCase")]
-pub struct Engineer {
-    engineer: String,
-    #[serde(alias = "EngineerID")]
-    engineer_id: u64,
-}
-
-#[derive(Debug, Deserialize)]
-#[serde(rename_all = "PascalCase")]
-pub struct Signal {
-    #[serde(alias = "Type")]
-    signal_type: String,
-    #[serde(alias = "Type_Localised")]
-    signal_type_display: String,
-}
-
-#[derive(Debug, Deserialize)]
-pub enum SignalType {
-    Codex,
-    Combat,
-    FleetCarrier,
-    Generic,
-    Installation,
-    Megaship,
-    NavBeacon,
-    Outpost,
-    ResourceExtraction,
-    SquadronCarrier,
-    StationAsteroid,
-    StationBernalSphere,
-    StationCoriolis,
-    StationDodec,
-    StationMegaShip,
-    StationONeilCylinder,
-    StationONeilOrbis,
-    Titan,
-    TouristBeacon,
-    #[serde(alias = "USS")]
-    Uss,
 }
 
 #[derive(Debug, Deserialize)]
@@ -314,7 +76,7 @@ pub enum FriendStatus {
 pub enum LaunchDroneType {
     Collection,
     Repair,
-    Refuel,
+    FuelTransfer,
 }
 
 #[derive(Debug, Deserialize)]
@@ -326,61 +88,71 @@ pub enum GameMode {
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
-pub struct Ship {
-    ship: String,
-    #[serde(default, alias = "Ship_Localised")]
-    ship_display: String,
-    #[serde(alias = "ShipID")]
-    ship_id: u64,
-    ship_ident: Option<String>,
-    ship_name: Option<String>,
-}
-
-#[derive(Debug, Deserialize)]
-#[serde(rename_all = "PascalCase")]
 pub struct Module {
     slot: String,
-    item: String,
-    on: bool,
+    name: String,
+    #[serde(alias = "Name_Localised")]
+    name_display: String,
+    hot: bool,
+    engineer_modifications: Option<String>,
+    level: Option<u8>,
+    quality: Option<f64>,
+}
+
+#[derive(Debug, Deserialize)]
+pub enum Target {
+    You,
+    Mothership,
 }
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
-pub struct FuelCapacity {
-    main: f64,
-    reserve: f64,
+pub struct Discover {
+    num_bodies: u64,
+    system_name: String,
 }
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
-pub struct System {
-    system_allegiance: Option<Allegiance>,
-    system_economy: String,
-    #[serde(alias = "SystemEconomy_Localised")]
-    system_economy_display: String,
-    system_faction: Option<Faction>,
-    system_goverment: String,
-    #[serde(alias = "SystemGoverment_Localised")]
-    system_goverment_display: String,
-    system_second_economy: String,
-    #[serde(alias = "SystemSecondEconomy_Localised")]
-    system_second_economy_display: String,
-    system_security: String,
-    #[serde(alias = "SystemSecurity_Localised")]
-    system_security_display: String,
+pub struct PassengersManifest {
+    #[serde(alias = "MissionID")]
+    mission_id: u64,
+    count: u64,
+    #[serde(alias = "Type")]
+    passengers_type: PassengerType,
+    #[serde(default, alias = "VIP")]
+    vip: bool,
+    #[serde(default)]
+    wanted: bool,
 }
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "lowercase")]
-pub enum DockingAccess {
-    All,
+pub enum Channel {
+    Local,
+    Npc,
+    Player,
+    StarSystem,
+    Wing,
+}
+
+#[derive(Debug, Deserialize)]
+#[serde(rename_all = "lowercase")]
+pub enum VoucherType {
+    #[serde(alias = "CombatBond")]
+    CombatBond,
+    Bounty,
+    Codex,
+    Scannable,
+    Settlement,
+    Trade,
 }
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
-pub struct Crew {
-    name: String,
-    role: CrewRole,
+pub struct FactionVoucher {
+    faction: String,
+    amount: u64,
 }
 
 #[derive(Debug, Deserialize)]
@@ -416,12 +188,15 @@ pub enum JournalEvent {
         system_address: u64,
     },
     Backpack {
-        // TODO: components, data, items
-        consumables: Vec<Consumable>,
+        components: Option<Vec<BackpackItem>>,
+        consumables: Option<Vec<BackpackItem>>,
+        data: Option<Vec<BackpackItem>>,
+        items: Option<Vec<BackpackItem>>,
+        // I guess, TODO: need correction
     },
     BackpackChange {
-        added: Vec<Consumable>,
-        removed: Vec<Consumable>,
+        added: Option<Vec<BackpackItem>>,
+        removed: Option<Vec<BackpackItem>>,
     },
     BookTaxi {
         cost: u64,
@@ -449,7 +224,6 @@ pub enum JournalEvent {
         buy_price: u64,
         count: u64,
         total_cost: u64,
-        // type: String
     },
     BuyWeapon {
         class: u64,
@@ -463,8 +237,22 @@ pub enum JournalEvent {
     },
     Cargo {
         count: u64,
-        inventory: Vec<Cargo>,
         vessel: Vessel,
+        inventory: Option<Vec<Cargo>>,
+    },
+    CargoDepot {
+        cargo_type: String,
+        count: u64,
+        progress: f64,
+        items_collected: u64,
+        items_delivered: u64,
+        total_items_to_deliver: u64,
+        #[serde(alias = "MissionID")]
+        mission_id: u64,
+        #[serde(alias = "StartMarketID")]
+        start_market_id: u64,
+        #[serde(alias = "EndMarketID")]
+        end_market_id: u64,
     },
     CargoTransfer {
         transfers: Vec<Cargo>,
@@ -476,12 +264,9 @@ pub enum JournalEvent {
         body_type: BodyType,
         // TODO: conflicts
         controlling_power: Option<String>,
-        docked: bool,
-        factions: Vec<Faction>,
+        factions: Option<Vec<Faction>>,
         #[serde(alias = "MarketID")]
         market_id: Option<u64>,
-        multicrew: bool,
-        on_foot: bool,
         #[serde(flatten)]
         powerplay: Option<Powerplay>,
         star_pos: [f64; 3],
@@ -489,10 +274,18 @@ pub enum JournalEvent {
         #[serde(flatten)]
         station: Option<Station>,
         system_address: u64,
+        #[serde(default)]
+        docked: bool,
+        #[serde(default)]
         taxi: bool,
+        #[serde(default)]
+        multicrew: bool,
+        #[serde(default)]
+        on_foot: bool,
     },
     ChangeCrewRole {
         role: CrewRole,
+        #[serde(default)]
         telepresence: bool,
     },
     ClearImpound {
@@ -512,6 +305,7 @@ pub enum JournalEvent {
         category: String,
         #[serde(alias = "Category_Localised")]
         category_display: String,
+        #[serde(default)]
         is_new_entry: bool,
         name: String,
         #[serde(alias = "Name_Localised")]
@@ -527,11 +321,11 @@ pub enum JournalEvent {
         voucher_amount: Option<u64>,
     },
     CollectCargo {
-        #[serde(alias = "MarketID")]
-        market_id: Option<u64>,
         stolen: bool,
         #[serde(flatten)]
         cargo: Cargo,
+        #[serde(alias = "MarketID")]
+        market_id: Option<u64>,
     },
     // TODO: collect items
     ColonisationConstructionDepot {
@@ -543,9 +337,8 @@ pub enum JournalEvent {
         resources_required: Vec<Resource>,
     },
     Commander {
-        #[serde(alias = "FID")]
-        fid: String,
-        name: String,
+        #[serde(flatten)]
+        commander: Commander,
     },
     CommitCrime {
         crime_type: CrimeType,
@@ -586,19 +379,23 @@ pub enum JournalEvent {
     },
     CrewLaunchFighter {
         crew: String,
+        #[serde(default)]
         telepresense: bool,
     },
     CrewMemberJoins {
         crew: String,
+        #[serde(default)]
         telepresense: bool,
     },
     CrewMemberQuits {
         crew: String,
+        #[serde(default)]
         telepresense: bool,
     },
     CrewMemberRoleChange {
         crew: String,
         role: CrewRole,
+        #[serde(default)]
         telepresense: bool,
     },
     CrimeVictim {
@@ -615,18 +412,19 @@ pub enum JournalEvent {
     },
     DatalinkScan {
         message: String,
+        #[serde(alias = "Message_Localised")]
         message_display: String,
     },
     DatalinkVoucher {
-        payee_faction: Allegiance,
         reward: u64,
-        victim_faction: Allegiance,
+        payee_faction: Allegiance,
+        victim_faction: Option<Allegiance>,
     },
     Died {
         killer_name: Option<String>,
         #[serde(alias = "KillerName_Localised")]
         killer_name_display: Option<String>,
-        killer_rank: Option<CombatRank>,
+        killer_rank: Option<String>, // lol frontier there uses a string instead of their combat rank...
         killer_ship: Option<String>,
         killers: Option<Vec<Killer>>,
     },
@@ -635,18 +433,22 @@ pub enum JournalEvent {
         #[serde(alias = "BodyID")]
         body_id: u64,
         #[serde(alias = "ID")]
-        id: u64,
+        id: Option<u64>,
         #[serde(alias = "MarketID")]
         market_id: Option<u64>,
-        multicrew: bool,
-        on_planet: bool,
-        on_station: bool,
-        #[serde(alias = "SRV")]
-        srv: bool,
         star_system: String,
         station_name: Option<String>,
         station_type: Option<StationType>,
         system_address: u64,
+        #[serde(default)]
+        multicrew: bool,
+        #[serde(default)]
+        on_planet: bool,
+        #[serde(default)]
+        on_station: bool,
+        #[serde(default, alias = "SRV")]
+        srv: bool,
+        #[serde(default)]
         taxi: bool,
     },
     DockFighter {
@@ -663,16 +465,16 @@ pub enum JournalEvent {
         srv_type_display: String,
     },
     Docked {
-        #[serde(default)]
-        dist_from_star_ls: f64,
+        dist_from_star_ls: Option<f64>,
         landing_pads: Option<LandingPads>,
         #[serde(alias = "MarketID")]
         market_id: Option<u64>,
-        multicrew: bool,
         star_system: String,
         #[serde(flatten)]
         station: Option<Station>,
         system_address: u64,
+        #[serde(default)]
+        multicrew: bool,
         #[serde(default)]
         active_fine: bool,
         #[serde(default)]
@@ -717,9 +519,9 @@ pub enum JournalEvent {
         body: String,
         #[serde(alias = "BodyID")]
         body_id: u64,
-        crew: Vec<Crew>,
+        crew: Option<Vec<Crew>>,
         #[serde(alias = "ID")]
-        id: u64,
+        id: Option<u64>,
         #[serde(alias = "MarketID")]
         market_id: Option<u64>,
         multicrew: bool,
@@ -735,6 +537,7 @@ pub enum JournalEvent {
     },
     EndCrewSession {
         on_crime: bool,
+        #[serde(default)]
         telepresence: bool,
     },
     EngineerContribution {
@@ -750,25 +553,16 @@ pub enum JournalEvent {
     },
     EngineerCraft {
         apply_experimental_effect: Option<String>,
-        #[serde(alias = "BlueprintID")]
-        blueprint_id: u64,
-        blueprint_name: String,
+        ingredients: Vec<Material>,
         #[serde(flatten)]
-        engineer: Engineer,
-        experimental_effect: Option<String>,
-        #[serde(alias = "ExperimentalEffect_Localised")]
-        experimental_effect_display: Option<String>,
-        ingredients: Vec<Resource>,
-        level: u8,
-        modifiers: Vec<Modifier>,
-        module: String,
-        quality: f64,
-        slot: String,
+        engineer: Option<Engineer>,
+        #[serde(flatten)]
+        modification: ModuleEngineering,
     },
     EngineerProgress {
         #[serde(flatten)]
         engineer: Option<Engineer>,
-        engineers: Vec<Engineer>,
+        engineers: Option<Vec<Engineer>>,
     },
     EspaceInterdiction {
         inderdictor: String,
@@ -778,8 +572,9 @@ pub enum JournalEvent {
     },
     #[serde(alias = "FCMaterials")]
     FcMaterials {
-        carrier_id: String,
         carrier_name: String,
+        #[serde(alias = "CarrierID")]
+        carrier_id: String,
         #[serde(alias = "MarketID")]
         market_id: Option<u64>,
     },
@@ -789,14 +584,12 @@ pub enum JournalEvent {
         #[serde(alias = "BodyID")]
         body_id: u64,
         body_type: BodyType,
-        #[serde(default)]
-        boost_used: u8,
+        boost_used: Option<u8>,
         // TODO: conflicts
         controlling_power: Option<String>,
-        factions: Vec<Faction>,
+        factions: Option<Vec<Faction>>,
         fuel_level: f64,
         jump_dist: f64,
-        multicrew: bool,
         population: u64,
         #[serde(flatten)]
         powerplay: Option<Powerplay>,
@@ -805,6 +598,9 @@ pub enum JournalEvent {
         #[serde(flatten)]
         system: Option<System>,
         system_address: u64,
+        #[serde(default)]
+        multicrew: bool,
+        #[serde(default)]
         taxi: bool,
         // TODO: ThargoidWar
     },
@@ -909,26 +705,27 @@ pub enum JournalEvent {
     HeatDamage,
     HeatWarning,
     HullDamage {
+        #[serde(default)]
         fighter: bool,
         health: f64,
         player_pilot: bool,
     },
     Interdicted {
-        inderdictor: String,
+        interdictor: String,
         #[serde(alias = "Interdictor_Localised")]
-        inderdictor_display: Option<String>,
+        interdictor_display: Option<String>,
         is_player: bool,
         submitted: bool,
-        combat_rank: Option<CombatRank>,
-        faction: Option<Faction>,
+        combat_rank: Option<Rank>,
+        faction: Option<String>,
     },
     Interdiction {
-        inderdicted: Option<String>,
         is_player: bool,
         success: bool,
-        combat_rank: Option<CombatRank>,
-        faction: Option<Faction>,
-        power: Allegiance,
+        power: Option<Allegiance>,
+        inderdicted: Option<String>,
+        combat_rank: Option<Rank>,
+        faction: Option<String>,
     },
     InvitedToSquadron {
         squadron_name: String,
@@ -943,6 +740,7 @@ pub enum JournalEvent {
     },
     JoinACrew {
         captain: String,
+        #[serde(default)]
         telepresence: bool,
     },
     JoinedSquadron {
@@ -1013,8 +811,10 @@ pub enum JournalEvent {
         fuel_level: Option<f64>,
         game_mode: Option<GameMode>,
         group: Option<String>,
-        horizons: bool,
         loan: u64,
+        #[serde(default)]
+        horizons: bool,
+        #[serde(default)]
         odyssey: bool,
         #[serde(flatten)]
         ship: Option<Ship>,
@@ -1038,7 +838,7 @@ pub enum JournalEvent {
         #[serde(default)]
         hull_value: u64,
         max_jump_range: f64,
-        modules: Vec<Module>,
+        modules: Vec<ShipModule>,
         #[serde(default)]
         modules_value: u64,
         rebuy: u64,
@@ -1053,14 +853,14 @@ pub enum JournalEvent {
         body_type: BodyType,
         // TODO: conflicts
         controlling_power: Option<String>,
-        #[serde(default)]
-        dist_from_star_ls: f64,
-        docked: bool,
-        factions: Vec<Faction>,
+        dist_from_star_ls: Option<f64>,
+        factions: Option<Vec<Faction>>,
         #[serde(default, alias = "InSRV")]
         in_srv: bool,
         latitude: Option<f64>,
         longitude: Option<f64>,
+        #[serde(default)]
+        docked: bool,
         #[serde(default)]
         multicrew: bool,
         #[serde(default)]
@@ -1082,12 +882,12 @@ pub enum JournalEvent {
         // TODO: thargoid war
     },
     Market {
-        carrier_docking_access: DockingAccess,
         #[serde(alias = "MarketID")]
-        market_id: Option<u64>,
+        market_id: u64,
         star_system: String,
         station_name: String,
         station_type: StationType,
+        carrier_docking_access: Option<DockingAccess>,
     },
     MarketBuy {
         buy_price: u64,
@@ -1098,7 +898,7 @@ pub enum JournalEvent {
         #[serde(alias = "Type")]
         commodity: String,
         #[serde(alias = "Type_Localised")]
-        commodity_display: String,
+        commodity_display: Option<String>,
     },
     MarketSell {
         avg_price_paid: u64,
@@ -1110,7 +910,7 @@ pub enum JournalEvent {
         #[serde(alias = "Type")]
         commodity: String,
         #[serde(alias = "Type_Localised")]
-        commodity_display: String,
+        commodity_display: Option<String>,
     },
     MassModuleStore {
         items: Vec<Module>,
@@ -1119,6 +919,356 @@ pub enum JournalEvent {
         #[serde(flatten)]
         ship: Ship,
     },
+    MaterialCollected {
+        #[serde(flatten)]
+        material: Material,
+    },
+    MaterialDiscovered {
+        #[serde(flatten)]
+        material: Material,
+    },
+    MaterialTrade {
+        #[serde(alias = "MarketID")]
+        market_id: u64,
+        paid: Material,
+        received: Material,
+        trader_type: TraderType,
+    },
+    Materials {
+        encoded: Vec<Material>,
+        manufactured: Vec<Material>,
+        raw: Vec<Material>,
+    },
+    MissionAbandoned {
+        #[serde(flatten)]
+        mission: Mission,
+    },
+    MissionAccepted {
+        #[serde(flatten)]
+        mission: Mission,
+    },
+    MissionCompleted {
+        #[serde(flatten)]
+        mission: Mission,
+        donated: Option<u64>,
+        faction_effects: Vec<FactionEffect>,
+        materials_reward: Option<Vec<Material>>,
+    },
+    MissionFailed {
+        #[serde(flatten)]
+        mission: Mission,
+    },
+    MissionRedirected {
+        #[serde(flatten)]
+        mission: Mission,
+        new_destination_station: String,
+        new_destination_system: String,
+        old_destination_station: String,
+        old_destination_system: String,
+    },
+    Missions {
+        active: Option<Vec<Mission>>,
+        complete: Option<Vec<Mission>>,
+        failed: Option<Vec<Mission>>,
+    },
+    ModuleBuy {
+        #[serde(alias = "MarketID")]
+        market_id: u64,
+        buy_item: String,
+        #[serde(alias = "BuyItem_Localised")]
+        buy_item_display: String,
+        buy_price: u64,
+        sell_item: Option<String>,
+        #[serde(alias = "SellItem_Localised")]
+        sell_item_display: Option<String>,
+        sell_price: Option<u64>,
+        ship: String,
+        #[serde(alias = "ShipID")]
+        ship_id: u64,
+        slot: String,
+        stored_item: Option<String>,
+        #[serde(alias = "StoredItem_Localised")]
+        stored_item_display: Option<String>,
+    },
+    ModuleBuyAndStore {
+        #[serde(alias = "MarketID")]
+        market_id: u64,
+        buy_item: String,
+        #[serde(alias = "BuyItem_Localised")]
+        buy_item_display: String,
+        buy_price: u64,
+        ship: String,
+        #[serde(alias = "ShipID")]
+        ship_id: u64,
+    },
+    ModuleInfo, // I don't know, my scheme doesn't contain any information, TODO: fill module info if there's any information
+    ModuleRetrieve {
+        ship: String,
+        #[serde(alias = "ShipID")]
+        ship_id: u64,
+        engineer_modifications: Option<String>,
+        level: Option<u8>,
+        quality: Option<f64>,
+        slot: String,
+        retrieved_item: String,
+        #[serde(alias = "RetrievedItem_Localised")]
+        retrieved_item_display: String,
+        swap_out_item: Option<String>,
+        #[serde(alias = "SwapOutItem_Localised")]
+        swap_out_item_display: Option<String>,
+        #[serde(default)]
+        hot: bool,
+    },
+    ModuleSell {
+        #[serde(alias = "MarketID")]
+        market_id: u64,
+        sell_item: String,
+        #[serde(alias = "SellItem_Localised")]
+        sell_item_display: String,
+        sell_price: u64,
+        ship: String,
+        #[serde(alias = "ShipID")]
+        ship_id: u64,
+        slot: String,
+    },
+    ModuleSellRemote {
+        server_id: u64,
+        sell_item: String,
+        #[serde(alias = "SellItem_Localised")]
+        sell_item_display: String,
+        sell_price: u64,
+        ship: String,
+        #[serde(alias = "ShipID")]
+        ship_id: u64,
+        storage_slot: u16,
+    },
+    ModuleStore {
+        ship: String,
+        #[serde(alias = "ShipID")]
+        ship_id: u64,
+        engineer_modifications: Option<String>,
+        level: Option<u8>,
+        quality: Option<f64>,
+        slot: String,
+        stored_item: String,
+        #[serde(alias = "StoredItem_Localised")]
+        stored_item_display: String,
+        #[serde(default)]
+        hot: bool,
+    },
+    ModuleSwap {
+        #[serde(alias = "MarketID")]
+        market_id: u64,
+        ship: String,
+        #[serde(alias = "ShipID")]
+        ship_id: u64,
+        from_slot: String,
+        from_item: String,
+        #[serde(alias = "FromItem_Localised")]
+        from_item_display: String,
+        to_slot: String,
+        to_item: Option<String>,
+        #[serde(alias = "ToItem_Localised")]
+        to_item_display: Option<String>,
+        #[serde(default)]
+        hot: bool,
+    },
+    MultiSellExplorationData {
+        base_value: u64,
+        bonus: u64,
+        discovered: Vec<Discover>,
+        total_earnings: u64,
+    },
+    Music {
+        music_track: String,
+    },
+    NavBeaconScan {
+        num_bodies: u64,
+        system_address: u64,
+    },
+    NavRoute,
+    NavRouteClear,
+    NewCommander {
+        #[serde(flatten)]
+        commander: Commander,
+        package: CommanderPackage,
+    },
+    NpcCrewPaidWage {
+        amount: u64,
+        npc_crew_id: u64,
+        npc_crew_name: String,
+    },
+    Outfitting {
+        #[serde(alias = "MarketID")]
+        market_id: u64,
+        star_system: String,
+        station_name: String,
+    },
+    #[serde(alias = "PVPKill")]
+    PvpKill {
+        combat_rank: Rank,
+        victim: String,
+    },
+    Passengers {
+        manifest: Vec<PassengersManifest>,
+    },
+    PayBounties {
+        all_fines: bool,
+        amount: u64,
+        broker_percentage: Option<f64>,
+        faction: Option<String>,
+        #[serde(alias = "ShipID")]
+        ship_id: u64,
+    },
+    PayFines {
+        all_fines: bool,
+        amount: u64,
+        broker_percentage: Option<f64>,
+        faction: Option<String>,
+        #[serde(alias = "ShipID")]
+        ship_id: u64,
+    },
+    Powerplay {
+        merits: u64,
+        power: String,
+        rank: u64,
+        time_pledged: u64,
+    },
+    PowerplayCollect {
+        power: String,
+        count: u64,
+        #[serde(alias = "Type")]
+        collected: String,
+        #[serde(alias = "Type_Localised")]
+        collected_display: String,
+    },
+    PowerplayMerits {
+        merits_gained: u64,
+        power: String,
+        total_merits: u64,
+    },
+    PowerplayRank {
+        power: String,
+        rank: u64,
+    },
+    Progress {
+        #[serde(alias = "CQC")]
+        cqc: u64,
+        combat: u64,
+        empire: u64,
+        exobiologist: u64,
+        explore: u64,
+        federation: u64,
+        soldier: u64,
+        trade: u64,
+    },
+    Promotion {
+        combat: Option<Rank>,
+        soldier: Option<Rank>,
+        empire: Option<EmpireRank>,
+        explore: Option<Rank>,
+        exobiologist: Option<Rank>,
+        federation: Option<FederationRank>,
+        trade: Option<Rank>,
+    },
+    QuitACrew {
+        captain: String,
+    },
+    Rank {
+        #[serde(alias = "CQC")]
+        cqc: Rank,
+        combat: Rank,
+        empire: Rank,
+        exobiologist: Rank,
+        explore: Rank,
+        federation: Rank,
+        soldier: Rank,
+        trade: Rank,
+    },
+    RebootRepair {
+        modules: Vec<String>,
+    },
+    ReceiveText {
+        channel: Channel,
+        from: String,
+        #[serde(alias = "From_Localised")]
+        from_display: Option<String>,
+        message: String,
+        #[serde(alias = "Message_Localised")]
+        message_display: Option<String>,
+    },
+    RedeemVoucher {
+        amount: u64,
+        broker_percentage: Option<f64>,
+        faction: Option<String>,
+        factions: Option<Vec<FactionVoucher>>,
+        #[serde(alias = "Type")]
+        voucher_type: VoucherType,
+    },
+    RefuelAll {
+        amount: f64,
+        cost: u64,
+    },
+    RefuelPartial {
+        amount: f64,
+        cost: u64,
+    },
+    Repair {
+        cost: u64,
+        items: Vec<String>,
+    },
+    RepairAll {
+        cost: u64,
+    },
+    RepairDrone {
+        hull_repaired: f64,
+        cockpit_repaired: Option<f64>,
+        corrosion_repaired: Option<f64>,
+    },
+    Reputation {
+        alliance: Option<f64>,
+        empire: Option<f64>,
+        federation: Option<f64>,
+        independent: Option<f64>,
+    },
+    SelfDestruct,
+    #[serde(alias = "USSDrop")]
+    UssDrop {
+        #[serde(alias = "USSThreat")]
+        uss_threat: u8,
+        #[serde(alias = "USSType")]
+        uss_type: String,
+        #[serde(alias = "USSType_Localised")]
+        uss_type_display: String,
+    },
+    UnderAttack {
+        target: Target,
+    },
+    Undocked {
+        station_name: String,
+        station_type: StationType,
+        #[serde(alias = "MarketID")]
+        market_id: u64,
+        #[serde(default)]
+        multicrew: bool,
+        #[serde(default)]
+        taxi: bool,
+    },
+    UseConsumable {
+        name: String,
+        #[serde(alias = "Name_Localised")]
+        name_display: String,
+    },
+    WingAdd {
+        name: String,
+    },
+    WingInvite {
+        name: String,
+    },
+    WingJoin {
+        others: Option<Vec<String>>,
+    },
+    WingLeave,
     #[serde(other)]
     Unknown,
 }
