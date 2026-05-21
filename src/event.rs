@@ -9,7 +9,7 @@ use {
         crew::{Crew, CrewRole},
         crime::CrimeType,
         engineer::Engineer,
-        faction::Faction,
+        faction::{Faction, FactionConflict},
         fleet_carriers::DockingAccess,
         material::{Material, TraderType},
         mission::{FactionEffect, Mission},
@@ -262,7 +262,7 @@ pub enum JournalEvent {
         #[serde(alias = "BodyID")]
         body_id: u64,
         body_type: BodyType,
-        // TODO: conflicts
+        conflicts: Option<Vec<FactionConflict>>,
         controlling_power: Option<String>,
         factions: Option<Vec<Faction>>,
         #[serde(alias = "MarketID")]
@@ -585,7 +585,7 @@ pub enum JournalEvent {
         body_id: u64,
         body_type: BodyType,
         boost_used: Option<u8>,
-        // TODO: conflicts
+        conflicts: Option<Vec<FactionConflict>>,
         controlling_power: Option<String>,
         factions: Option<Vec<Faction>>,
         fuel_level: f64,
@@ -851,7 +851,7 @@ pub enum JournalEvent {
         #[serde(alias = "BodyID")]
         body_id: u64,
         body_type: BodyType,
-        // TODO: conflicts
+        conflicts: Option<Vec<FactionConflict>>,
         controlling_power: Option<String>,
         dist_from_star_ls: Option<f64>,
         factions: Option<Vec<Faction>>,
