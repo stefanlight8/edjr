@@ -565,9 +565,9 @@ pub enum JournalEvent {
         engineers: Option<Vec<Engineer>>,
     },
     EspaceInterdiction {
-        inderdictor: String,
+        interdictor: String,
         #[serde(alias = "Interdictor_Localised")]
-        inderdictor_display: Option<String>,
+        interdictor_display: Option<String>,
         is_player: bool,
     },
     #[serde(alias = "FCMaterials")]
