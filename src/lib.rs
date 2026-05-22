@@ -3,6 +3,7 @@ pub mod elite;
 pub mod entry;
 pub mod error;
 pub mod event;
+pub mod events;
 pub mod journal;
 pub mod read;
 

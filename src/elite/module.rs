@@ -2,6 +2,19 @@ use serde::Deserialize;
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
+pub struct Module {
+    slot: String,
+    name: String,
+    #[serde(alias = "Name_Localised")]
+    name_display: String,
+    hot: bool,
+    engineer_modifications: Option<String>,
+    level: Option<u8>,
+    quality: Option<f64>,
+}
+
+#[derive(Debug, Deserialize)]
+#[serde(rename_all = "PascalCase")]
 pub struct Modifier {
     label: String,
     value: Option<f64>,

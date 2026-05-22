@@ -1,14 +1,15 @@
 use {
-    crate::elite::{allegiance::Allegiance, faction::Faction},
+    crate::elite::{
+        allegiance::Allegiance, economy::Economy, faction::Faction, goverment::Goverment,
+    },
     serde::Deserialize,
 };
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct StationEconomy {
-    name: String,
-    #[serde(alias = "Name_Localised")]
-    name_display: Option<String>,
+    #[serde(alias = "Name")] // a bit hacky
+    economy_type: Economy,
     proportion: f64,
 }
 
@@ -59,16 +60,10 @@ pub enum StationState {
 pub struct Station {
     station_allegiance: Allegiance,
     station_economies: Vec<StationEconomy>,
-    station_economy: String,
-    #[serde(alias = "SystemEconomy_Localised")]
-    station_economy_display: String,
-    system_second_economy: Option<String>,
-    #[serde(alias = "SystemSecondEconomy_Localised")]
-    system_second_economy_display: Option<String>,
+    station_economy: Economy,
+    system_second_economy: Option<Economy>,
     station_faction: Faction,
-    station_goverment: String,
-    #[serde(alias = "SystemGoverment_Localised")]
-    station_goverment_localised: String,
+    station_goverment: Goverment,
     station_services: Vec<StationService>,
     station_state: Option<StationState>,
     station_type: Option<StationType>,
