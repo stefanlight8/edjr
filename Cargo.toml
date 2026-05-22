@@ -8,7 +8,7 @@ authors = ["stefanlight8 <64615032+stefanlight8@users.noreply.github.com>"]
 readme = "README.md"
 license = "MIT"
 repository = "https://github.com/stefanlight8/edjr"
-keywords = ["Elite Dangerous", "Journal"]
+keywords = ["elite-dangerous", "journal"]
 
 [badges]
 maintenance = { status = "actively-developed" }
