@@ -53,6 +53,7 @@ View more examples in [`examples/`](./examples)
 ## Supported events
 <details>
 <summary>Show</summary>
+
 - [x] AfmuRepairs
 - [x] ApproachBody
 - [x] ApproachSettlement
@@ -244,6 +245,7 @@ View more examples in [`examples/`](./examples)
 - [x] WingInvite
 - [x] WingJoin
 - [x] WingLeave
+
 </details>
 
 ## Installation
