@@ -1,6 +1,7 @@
 use {crate::elite::crime::CrimeType, serde::Deserialize};
 
 #[derive(Debug, Deserialize)]
+#[serde(rename_all = "PascalCase")]
 pub struct CommitCrimeEvent {
     crime_type: CrimeType,
     faction: String,
@@ -12,6 +13,7 @@ pub struct CommitCrimeEvent {
 }
 
 #[derive(Debug, Deserialize)]
+#[serde(rename_all = "PascalCase")]
 pub struct CrimeVictimEvent {
     crime_type: CrimeType,
     offender: String,

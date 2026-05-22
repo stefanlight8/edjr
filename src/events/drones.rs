@@ -8,6 +8,7 @@ pub enum LaunchDroneType {
 }
 
 #[derive(Debug, Deserialize)]
+#[serde(rename_all = "PascalCase")]
 pub struct BuyDronesEvent {
     buy_price: u64,
     count: u64,
@@ -15,6 +16,7 @@ pub struct BuyDronesEvent {
 }
 
 #[derive(Debug, Deserialize)]
+#[serde(rename_all = "PascalCase")]
 pub struct LaunchDroneEvent {
     #[serde(alias = "Type")]
     launch_type: LaunchDroneType,

@@ -1,6 +1,7 @@
 use {crate::elite::crew::CrewRole, serde::Deserialize};
 
 #[derive(Debug, Deserialize)]
+#[serde(rename_all = "PascalCase")]
 pub struct CrewAssignEvent {
     #[serde(alias = "CrewID")]
     crew_id: u64,
@@ -9,6 +10,7 @@ pub struct CrewAssignEvent {
 }
 
 #[derive(Debug, Deserialize)]
+#[serde(rename_all = "PascalCase")]
 pub struct CrewLaunchFighterEvent {
     crew: String,
     #[serde(default)]
@@ -16,6 +18,7 @@ pub struct CrewLaunchFighterEvent {
 }
 
 #[derive(Debug, Deserialize)]
+#[serde(rename_all = "PascalCase")]
 pub struct CrewMemberJoinsEvent {
     crew: String,
     #[serde(default)]
@@ -23,6 +26,7 @@ pub struct CrewMemberJoinsEvent {
 }
 
 #[derive(Debug, Deserialize)]
+#[serde(rename_all = "PascalCase")]
 pub struct CrewMemberQuitsEvent {
     crew: String,
     #[serde(default)]
@@ -30,6 +34,7 @@ pub struct CrewMemberQuitsEvent {
 }
 
 #[derive(Debug, Deserialize)]
+#[serde(rename_all = "PascalCase")]
 pub struct CrewMemberRoleChangeEvent {
     crew: String,
     role: CrewRole,
@@ -38,6 +43,7 @@ pub struct CrewMemberRoleChangeEvent {
 }
 
 #[derive(Debug, Deserialize)]
+#[serde(rename_all = "PascalCase")]
 pub struct ChangeCrewRoleEvent {
     role: CrewRole,
     #[serde(default)]
@@ -45,6 +51,7 @@ pub struct ChangeCrewRoleEvent {
 }
 
 #[derive(Debug, Deserialize)]
+#[serde(rename_all = "PascalCase")]
 pub struct EndCrewSessionEvent {
     on_crime: bool,
     #[serde(default)]
@@ -52,6 +59,7 @@ pub struct EndCrewSessionEvent {
 }
 
 #[derive(Debug, Deserialize)]
+#[serde(rename_all = "PascalCase")]
 pub struct JoinACrewEvent {
     captain: String,
     #[serde(default)]
@@ -59,6 +67,7 @@ pub struct JoinACrewEvent {
 }
 
 #[derive(Debug, Deserialize)]
+#[serde(rename_all = "PascalCase")]
 pub struct NpcCrewPaidWageEvent {
     amount: u64,
     npc_crew_id: u64,
@@ -66,6 +75,7 @@ pub struct NpcCrewPaidWageEvent {
 }
 
 #[derive(Debug, Deserialize)]
+#[serde(rename_all = "PascalCase")]
 pub struct QuitACrewEvent {
     captain: String,
 }

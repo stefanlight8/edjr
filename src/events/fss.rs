@@ -4,6 +4,7 @@ use {
 };
 
 #[derive(Debug, Deserialize)]
+#[serde(rename_all = "PascalCase")]
 pub struct FssAllBodiesFoundEvent {
     count: u64,
     system_address: u64,
@@ -11,6 +12,7 @@ pub struct FssAllBodiesFoundEvent {
 }
 
 #[derive(Debug, Deserialize)]
+#[serde(rename_all = "PascalCase")]
 pub struct FssBodySignalsEvent {
     #[serde(alias = "BodyID")]
     body_id: u64,
@@ -20,6 +22,7 @@ pub struct FssBodySignalsEvent {
 }
 
 #[derive(Debug, Deserialize)]
+#[serde(rename_all = "PascalCase")]
 pub struct FssDiscoveryScanEvent {
     body_count: u64,
     non_body_count: u64,
@@ -29,6 +32,7 @@ pub struct FssDiscoveryScanEvent {
 }
 
 #[derive(Debug, Deserialize)]
+#[serde(rename_all = "PascalCase")]
 pub struct FssSignalDiscoveredEvent {
     #[serde(default)]
     is_station: bool,

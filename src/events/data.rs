@@ -1,5 +1,6 @@
 use {crate::elite::allegiance::Allegiance, serde::Deserialize};
 #[derive(Debug, Deserialize)]
+#[serde(rename_all = "PascalCase")]
 pub struct DataScannedEvent {
     #[serde(alias = "Type")]
     data_type: String,
@@ -8,6 +9,7 @@ pub struct DataScannedEvent {
 }
 
 #[derive(Debug, Deserialize)]
+#[serde(rename_all = "PascalCase")]
 pub struct DatalinkScanEvent {
     message: String,
     #[serde(alias = "Message_Localised")]
@@ -15,6 +17,7 @@ pub struct DatalinkScanEvent {
 }
 
 #[derive(Debug, Deserialize)]
+#[serde(rename_all = "PascalCase")]
 pub struct DatalinkVoucherEvent {
     reward: u64,
     payee_faction: Allegiance,
