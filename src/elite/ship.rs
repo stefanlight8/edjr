@@ -1,6 +1,4 @@
-use serde::Deserialize;
-
-use crate::elite::module::ModuleEngineering;
+use {crate::elite::module::ModuleEngineering, serde::Deserialize};
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
