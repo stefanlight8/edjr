@@ -9,25 +9,22 @@ use {
 };
 
 impl Journal<File> {
-    pub async fn stream(
-        &mut self,
-    ) -> Result<impl Stream<Item = Result<JournalEntry, JournalReadError>>, JournalReadError> {
-        let mut reader = BufReader::new(
-            self.file
-                .try_clone()
-                .await
-                .map_err(JournalReadError::ReadError)?,
-        );
-        let mut buffer = String::new();
+    pub fn stream(self) -> impl Stream<Item = Result<JournalEntry, JournalReadError>> {
+        stream! {
+            let mut reader = BufReader::new(self.file);
+            let mut buffer = String::new();
 
-        Ok(stream! {
             loop {
                 buffer.clear();
-                reader.read_line(&mut buffer).await.map_err(JournalReadError::ReadError)?;
+                let line = reader.read_line(&mut buffer).await.map_err(JournalReadError::ReadError)?;
+
+                if line == 0 {
+                    break;
+                }
 
                 yield serde_json::from_str::<JournalEntry>(&buffer)
                     .map_err(JournalReadError::ParsingError)
             }
-        })
+        }
     }
 }

@@ -220,10 +220,10 @@ View more examples in [`examples/`](./examples)
 - [ ] ShipyardSell
 - [ ] ShipyardSwap
 - [ ] ShipyardTransfer
-- [ ] Shutdown
-- [ ] SquadronCreated
-- [ ] SquadronStartup
-- [ ] StartJump
+- [x] Shutdown
+- [x] SquadronCreated
+- [x] SquadronStartup
+- [x] StartJump
 - [ ] Statistics
 - [ ] StoredModules
 - [ ] StoredShips
@@ -240,7 +240,7 @@ View more examples in [`examples/`](./examples)
 - [x] UnderAttack
 - [x] Undocked
 - [x] UseConsumable
-- [x] VehicleSwitch
+- [ ] VehicleSwitch
 - [x] WingAdd
 - [x] WingInvite
 - [x] WingJoin

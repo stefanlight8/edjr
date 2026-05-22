@@ -2,7 +2,7 @@ use serde::Deserialize;
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
-pub struct LiftoffEvent {
+pub struct TouchdownEvent {
     system_address: u64,
     body: Option<String>,
     #[serde(alias = "BodyID")]

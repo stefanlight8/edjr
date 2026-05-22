@@ -41,6 +41,7 @@ pub enum JournalEvent {
     Died(DiedEvent),
     Disembark(DisembarkEvent),
     DockFighter(DockFighterEvent),
+    #[serde(alias = "DockSRV")]
     DockSrv(DockSrvEvent),
     Docked(DockedEvent),
     DockingCancelled(DockingCancelledEvent),
@@ -55,12 +56,19 @@ pub enum JournalEvent {
     EngineerCraft(EngineerCraftEvent),
     EngineerProgress(EngineerProgressEvent),
     EscapeInterdiction(EscapeInterdictionEvent),
-    FCMaterials(FcMaterialsEvent),
+    #[serde(alias = "FCMaterials")]
+    FcMaterials(FcMaterialsEvent),
+    #[serde(alias = "FSDJump")]
     FsdJump(FsdJumpEvent),
+    #[serde(alias = "FSDTarget")]
     FsdTarget(FsdTargetEvent),
+    #[serde(alias = "FSSAllBodiesFound")]
     FssAllBodiesFound(FssAllBodiesFoundEvent),
+    #[serde(alias = "FSSBodySignals")]
     FssBodySignals(FssBodySignalsEvent),
+    #[serde(alias = "FSSDiscoveryScan")]
     FssDiscoveryScan(FssDiscoveryScanEvent),
+    #[serde(alias = "FSSSignalDiscovered")]
     FssSignalDiscovered(FssSignalDiscoveredEvent),
     FactionKillBond(FactionKillBondEvent),
     FetchRemoteModule(FetchRemoteModuleEvent),
@@ -118,7 +126,8 @@ pub enum JournalEvent {
     NewCommander(NewCommanderEvent),
     NpcCrewPaidWage(NpcCrewPaidWageEvent),
     Outfitting(OutfittingEvent),
-    PVPKill(PvpKillEvent),
+    #[serde(alias = "PVPKill")]
+    PvpKill(PvpKillEvent),
     Passengers(PassengersEvent),
     PayBounties(PayBountiesEvent),
     PayFines(PayFinesEvent),
@@ -140,6 +149,15 @@ pub enum JournalEvent {
     RepairDrone(RepairDroneEvent),
     Reputation(ReputationEvent),
     SelfDestruct,
+    Shutdown,
+    SquadronCreated(SquadronCreatedEvent),
+    SquadronStartup(SquadronStartupEvent),
+    StartJump(StartJumpEvent),
+    SupercruiseDestinationDrop(SupercruiseDestinationDropEvent),
+    SupercruiseEntry(SupercruiseEntryEvent),
+    SupercruiseExit(SupercruiseExitEvent),
+    Touchdown(TouchdownEvent),
+    #[serde(alias = "USSDrop")]
     UssDrop(UssDropEvent),
     UnderAttack(UnderAttackEvent),
     Undocked(UndockedEvent),
@@ -148,6 +166,7 @@ pub enum JournalEvent {
     WingInvite(WingInviteEvent),
     WingJoin(WingJoinEvent),
     WingLeave,
+
     #[serde(other)]
     Unknown,
 }

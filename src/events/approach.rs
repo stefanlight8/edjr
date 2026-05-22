@@ -9,6 +9,7 @@ pub struct ApproachBodyEvent {
     star_system: String,
     system_address: u64,
 }
+
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct ApproachSettlementEvent {

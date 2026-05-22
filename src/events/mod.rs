@@ -34,6 +34,7 @@ pub mod hull;
 pub mod impound;
 pub mod interdiction;
 pub mod jetcone;
+pub mod jump;
 pub mod liftoff;
 pub mod loadout;
 pub mod location;
@@ -52,8 +53,10 @@ pub mod repair;
 pub mod reputation;
 pub mod squadron;
 pub mod srv;
+pub mod supercruise;
 pub mod taxi;
 pub mod text;
+pub mod touchdown;
 pub mod under_attack;
 pub mod uss;
 pub mod voucher;
@@ -110,6 +113,7 @@ pub use {
     impound::ClearImpoundEvent,
     interdiction::{EscapeInterdictionEvent, InterdictedEvent, InterdictionEvent},
     jetcone::{JetConeBoostEvent, JetConeDamageEvent},
+    jump::StartJumpEvent,
     liftoff::LiftoffEvent,
     loadout::LoadoutEvent,
     location::LocationEvent,
@@ -135,10 +139,15 @@ pub use {
     ranks::{ProgressEvent, PromotionEvent, RankEvent},
     repair::{AfmuRepairsEvent, RebootRepairEvent, RepairAllEvent, RepairDroneEvent, RepairEvent},
     reputation::ReputationEvent,
-    squadron::{InvitedToSquadronEvent, JoinedSquadronEvent, LeftSquadronEvent},
+    squadron::{
+        InvitedToSquadronEvent, JoinedSquadronEvent, LeftSquadronEvent, SquadronCreatedEvent,
+        SquadronStartupEvent,
+    },
     srv::{DockSrvEvent, LaunchSrvEvent},
+    supercruise::{SupercruiseDestinationDropEvent, SupercruiseEntryEvent, SupercruiseExitEvent},
     taxi::BookTaxiEvent,
     text::ReceiveTextEvent,
+    touchdown::TouchdownEvent,
     under_attack::UnderAttackEvent,
     uss::UssDropEvent,
     voucher::RedeemVoucherEvent,
