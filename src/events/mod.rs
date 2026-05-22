@@ -1,3 +1,22 @@
+//! Elite Events
+//!
+//! # Examples
+//! ```no_run
+//! use {std::{error::Error, fs::File}, edjr::{Journal, Read, event::Commander}};
+//!
+//! fn main() -> Result<(), Box<dyn Error>> {
+//!     let journal = Journal::<File>::open("/Path/to/my/journals/Journal.date.log")?;
+//!
+//!     for entry in journal.read_all()? {
+//!         match entry.event {
+//!             Commander(commader) => println!("I'm commander {}!", commander.name),
+//!             _ => ()
+//!         }
+//!     };
+//!
+//!     Ok(())
+//! }
+//! ```
 pub mod ammo;
 pub mod approach;
 pub mod backpack;

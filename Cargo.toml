@@ -13,6 +13,9 @@ keywords = ["elite-dangerous", "journal"]
 [badges]
 maintenance = { status = "actively-developed" }
 
+[package.metadata.docs.rs]
+all-features = true
+
 [workspace]
 resolver = "3"
 members = ["examples/*"]

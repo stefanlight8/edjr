@@ -1,3 +1,4 @@
+//! Elite associated objects
 pub mod allegiance;
 pub mod backpack;
 pub mod body;

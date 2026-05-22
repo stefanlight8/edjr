@@ -1,5 +1,9 @@
+//! Journal event
 use {crate::events::*, serde::Deserialize};
 
+/// Journal Event.
+///
+/// Each variant represents journal event and contains its body.
 #[derive(Debug, Deserialize)]
 #[serde(tag = "event", rename_all_fields = "PascalCase")]
 pub enum JournalEvent {
@@ -166,7 +170,6 @@ pub enum JournalEvent {
     WingInvite(WingInviteEvent),
     WingJoin(WingJoinEvent),
     WingLeave,
-
     #[serde(other)]
     Unknown,
 }

@@ -1,3 +1,4 @@
+//! Journal runtime errors
 use std::{
     error::Error,
     fmt::{Display, Formatter, Result},
