@@ -1,16 +1,58 @@
 # edjr
+[![crates.io](https://img.shields.io/crates/v/edjr)](https://crates.io/crates/edjr)
+[![docs.rs](https://docs.rs/edjr/badge.svg)](https://docs.rs/edjr)
+
 Elite Dangerous Journal Reader
 
 A library for parsing Elite Dangerous's journal files.
+edjr supports only Elite Dangerous Odyssey.
 
 ## Features
 - `tokio`: provide tokio-based journal reader. 
 - `stream`: provides stream for journal reader.
 
-## Resources
-- [Examples](./examples)
+## Examples
+### Read all (sync)
+```rs
+use {
+    edjr::{journal::Journal, read::Read},
+    std::{error::Error, fs::File, path::PathBuf},
+};
+
+fn main() -> Result<(), Box<dyn Error>> {
+    let journal_path =
+        PathBuf::from("/Path/to/Journals/Journal.date.log");
+    let mut journal = Journal::<File>::open(journal_path)?;
+    let entries = journal.read_all()?;
+
+    Ok(())
+}
+
+```
+### Read all (async, features = [tokio])
+```rs
+use {
+    edjr::{journal::Journal, async_read::AsyncRead},
+    std::{error::Error, path::PathBuf},
+    tokio::fs::File,
+};
+
+#[tokio::main]
+fn main() -> Result<(), Box<dyn Error>> {
+    let journal_path =
+        PathBuf::from("/Path/to/Journals/Journal.date.log");
+    let mut journal = Journal::<File>::open(journal_path).await?;
+    let entries = journal.read_all().await?;
+
+    Ok(())
+}
+
+```
+View more examples in [`examples/`](./examples)
 
 ## Supported events
+<details>
+<summary>Show</summary>
 - [x] AfmuRepairs
 - [x] ApproachBody
 - [x] ApproachSettlement
@@ -202,6 +244,11 @@ A library for parsing Elite Dangerous's journal files.
 - [x] WingInvite
 - [x] WingJoin
 - [x] WingLeave
+</details>
 
 ## Installation
-Currently edjr is not available on crates.io, but you can use `cargo add --git https://github.com/stefanligh8/edjr`
+```sh
+$ cargo add edjr
+// or via GitHub repository
+$ cargo add edjr --git https://github.com/stefanlight8/edjr
+```
