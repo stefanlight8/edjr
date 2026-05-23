@@ -6,30 +6,30 @@ use {
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct EngineerContributionEvent {
-    commodity: Option<String>,
+    pub commodity: Option<String>,
     #[serde(alias = "Commodity_Localised")]
-    commodity_display: Option<String>,
+    pub commodity_display: Option<String>,
     #[serde(flatten)]
-    engineer: Engineer,
-    quantity: u64,
-    total_quantity: u64,
+    pub engineer: Engineer,
+    pub quantity: u64,
+    pub total_quantity: u64,
     #[serde(alias = "Type")]
-    contribution_type: String,
+    pub contribution_type: String,
 }
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct EngineerCraftEvent {
-    apply_experimental_effect: Option<String>,
-    ingredients: Vec<Material>,
+    pub apply_experimental_effect: Option<String>,
+    pub ingredients: Vec<Material>,
     #[serde(flatten)]
-    engineer: Option<Engineer>,
+    pub engineer: Option<Engineer>,
     #[serde(flatten)]
-    modification: ModuleEngineering,
+    pub modification: ModuleEngineering,
 }
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct EngineerProgressEvent {
     #[serde(flatten)]
-    engineer: Option<Engineer>,
-    engineers: Option<Vec<Engineer>>,
+    pub engineer: Option<Engineer>,
+    pub engineers: Option<Vec<Engineer>>,
 }

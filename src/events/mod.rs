@@ -48,7 +48,6 @@ pub mod fsd;
 pub mod fss;
 pub mod fuel;
 pub mod game;
-pub mod heat;
 pub mod hull;
 pub mod impound;
 pub mod interdiction;
@@ -142,7 +141,6 @@ pub use {
     },
     fuel::{FuelScoopEvent, RefuelAllEvent, RefuelPartialEvent, ReservoirReplenishedEvent},
     game::LoadGameEvent,
-    heat::{HeatDamageEvent, HeatWarningEvent},
     hull::HullDamageEvent,
     impound::ClearImpoundEvent,
     interdiction::{EscapeInterdictionEvent, InterdictedEvent, InterdictionEvent},

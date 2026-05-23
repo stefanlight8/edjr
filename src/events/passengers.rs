@@ -4,18 +4,18 @@ use {crate::elite::passenger::PassengerType, serde::Deserialize};
 #[serde(rename_all = "PascalCase")]
 pub struct PassengersManifest {
     #[serde(alias = "MissionID")]
-    mission_id: u64,
-    count: u64,
+    pub mission_id: u64,
+    pub count: u64,
     #[serde(alias = "Type")]
-    passengers_type: PassengerType,
+    pub passengers_type: PassengerType,
     #[serde(default, alias = "VIP")]
-    vip: bool,
+    pub vip: bool,
     #[serde(default)]
-    wanted: bool,
+    pub wanted: bool,
 }
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct PassengersEvent {
-    manifest: Vec<PassengersManifest>,
+    pub manifest: Vec<PassengersManifest>,
 }

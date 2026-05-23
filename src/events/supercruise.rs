@@ -3,37 +3,37 @@ use {crate::elite::body::BodyType, serde::Deserialize};
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct SupercruiseDestinationDropEvent {
-    threat: u8,
+    pub threat: u8,
     #[serde(alias = "Type")]
-    destination: String,
+    pub destination: String,
     #[serde(alias = "Type_Localised")]
-    destination_display: Option<String>,
+    pub destination_display: Option<String>,
     #[serde(alias = "MarketID")]
-    market_id: Option<u64>,
+    pub market_id: Option<u64>,
 }
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct SupercruiseEntryEvent {
-    star_system: String,
-    system_address: u64,
+    pub star_system: String,
+    pub system_address: u64,
     #[serde(default)]
-    multicrew: bool,
+    pub multicrew: bool,
     #[serde(default)]
-    taxi: bool,
+    pub taxi: bool,
 }
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct SupercruiseExitEvent {
-    body: String,
+    pub body: String,
     #[serde(alias = "BodyID")]
-    body_id: u64,
-    body_type: BodyType,
-    star_system: String,
-    system_address: u64,
+    pub body_id: u64,
+    pub body_type: BodyType,
+    pub star_system: String,
+    pub system_address: u64,
     #[serde(default)]
-    multicrew: bool,
+    pub multicrew: bool,
     #[serde(default)]
-    taxi: bool,
+    pub taxi: bool,
 }

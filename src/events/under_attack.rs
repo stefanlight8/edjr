@@ -9,5 +9,5 @@ pub enum Target {
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct UnderAttackEvent {
-    target: Target,
+    pub target: Target,
 }

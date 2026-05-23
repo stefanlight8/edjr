@@ -1,8 +1,8 @@
-use {crate::elite::rank::EmpireRank, serde::Deserialize};
+use {crate::elite::rank::Rank, serde::Deserialize};
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct PvpKillEvent {
-    combat_rank: EmpireRank,
-    victim: String,
+    pub combat_rank: Rank,
+    pub victim: String,
 }

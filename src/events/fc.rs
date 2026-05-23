@@ -11,38 +11,38 @@ use {
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct CarrierJumpEvent {
-    body: String,
+    pub body: String,
     #[serde(alias = "BodyID")]
-    body_id: u64,
-    body_type: BodyType,
-    conflicts: Option<Vec<FactionConflict>>,
-    controlling_power: Option<String>,
-    factions: Option<Vec<Faction>>,
+    pub body_id: u64,
+    pub body_type: BodyType,
+    pub conflicts: Option<Vec<FactionConflict>>,
+    pub controlling_power: Option<String>,
+    pub factions: Option<Vec<Faction>>,
     #[serde(alias = "MarketID")]
-    market_id: Option<u64>,
+    pub market_id: Option<u64>,
     #[serde(flatten)]
-    powerplay: Option<Powerplay>,
-    star_pos: [f64; 3],
-    star_system: String,
+    pub powerplay: Option<Powerplay>,
+    pub star_pos: [f64; 3],
+    pub star_system: String,
     #[serde(flatten)]
-    station: Option<Station>,
-    system_address: u64,
+    pub station: Option<Station>,
+    pub system_address: u64,
     #[serde(default)]
-    docked: bool,
+    pub docked: bool,
     #[serde(default)]
-    taxi: bool,
+    pub taxi: bool,
     #[serde(default)]
-    multicrew: bool,
+    pub multicrew: bool,
     #[serde(default)]
-    on_foot: bool,
+    pub on_foot: bool,
 }
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct FcMaterialsEvent {
-    carrier_name: String,
+    pub carrier_name: String,
     #[serde(alias = "CarrierID")]
-    carrier_id: String,
+    pub carrier_id: String,
     #[serde(alias = "MarketID")]
-    market_id: Option<u64>,
+    pub market_id: Option<u64>,
 }

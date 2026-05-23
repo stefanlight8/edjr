@@ -3,20 +3,20 @@ use {crate::elite::crime::CrimeType, serde::Deserialize};
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct CommitCrimeEvent {
-    crime_type: CrimeType,
-    faction: String,
-    bounty: Option<u64>,
-    fine: Option<u64>,
-    victim: Option<String>,
+    pub crime_type: CrimeType,
+    pub faction: String,
+    pub bounty: Option<u64>,
+    pub fine: Option<u64>,
+    pub victim: Option<String>,
     #[serde(alias = "Victim_Localised")]
-    victim_display: Option<String>,
+    pub victim_display: Option<String>,
 }
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct CrimeVictimEvent {
-    crime_type: CrimeType,
-    offender: String,
-    bounty: Option<u64>,
-    fine: Option<u64>,
+    pub crime_type: CrimeType,
+    pub offender: String,
+    pub bounty: Option<u64>,
+    pub fine: Option<u64>,
 }

@@ -16,13 +16,13 @@ pub enum MaterialCategory {
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct Material {
-    category: Option<MaterialCategory>,
+    pub category: Option<MaterialCategory>,
     #[serde(alias = "Material")]
-    name: String,
+    pub name: String,
     #[serde(alias = "Material_Localised", alias = "Name_Localised")]
-    name_display: Option<String>,
+    pub name_display: Option<String>,
     #[serde(alias = "Quantity")]
-    count: Option<u64>,
+    pub count: Option<u64>,
 }
 
 #[derive(Debug, Deserialize)]

@@ -3,8 +3,8 @@ use serde::Deserialize;
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct PowerplayConflict {
-    power: String,
-    conflict_progress: f64,
+    pub power: String,
+    pub conflict_progress: f64,
 }
 
 #[derive(Debug, Deserialize, Default)]
@@ -17,12 +17,12 @@ pub enum PowerplayState {
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct Powerplay {
-    powerplay_conflict_progress: Vec<PowerplayConflict>,
-    powerplay_state: PowerplayState,
-    powerplay_state_control_progress: f64,
-    powerplay_state_reinforcement: u64,
-    powerplay_state_undermining: u64,
-    powers: Vec<String>,
+    pub powerplay_conflict_progress: Vec<PowerplayConflict>,
+    pub powerplay_state: PowerplayState,
+    pub powerplay_state_control_progress: f64,
+    pub powerplay_state_reinforcement: u64,
+    pub powerplay_state_undermining: u64,
+    pub powers: Vec<String>,
 }
 
 #[derive(Debug, Deserialize)]
@@ -33,9 +33,9 @@ pub enum PowerMicroResouceCategory {
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct PowerMicroResource {
-    category: PowerMicroResouceCategory,
-    count: u64,
-    name: String,
+    pub category: PowerMicroResouceCategory,
+    pub count: u64,
+    pub name: String,
     #[serde(alias = "Name_Localised")]
-    name_display: String,
+    pub name_display: String,
 }

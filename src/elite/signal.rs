@@ -4,9 +4,9 @@ use serde::Deserialize;
 #[serde(rename_all = "PascalCase")]
 pub struct Signal {
     #[serde(alias = "Type")]
-    signal_type: String,
+    pub signal_type: String,
     #[serde(alias = "Type_Localised")]
-    signal_type_display: String,
+    pub signal_type_display: String,
 }
 
 #[derive(Debug, Deserialize)]

@@ -7,13 +7,13 @@ use {
 #[serde(rename_all = "PascalCase")]
 pub struct CommanderEvent {
     #[serde(flatten)]
-    commander: Commander,
+    pub commander: Commander,
 }
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct NewCommanderEvent {
     #[serde(flatten)]
-    commander: CommanderEvent,
-    package: CommanderPackage,
+    pub commander: CommanderEvent,
+    pub package: CommanderPackage,
 }

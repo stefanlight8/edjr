@@ -20,35 +20,35 @@ pub enum SaaSignalType {
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct SaaSignal {
-    count: u64,
+    pub count: u64,
     #[serde(alias = "Type")]
-    signal_type: SaaSignalType,
+    pub signal_type: SaaSignalType,
 }
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct GenusSignal {
-    genus: Genus,
+    pub genus: Genus,
 }
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct SaaScanCompleteEvent {
-    body_name: String,
+    pub body_name: String,
     #[serde(alias = "BodyID")]
-    body_id: u64,
-    efficiency_target: u64,
-    probes_used: u64,
-    system_address: u64,
+    pub body_id: u64,
+    pub efficiency_target: u64,
+    pub probes_used: u64,
+    pub system_address: u64,
 }
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct SaaSignalsFoundEvent {
-    body_name: String,
+    pub body_name: String,
     #[serde(alias = "BodyID")]
-    body_id: u64,
-    genuses: Vec<GenusSignal>,
-    signals: Vec<SaaSignal>,
-    system_address: u64,
+    pub body_id: u64,
+    pub genuses: Vec<GenusSignal>,
+    pub signals: Vec<SaaSignal>,
+    pub system_address: u64,
 }

@@ -7,38 +7,38 @@ use {
 #[serde(rename_all = "PascalCase")]
 pub struct MarketEvent {
     #[serde(alias = "MarketID")]
-    market_id: u64,
-    star_system: String,
-    station_name: String,
-    station_type: StationType,
-    carrier_docking_access: Option<DockingAccess>,
+    pub market_id: u64,
+    pub star_system: String,
+    pub station_name: String,
+    pub station_type: StationType,
+    pub carrier_docking_access: Option<DockingAccess>,
 }
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct MarketBuyEvent {
     #[serde(alias = "MarketID")]
-    market_id: Option<u64>,
-    buy_price: u64,
-    count: u64,
-    total_cost: u64,
+    pub market_id: Option<u64>,
+    pub buy_price: u64,
+    pub count: u64,
+    pub total_cost: u64,
     #[serde(alias = "Type")]
-    commodity: String,
+    pub commodity: String,
     #[serde(alias = "Type_Localised")]
-    commodity_display: Option<String>,
+    pub commodity_display: Option<String>,
 }
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct MarketSellEvent {
     #[serde(alias = "MarketID")]
-    market_id: Option<u64>,
-    avg_price_paid: u64,
-    sell_price: u64,
-    count: u64,
-    total_sale: u64,
+    pub market_id: Option<u64>,
+    pub avg_price_paid: u64,
+    pub sell_price: u64,
+    pub count: u64,
+    pub total_sale: u64,
     #[serde(alias = "Type")]
-    commodity: String,
+    pub commodity: String,
     #[serde(alias = "Type_Localised")]
-    commodity_display: Option<String>,
+    pub commodity_display: Option<String>,
 }

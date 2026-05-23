@@ -10,29 +10,29 @@ pub enum GameMode {
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct LoadGameEvent {
-    commander: String,
-    credits: u64,
+    pub commander: String,
+    pub credits: u64,
     #[serde(alias = "FID")]
-    fid: String,
-    fuel_capacity: Option<f64>,
-    fuel_level: Option<f64>,
-    game_mode: Option<GameMode>,
-    group: Option<String>,
-    loan: u64,
+    pub fid: String,
+    pub fuel_capacity: Option<f64>,
+    pub fuel_level: Option<f64>,
+    pub game_mode: Option<GameMode>,
+    pub group: Option<String>,
+    pub loan: u64,
     #[serde(default)]
-    horizons: bool,
+    pub horizons: bool,
     #[serde(default)]
-    odyssey: bool,
+    pub odyssey: bool,
     #[serde(flatten)]
-    ship: Option<Ship>,
+    pub ship: Option<Ship>,
     #[serde(default)]
-    start_dead: bool,
+    pub start_dead: bool,
     #[serde(default)]
-    start_landed: bool,
+    pub start_landed: bool,
     #[serde(alias = "build")]
-    build: Option<String>,
+    pub build: Option<String>,
     #[serde(alias = "gameversion")]
-    game_version: Option<String>,
+    pub game_version: Option<String>,
     #[serde(alias = "language")]
-    language: Option<String>,
+    pub language: Option<String>,
 }

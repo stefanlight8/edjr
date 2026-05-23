@@ -3,8 +3,8 @@ use serde::Deserialize;
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct FactionVoucher {
-    faction: String,
-    amount: u64,
+    pub faction: String,
+    pub amount: u64,
 }
 
 #[derive(Debug, Deserialize)]
@@ -22,10 +22,10 @@ pub enum VoucherType {
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct RedeemVoucherEvent {
-    amount: u64,
-    broker_percentage: Option<f64>,
-    faction: Option<String>,
-    factions: Option<Vec<FactionVoucher>>,
+    pub amount: u64,
+    pub broker_percentage: Option<f64>,
+    pub faction: Option<String>,
+    pub factions: Option<Vec<FactionVoucher>>,
     #[serde(alias = "Type")]
-    voucher_type: VoucherType,
+    pub voucher_type: VoucherType,
 }

@@ -3,23 +3,23 @@ use serde::Deserialize;
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct TouchdownEvent {
-    system_address: u64,
-    body: Option<String>,
+    pub system_address: u64,
+    pub body: Option<String>,
     #[serde(alias = "BodyID")]
-    body_id: Option<u64>,
-    latitude: f64,
-    longitude: f64,
-    nearest_destination: Option<String>,
+    pub body_id: Option<u64>,
+    pub latitude: f64,
+    pub longitude: f64,
+    pub nearest_destination: Option<String>,
     #[serde(alias = "NearestDestination_Localised")]
-    nearest_destination_display: Option<String>,
+    pub nearest_destination_display: Option<String>,
     #[serde(default)]
-    on_planet: bool,
+    pub on_planet: bool,
     #[serde(default)]
-    on_station: bool,
+    pub on_station: bool,
     #[serde(default)]
-    player_controlled: bool,
+    pub player_controlled: bool,
     #[serde(default)]
-    multicrew: bool,
+    pub multicrew: bool,
     #[serde(default)]
-    taxi: bool,
+    pub taxi: bool,
 }

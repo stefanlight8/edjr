@@ -1,4 +1,4 @@
-use {serde::Deserialize, std::path::PathBuf};
+use serde::Deserialize;
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "lowercase")]
@@ -12,10 +12,10 @@ pub enum SalvageType {
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct SearchAndRescueEvent {
-    count: u64,
-    reward: u64,
+    pub count: u64,
+    pub reward: u64,
     #[serde(alias = "Name")]
-    salvage: SalvageType,
+    pub salvage: SalvageType,
     #[serde(alias = "MarketID")]
-    market_id: u64,
+    pub market_id: u64,
 }

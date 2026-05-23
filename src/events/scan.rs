@@ -11,32 +11,32 @@ pub enum ScanType {
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct Atmosphere {
-    name: String,
-    percent: f64,
+    pub name: String,
+    pub percent: f64,
 }
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct Composition {
-    ice: f64,
-    metal: f64,
-    rock: f64,
+    pub ice: f64,
+    pub metal: f64,
+    pub rock: f64,
 }
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct Material {
-    name: String,
-    percent: f64,
+    pub name: String,
+    pub percent: f64,
 }
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct Parent {
-    null: Option<u64>,
-    planet: Option<u64>,
-    ring: Option<u64>,
-    star: Option<u64>,
+    pub null: Option<u64>,
+    pub planet: Option<u64>,
+    pub ring: Option<u64>,
+    pub star: Option<u64>,
 }
 
 #[derive(Debug, Deserialize)]
@@ -63,12 +63,12 @@ pub enum RingClass {
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct Ring {
-    name: String,
-    inner_rad: f64,
-    outer_rad: f64,
+    pub name: String,
+    pub inner_rad: f64,
+    pub outer_rad: f64,
     #[serde(alias = "MassMT")]
-    mass_mt: f64,
-    ring_class: RingClass,
+    pub mass_mt: f64,
+    pub ring_class: RingClass,
 }
 
 #[derive(Debug, Deserialize)]
@@ -83,89 +83,87 @@ pub enum TerraformState {
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct Star {
-    star_type: String,
-    luminosity: String,
+    pub star_type: String,
+    pub luminosity: String,
     #[serde(alias = "MassEM")]
-    mass_em: f64,
+    pub mass_em: f64,
     #[serde(alias = "Age_MY")]
-    age_my: u64,
-    stellar_mass: Option<f64>,
-    subclass: Option<u64>, // maybe u8/u16, or enum, because those numbers usually not big in scheme
-    absolute_magnitude: Option<f64>,
+    pub age_my: u64,
+    pub stellar_mass: Option<f64>,
+    pub subclass: Option<u64>, // maybe u8/u16, or enum, because those numbers usually not big in scheme
+    pub absolute_magnitude: Option<f64>,
 }
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct Planet {
-    planet_class: Option<String>,
-    atmosphere: Option<String>,
-    atmosphere_composition: Option<Vec<Atmosphere>>,
-    atmosphere_type: Option<String>,
-    landable: Option<bool>,
-    materials: Option<Vec<Material>>,
-    composition: Option<Composition>,
-    reserve_level: Option<ReserveLevel>,
-    surface_gravity: Option<f64>,
-    surface_pressure: Option<f64>,
-    terraform_state: Option<TerraformState>,
-    volcanism: Option<String>,
+    pub planet_class: Option<String>,
+    pub atmosphere: Option<String>,
+    pub atmosphere_composition: Option<Vec<Atmosphere>>,
+    pub atmosphere_type: Option<String>,
+    pub landable: Option<bool>,
+    pub materials: Option<Vec<Material>>,
+    pub composition: Option<Composition>,
+    pub reserve_level: Option<ReserveLevel>,
+    pub surface_gravity: Option<f64>,
+    pub surface_pressure: Option<f64>,
+    pub terraform_state: Option<TerraformState>,
+    pub volcanism: Option<String>,
     #[serde(default)]
-    was_footfalled: bool,
+    pub was_footfalled: bool,
 }
 
 // TODO: maybe planet class enum and move everything
 // to elite if its not associated to scan event?
-// TODO: separate star/planet/any other object information
-// if it's possible
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct ScanEvent {
-    scan_type: ScanType,
-    body_name: String,
+    pub scan_type: ScanType,
+    pub body_name: String,
     #[serde(alias = "BodyID")]
-    body_id: u64,
-    star_system: String,
-    system_address: u64,
+    pub body_id: u64,
+    pub star_system: String,
+    pub system_address: u64,
     #[serde(flatten)]
-    star: Option<Star>,
+    pub star: Option<Star>,
     #[serde(flatten)]
-    planet: Option<Planet>,
-    ascending_node: Option<f64>,
-    axial_tilt: Option<f64>,
+    pub planet: Option<Planet>,
+    pub ascending_node: Option<f64>,
+    pub axial_tilt: Option<f64>,
     #[serde(alias = "DistanceFromArrivalLS")]
-    distance_from_arrival_ls: f64,
-    eccentricity: Option<f64>,
-    mean_anomaly: Option<f64>,
-    orbital_inclination: Option<f64>,
-    orbital_period: Option<f64>,
-    parents: Option<Vec<Parent>>,
-    periapsis: Option<f64>,
-    rings: Option<Vec<Ring>>,
-    rotation_period: Option<f64>,
-    surface_temperature: Option<f64>,
-    semi_major_axis: Option<f64>,
-    radius: Option<f64>,
+    pub distance_from_arrival_ls: f64,
+    pub eccentricity: Option<f64>,
+    pub mean_anomaly: Option<f64>,
+    pub orbital_inclination: Option<f64>,
+    pub orbital_period: Option<f64>,
+    pub parents: Option<Vec<Parent>>,
+    pub periapsis: Option<f64>,
+    pub rings: Option<Vec<Ring>>,
+    pub rotation_period: Option<f64>,
+    pub surface_temperature: Option<f64>,
+    pub semi_major_axis: Option<f64>,
+    pub radius: Option<f64>,
     #[serde(default)]
-    tidal_lock: bool,
+    pub tidal_lock: bool,
     #[serde(default)]
-    was_discovered: bool,
+    pub was_discovered: bool,
     #[serde(default)]
-    was_mapped: bool,
+    pub was_mapped: bool,
 }
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct ScanBaryCentreEvent {
     #[serde(alias = "BodyID")]
-    body_id: u64,
-    ascending_node: f64,
-    eccentricity: f64,
-    orbital_inclination: f64,
-    orbital_period: f64,
-    periapsis: f64,
-    semi_major_axis: f64,
-    star_system: String,
-    system_address: u64,
+    pub body_id: u64,
+    pub ascending_node: f64,
+    pub eccentricity: f64,
+    pub orbital_inclination: f64,
+    pub orbital_period: f64,
+    pub periapsis: f64,
+    pub semi_major_axis: f64,
+    pub star_system: String,
+    pub system_address: u64,
 }
 
 #[derive(Debug, Deserialize)]
@@ -179,18 +177,18 @@ pub enum OrganicScanType {
 #[serde(rename_all = "PascalCase")]
 pub struct ScanOrganicEvent {
     #[serde(alias = "Body")]
-    body_id: u64,
-    genus: Genus,
-    scan_type: OrganicScanType,
-    species: String,
+    pub body_id: u64,
+    pub genus: Genus,
+    pub scan_type: OrganicScanType,
+    pub species: String,
     #[serde(alias = "Species_Localised")]
-    species_display: String,
-    variant: String,
+    pub species_display: String,
+    pub variant: String,
     #[serde(alias = "Variant_Localised")]
-    variant_display: String,
-    system_address: u64,
+    pub variant_display: String,
+    pub system_address: u64,
     #[serde(default)]
-    was_logged: bool,
+    pub was_logged: bool,
 }
 
 #[derive(Debug, Deserialize)]
@@ -206,5 +204,5 @@ pub enum TargetScanType {
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct ScannedEvent {
-    scan_type: TargetScanType,
+    pub scan_type: TargetScanType,
 }

@@ -3,25 +3,25 @@ use serde::Deserialize;
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct BuyWeaponEvent {
-    class: u64,
-    name: String,
+    pub class: u64,
+    pub name: String,
     #[serde(alias = "Name_Localised")]
-    name_display: String,
-    price: u64,
+    pub name_display: String,
+    pub price: u64,
     #[serde(alias = "SuitModuleID")]
-    suit_module_id: u64,
+    pub suit_module_id: u64,
     // TODO: WeaponMods
 }
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct SellWeaponEvent {
-    class: u64,
-    name: String,
+    pub class: u64,
+    pub name: String,
     #[serde(alias = "Name_Localised")]
-    name_display: String,
-    price: u64,
+    pub name_display: String,
+    pub price: u64,
     #[serde(alias = "SuitModuleID")]
-    suit_module_id: u64,
+    pub suit_module_id: u64,
     // TODO: WeaponMods
 }

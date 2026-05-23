@@ -20,10 +20,10 @@ pub enum SystemSecurity {
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct System {
-    system_allegiance: Option<Allegiance>,
-    system_economy: Economy,
-    system_faction: Option<Faction>,
-    system_goverment: Goverment,
-    system_second_economy: Economy,
-    system_security: SystemSecurity,
+    pub system_allegiance: Option<Allegiance>,
+    pub system_economy: Economy,
+    pub system_faction: Option<Faction>,
+    pub system_goverment: Goverment,
+    pub system_second_economy: Economy,
+    pub system_security: SystemSecurity,
 }

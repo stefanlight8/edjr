@@ -6,31 +6,31 @@ use {
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct EscapeInterdictionEvent {
-    interdictor: String,
+    pub interdictor: String,
     #[serde(alias = "Interdictor_Localised")]
-    interdictor_display: Option<String>,
-    is_player: bool,
+    pub interdictor_display: Option<String>,
+    pub is_player: bool,
 }
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct InterdictedEvent {
-    interdictor: String,
+    pub interdictor: String,
     #[serde(alias = "Interdictor_Localised")]
-    interdictor_display: Option<String>,
-    is_player: bool,
-    submitted: bool,
-    combat_rank: Option<Rank>,
-    faction: Option<String>,
+    pub interdictor_display: Option<String>,
+    pub is_player: bool,
+    pub submitted: bool,
+    pub combat_rank: Option<Rank>,
+    pub faction: Option<String>,
 }
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct InterdictionEvent {
-    is_player: bool,
-    success: bool,
-    power: Option<Allegiance>,
-    inderdicted: Option<String>,
-    combat_rank: Option<Rank>,
-    faction: Option<String>,
+    pub is_player: bool,
+    pub success: bool,
+    pub power: Option<Allegiance>,
+    pub inderdicted: Option<String>,
+    pub combat_rank: Option<Rank>,
+    pub faction: Option<String>,
 }

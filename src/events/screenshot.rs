@@ -3,12 +3,12 @@ use {serde::Deserialize, std::path::PathBuf};
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct ScreenshotEvent {
-    filename: PathBuf,
-    width: u64,
-    height: u64,
-    system: Option<String>,
-    body: Option<String>,
-    altitude: Option<f64>,
-    latitude: Option<f64>,
-    longitude: Option<f64>,
+    pub filename: PathBuf,
+    pub width: u64,
+    pub height: u64,
+    pub system: Option<String>,
+    pub body: Option<String>,
+    pub altitude: Option<f64>,
+    pub latitude: Option<f64>,
+    pub longitude: Option<f64>,
 }

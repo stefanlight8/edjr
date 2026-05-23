@@ -4,7 +4,7 @@ use serde::Deserialize;
 #[serde(rename_all = "PascalCase")]
 pub struct HullDamageEvent {
     #[serde(default)]
-    fighter: bool,
-    health: f64,
-    player_pilot: bool,
+    pub fighter: bool,
+    pub health: f64,
+    pub player_pilot: bool,
 }

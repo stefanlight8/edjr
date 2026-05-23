@@ -82,8 +82,8 @@ pub enum JournalEvent {
     Fileheader(FileheaderEvent),
     Friends(FriendsEvent),
     FuelScoop(FuelScoopEvent),
-    HeatDamage(HeatDamageEvent),
-    HeatWarning(HeatWarningEvent),
+    HeatDamage,
+    HeatWarning,
     HullDamage(HullDamageEvent),
     Interdicted(InterdictedEvent),
     Interdiction(InterdictionEvent),
@@ -212,4 +212,6 @@ pub enum JournalEvent {
     WingInvite(WingInviteEvent),
     WingJoin(WingJoinEvent),
     WingLeave,
+    #[serde(other)]
+    Unknown,
 }

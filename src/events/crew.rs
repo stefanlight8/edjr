@@ -4,78 +4,78 @@ use {crate::elite::crew::CrewRole, serde::Deserialize};
 #[serde(rename_all = "PascalCase")]
 pub struct CrewAssignEvent {
     #[serde(alias = "CrewID")]
-    crew_id: u64,
-    name: String,
-    role: String,
+    pub crew_id: u64,
+    pub name: String,
+    pub role: String,
 }
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct CrewLaunchFighterEvent {
-    crew: String,
+    pub crew: String,
     #[serde(default)]
-    telepresense: bool,
+    pub telepresense: bool,
 }
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct CrewMemberJoinsEvent {
-    crew: String,
+    pub crew: String,
     #[serde(default)]
-    telepresense: bool,
+    pub telepresense: bool,
 }
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct CrewMemberQuitsEvent {
-    crew: String,
+    pub crew: String,
     #[serde(default)]
-    telepresense: bool,
+    pub telepresense: bool,
 }
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct CrewMemberRoleChangeEvent {
-    crew: String,
-    role: CrewRole,
+    pub crew: String,
+    pub role: CrewRole,
     #[serde(default)]
-    telepresense: bool,
+    pub telepresense: bool,
 }
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct ChangeCrewRoleEvent {
-    role: CrewRole,
+    pub role: CrewRole,
     #[serde(default)]
-    telepresence: bool,
+    pub telepresence: bool,
 }
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct EndCrewSessionEvent {
-    on_crime: bool,
+    pub on_crime: bool,
     #[serde(default)]
-    telepresence: bool,
+    pub telepresence: bool,
 }
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct JoinACrewEvent {
-    captain: String,
+    pub captain: String,
     #[serde(default)]
-    telepresence: bool,
+    pub telepresence: bool,
 }
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct NpcCrewPaidWageEvent {
-    amount: u64,
-    npc_crew_id: u64,
-    npc_crew_name: String,
+    pub amount: u64,
+    pub npc_crew_id: u64,
+    pub npc_crew_name: String,
 }
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct QuitACrewEvent {
-    captain: String,
+    pub captain: String,
 }

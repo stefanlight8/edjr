@@ -13,21 +13,21 @@ pub enum Channel {
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct ReceiveTextEvent {
-    channel: Channel,
-    from: String,
+    pub channel: Channel,
+    pub from: String,
     #[serde(alias = "From_Localised")]
-    from_display: Option<String>,
-    message: String,
+    pub from_display: Option<String>,
+    pub message: String,
     #[serde(alias = "Message_Localised")]
-    message_display: Option<String>,
+    pub message_display: Option<String>,
 }
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct SendTextEvent {
-    message: String,
-    sent: bool,
-    to: String,
+    pub message: String,
+    pub sent: bool,
+    pub to: String,
     #[serde(alias = "To_Localised")]
-    to_display: Option<String>,
+    pub to_display: Option<String>,
 }

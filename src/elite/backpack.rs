@@ -10,12 +10,12 @@ pub enum BackpackItemType {
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct BackpackItem {
-    count: u64,
-    name: String,
+    pub count: u64,
+    pub name: String,
     #[serde(alias = "Name_Localised")]
-    name_display: Option<String>,
+    pub name_display: Option<String>,
     #[serde(alias = "OwnerID")]
-    owner_id: u64,
+    pub owner_id: u64,
     #[serde(alias = "type")]
-    backpack_type: Option<BackpackItemType>,
+    pub backpack_type: Option<BackpackItemType>,
 }

@@ -4,20 +4,20 @@ use {crate::elite::codex::CodexEntryCategory, serde::Deserialize};
 #[serde(rename_all = "PascalCase")]
 pub struct CodexEntryEvent {
     #[serde(alias = "BodyID")]
-    body_id: u64,
-    category: CodexEntryCategory,
+    pub body_id: u64,
+    pub category: CodexEntryCategory,
     #[serde(default)]
-    is_new_entry: bool,
-    name: String,
+    pub is_new_entry: bool,
+    pub name: String,
     #[serde(alias = "Name_Localised")]
-    name_display: String,
-    nearest_destination: Option<String>,
-    region: String,
+    pub name_display: String,
+    pub nearest_destination: Option<String>,
+    pub region: String,
     #[serde(alias = "Region_Localised")]
-    region_display: String,
-    sub_category: String,
+    pub region_display: String,
+    pub sub_category: String,
     #[serde(alias = "SubCategory_Localised")]
-    sub_category_display: String,
-    system_address: u64,
-    voucher_amount: Option<u64>,
+    pub sub_category_display: String,
+    pub system_address: u64,
+    pub voucher_amount: Option<u64>,
 }

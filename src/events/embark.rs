@@ -6,22 +6,26 @@ use {
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct EmbarkEvent {
-    body: String,
+    pub body: String,
     #[serde(alias = "BodyID")]
-    body_id: u64,
-    crew: Option<Vec<Crew>>,
+    pub body_id: u64,
+    pub crew: Option<Vec<Crew>>,
     #[serde(alias = "ID")]
-    id: Option<u64>,
+    pub id: Option<u64>,
     #[serde(alias = "MarketID")]
-    market_id: Option<u64>,
-    multicrew: bool,
-    on_planet: bool,
-    on_station: bool,
-    #[serde(alias = "SRV")]
-    srv: bool,
-    star_system: String,
-    station_name: Option<String>,
-    station_type: Option<StationType>,
-    system_address: u64,
-    taxi: bool,
+    pub market_id: Option<u64>,
+    pub star_system: String,
+    pub station_name: Option<String>,
+    pub station_type: Option<StationType>,
+    pub system_address: u64,
+    #[serde(default)]
+    pub multicrew: bool,
+    #[serde(default)]
+    pub on_planet: bool,
+    #[serde(default)]
+    pub on_station: bool,
+    #[serde(default, alias = "SRV")]
+    pub srv: bool,
+    #[serde(default)]
+    pub taxi: bool,
 }

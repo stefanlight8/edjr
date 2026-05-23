@@ -3,7 +3,7 @@ use serde::Deserialize;
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct UseConsumableEvent {
-    name: String,
+    pub name: String,
     #[serde(alias = "Name_Localised")]
-    name_display: String,
+    pub name_display: String,
 }

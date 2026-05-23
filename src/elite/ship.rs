@@ -4,32 +4,32 @@ use {crate::elite::module::ModuleEngineering, serde::Deserialize};
 #[serde(rename_all = "PascalCase")]
 pub struct Ship {
     #[serde(alias = "ShipType")]
-    ship: String,
+    pub ship: String,
     #[serde(default, alias = "Ship_Localised", alias = "ShipType_Localised")]
-    ship_display: String,
+    pub ship_display: String,
     #[serde(alias = "ShipID")]
-    ship_id: u64,
-    ship_ident: Option<String>,
+    pub ship_id: u64,
+    pub ship_ident: Option<String>,
     #[serde(alias = "Name")]
-    ship_name: Option<String>,
+    pub ship_name: Option<String>,
 }
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct ShipModule {
-    slot: String,
-    item: String,
-    on: bool,
-    priority: u8,
-    health: f64,
-    engineering: Option<ModuleEngineering>,
-    ammo_in_clip: Option<u64>,
-    ammo_in_hopper: Option<u64>,
+    pub slot: String,
+    pub item: String,
+    pub on: bool,
+    pub priority: u8,
+    pub health: f64,
+    pub engineering: Option<ModuleEngineering>,
+    pub ammo_in_clip: Option<u64>,
+    pub ammo_in_hopper: Option<u64>,
 }
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct FuelCapacity {
-    main: f64,
-    reserve: f64,
+    pub main: f64,
+    pub reserve: f64,
 }

@@ -13,6 +13,6 @@ pub enum FriendStatus {
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct FriendsEvent {
-    name: String,
-    status: FriendStatus,
+    pub name: String,
+    pub status: FriendStatus,
 }

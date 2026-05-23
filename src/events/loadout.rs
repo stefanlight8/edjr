@@ -6,49 +6,48 @@ use {
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct LoadoutEvent {
-    cargo_capacity: u64,
-    fuel_capacity: FuelCapacity,
+    pub cargo_capacity: u64,
+    pub fuel_capacity: FuelCapacity,
+    pub hull_health: f64,
     #[serde(default)]
-    hot: bool,
-    hull_health: f64,
-    #[serde(default)]
-    hull_value: u64,
-    max_jump_range: f64,
-    modules: Vec<ShipModule>,
-    #[serde(default)]
-    modules_value: u64,
-    rebuy: u64,
+    pub hull_value: u64,
+    pub max_jump_range: f64,
+    pub modules: Vec<ShipModule>,
+    pub modules_value: Option<u64>,
+    pub rebuy: u64,
     #[serde(flatten)]
-    ship: Ship,
-    unladen_mass: f64,
+    pub ship: Ship,
+    pub unladen_mass: f64,
+    #[serde(default)]
+    pub hot: bool,
 }
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct SuitModule {
-    class: u8,
-    module_name: String,
+    pub class: u8,
+    pub module_name: String,
     #[serde(rename = "ModuleName_Localised")]
-    module_name_display: String,
-    slot_name: String,
+    pub module_name_display: String,
+    pub slot_name: String,
     #[serde(rename = "SuitModuleID")]
-    suit_module_id: u64,
-    weapon_mods: Vec<String>, // TODO?: weapon mods, maybe weapons too
+    pub suit_module_id: u64,
+    pub weapon_mods: Vec<String>, // TODO?: weapon mods, maybe weapons too
 }
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct SuitLoadoutEvent {
     #[serde(rename = "LoadoutID")]
-    loadout_id: u64,
-    loadout_name: Option<String>, // i guess, TODO: check
-    modules: Vec<SuitModule>,
+    pub loadout_id: u64,
+    pub loadout_name: Option<String>, // i guess, TODO: check
+    pub modules: Vec<SuitModule>,
     #[serde(rename = "SuitID")]
-    suit_id: u64,
-    suit_mods: Vec<String>, // TODO?: suit mods
-    suit_name: String,      // TODO: enum
+    pub suit_id: u64,
+    pub suit_mods: Vec<String>, // TODO?: suit mods
+    pub suit_name: String,      // TODO: enum
     #[serde(rename = "SuitName_Localised")]
-    suit_name_display: String,
+    pub suit_name_display: String,
 }
 // I need more information to make enums, because I didn't play
 // odyssey content a lot tbh
@@ -57,13 +56,13 @@ pub struct SuitLoadoutEvent {
 #[serde(rename_all = "PascalCase")]
 pub struct SwitchSuitLoadoutEvent {
     #[serde(rename = "LoadoutID")]
-    loadout_id: u64,
-    loadout_name: Option<String>, // i guess, TODO: check
-    modules: Vec<SuitModule>,
+    pub loadout_id: u64,
+    pub loadout_name: Option<String>, // i guess, TODO: check
+    pub modules: Vec<SuitModule>,
     #[serde(rename = "SuitID")]
-    suit_id: u64,
-    suit_mods: Vec<String>, // TODO?: suit mods
-    suit_name: String,      // TODO: enum
+    pub suit_id: u64,
+    pub suit_mods: Vec<String>, // TODO?: suit mods
+    pub suit_name: String,      // TODO: enum
     #[serde(rename = "SuitName_Localised")]
-    suit_name_display: String,
+    pub suit_name_display: String,
 }

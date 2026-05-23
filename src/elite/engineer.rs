@@ -12,10 +12,10 @@ pub enum Progress {
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct Engineer {
-    engineer: Option<String>,
+    pub engineer: Option<String>,
     #[serde(alias = "EngineerID")]
-    engineer_id: Option<u64>,
-    rank: Option<u8>,
-    rank_progress: Option<u64>,
-    progress: Option<Progress>,
+    pub engineer_id: Option<u64>,
+    pub rank: Option<u8>,
+    pub rank_progress: Option<u64>,
+    pub progress: Option<Progress>,
 }

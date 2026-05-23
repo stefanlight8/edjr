@@ -4,7 +4,7 @@ use serde::Deserialize;
 #[serde(rename_all = "PascalCase")]
 pub struct OutfittingEvent {
     #[serde(alias = "MarketID")]
-    market_id: u64,
-    star_system: String,
-    station_name: String,
+    pub market_id: u64,
+    pub star_system: String,
+    pub station_name: String,
 }

@@ -3,17 +3,17 @@ use serde::Deserialize;
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct WingAddEvent {
-    name: String,
+    pub name: String,
 }
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct WingInviteEvent {
-    name: String,
+    pub name: String,
 }
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct WingJoinEvent {
-    others: Option<Vec<String>>,
+    pub others: Option<Vec<String>>,
 }

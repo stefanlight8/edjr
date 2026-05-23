@@ -4,66 +4,66 @@ use {crate::elite::ship::Ship, serde::Deserialize};
 #[serde(rename_all = "PascalCase")]
 pub struct SetUserShipNameEvent {
     #[serde(flatten)]
-    ship: Ship,
-    user_ship_id: String,
-    user_ship_name: String,
+    pub ship: Ship,
+    pub user_ship_id: String,
+    pub user_ship_name: String,
 }
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct Cargo {
     #[serde(alias = "Name", alias = "Type")]
-    name: String,
+    pub name: String,
     #[serde(alias = "Name_Localised", alias = "Type_Localised")]
-    name_display: Option<String>,
-    count: Option<u64>,
+    pub name_display: Option<String>,
+    pub count: Option<u64>,
     #[serde(alias = "OwnerID")]
-    owner_id: u64,
+    pub owner_id: u64,
 }
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct ShipLockerEvent {
-    components: Option<Vec<Cargo>>,
-    consumables: Option<Vec<Cargo>>,
-    data: Option<Vec<Cargo>>,
-    items: Option<Vec<Cargo>>,
+    pub components: Option<Vec<Cargo>>,
+    pub consumables: Option<Vec<Cargo>>,
+    pub data: Option<Vec<Cargo>>,
+    pub items: Option<Vec<Cargo>>,
 }
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct StoredShip {
     #[serde(flatten)]
-    ship: Ship,
-    value: u64,
+    pub ship: Ship,
+    pub value: u64,
     #[serde(default)]
-    hot: bool,
+    pub hot: bool,
 }
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct RemoteShip {
     #[serde(flatten)]
-    ship: Ship,
-    value: u64,
-    transfer_cost: Option<u64>,
-    transfer_time: Option<f64>,
-    star_system: Option<String>,
+    pub ship: Ship,
+    pub value: u64,
+    pub transfer_cost: Option<u64>,
+    pub transfer_time: Option<f64>,
+    pub star_system: Option<String>,
     #[serde(alias = "ShipMarketID")]
-    market_id: Option<u64>,
+    pub market_id: Option<u64>,
     #[serde(default)]
-    in_transit: bool,
+    pub in_transit: bool,
     #[serde(default)]
-    hot: bool,
+    pub hot: bool,
 }
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct StoredShipsEvent {
     #[serde(alias = "MarketID")]
-    market_id: u64,
-    ships_here: Vec<StoredShip>,
-    ships_remote: Vec<RemoteShip>,
-    star_system: String,
-    station_name: String,
+    pub market_id: u64,
+    pub ships_here: Vec<StoredShip>,
+    pub ships_remote: Vec<RemoteShip>,
+    pub star_system: String,
+    pub station_name: String,
 }

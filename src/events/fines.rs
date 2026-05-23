@@ -3,10 +3,10 @@ use serde::Deserialize;
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct PayFinesEvent {
-    all_fines: bool,
-    amount: u64,
-    broker_percentage: Option<f64>,
-    faction: Option<String>,
+    pub all_fines: bool,
+    pub amount: u64,
+    pub broker_percentage: Option<f64>,
+    pub faction: Option<String>,
     #[serde(alias = "ShipID")]
-    ship_id: u64,
+    pub ship_id: u64,
 }

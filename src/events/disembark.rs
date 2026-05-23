@@ -3,25 +3,25 @@ use {crate::elite::station::StationType, serde::Deserialize};
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct DisembarkEvent {
-    body: String,
+    pub body: String,
     #[serde(alias = "BodyID")]
-    body_id: u64,
+    pub body_id: u64,
     #[serde(alias = "ID")]
-    id: Option<u64>,
+    pub id: Option<u64>,
     #[serde(alias = "MarketID")]
-    market_id: Option<u64>,
-    star_system: String,
-    station_name: Option<String>,
-    station_type: Option<StationType>,
-    system_address: u64,
+    pub market_id: Option<u64>,
+    pub star_system: String,
+    pub station_name: Option<String>,
+    pub station_type: Option<StationType>,
+    pub system_address: u64,
     #[serde(default)]
-    multicrew: bool,
+    pub multicrew: bool,
     #[serde(default)]
-    on_planet: bool,
+    pub on_planet: bool,
     #[serde(default)]
-    on_station: bool,
+    pub on_station: bool,
     #[serde(default, alias = "SRV")]
-    srv: bool,
+    pub srv: bool,
     #[serde(default)]
-    taxi: bool,
+    pub taxi: bool,
 }

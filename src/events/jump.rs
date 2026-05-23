@@ -9,10 +9,10 @@ pub enum JumpType {
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct StartJumpEvent {
-    jump_type: JumpType,
-    star_system: Option<String>,
-    star_class: Option<String>,
-    system_address: Option<u64>,
+    pub jump_type: JumpType,
+    pub star_system: Option<String>,
+    pub star_class: Option<String>,
+    pub system_address: Option<u64>,
     #[serde(default)]
-    taxi: bool,
+    pub taxi: bool,
 }

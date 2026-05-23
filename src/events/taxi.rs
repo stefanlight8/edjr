@@ -3,7 +3,7 @@ use serde::Deserialize;
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct BookTaxiEvent {
-    cost: u64,
-    destination_location: String,
-    destination_system: String,
+    pub cost: u64,
+    pub destination_location: String,
+    pub destination_system: String,
 }

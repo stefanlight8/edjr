@@ -4,8 +4,8 @@ use serde::Deserialize;
 #[serde(rename_all = "PascalCase")]
 pub struct Commander {
     #[serde(alias = "FID")]
-    fid: String,
-    name: String,
+    pub fid: String,
+    pub name: String,
 }
 
 #[derive(Debug, Deserialize)]

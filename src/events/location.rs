@@ -12,37 +12,37 @@ use {
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct LocationEvent {
-    body: String,
+    pub body: String,
     #[serde(alias = "BodyID")]
-    body_id: u64,
-    body_type: BodyType,
-    conflicts: Option<Vec<FactionConflict>>,
-    controlling_power: Option<String>,
-    dist_from_star_ls: Option<f64>,
-    factions: Option<Vec<Faction>>,
+    pub body_id: u64,
+    pub body_type: BodyType,
+    pub latitude: Option<f64>,
+    pub longitude: Option<f64>,
+    #[serde(flatten)]
+    pub powerplay: Option<Powerplay>,
+    #[serde(flatten)]
+    pub system: Option<System>,
+    #[serde(flatten)]
+    pub station: Option<Station>,
+    pub conflicts: Option<Vec<FactionConflict>>,
+    pub controlling_power: Option<String>,
+    pub dist_from_star_ls: Option<f64>,
+    pub factions: Option<Vec<Faction>>,
+    pub population: u64,
+    pub star_pos: [f64; 3],
+    pub star_system: String,
+    pub system_address: u64,
     #[serde(default, alias = "InSRV")]
-    in_srv: bool,
-    latitude: Option<f64>,
-    longitude: Option<f64>,
+    pub in_srv: bool,
     #[serde(default)]
-    docked: bool,
+    pub docked: bool,
     #[serde(default)]
-    multicrew: bool,
+    pub multicrew: bool,
     #[serde(default)]
-    on_foot: bool,
-    population: u64,
-    #[serde(flatten)]
-    powerplay: Option<Powerplay>,
-    #[serde(flatten)]
-    system: Option<System>,
-    system_address: u64,
-    #[serde(flatten)]
-    station: Option<Station>,
-    star_pos: [f64; 3],
-    star_system: String,
+    pub on_foot: bool,
     #[serde(default)]
-    taxi: bool,
+    pub taxi: bool,
     #[serde(default)]
-    wanted: bool,
+    pub wanted: bool,
     // TODO: thargoid war
 }

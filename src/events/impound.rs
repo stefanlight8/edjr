@@ -4,10 +4,10 @@ use {crate::elite::ship::Ship, serde::Deserialize};
 #[serde(rename_all = "PascalCase")]
 pub struct ClearImpoundEvent {
     #[serde(alias = "MarketID")]
-    market_id: Option<u64>,
+    pub market_id: Option<u64>,
     #[serde(flatten)]
-    ship: Ship,
+    pub ship: Ship,
     #[serde(alias = "ShipMarketID")]
-    ship_market_id: Option<u64>,
-    system: String,
+    pub ship_market_id: Option<u64>,
+    pub system: String,
 }

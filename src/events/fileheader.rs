@@ -3,13 +3,13 @@ use serde::Deserialize;
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct FileheaderEvent {
-    odyssey: bool,
+    pub odyssey: bool,
     #[serde(alias = "build")]
-    build: String,
+    pub build: String,
     #[serde(alias = "gameversion")]
-    game_version: String,
+    pub game_version: String,
     #[serde(alias = "language")]
-    language: String,
+    pub language: String,
     #[serde(alias = "part")]
-    part: u64,
+    pub part: u64,
 }

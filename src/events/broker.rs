@@ -6,27 +6,27 @@ use {
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct Commodity {
-    count: u64,
-    name: String,
+    pub count: u64,
+    pub name: String,
     #[serde(rename = "Name_Localised")]
-    name_display: String,
+    pub name_display: String,
 }
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct Technology {
-    name: String,
+    pub name: String,
     #[serde(rename = "Name_Localised")]
-    name_display: String,
+    pub name_display: String,
 }
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct TechnologyBrokerEvent {
-    broker_type: BrokerType,
-    commodities: Vec<Commodity>,
-    materials: Vec<Material>,
-    items_unlocked: Vec<Technology>,
+    pub broker_type: BrokerType,
+    pub commodities: Vec<Commodity>,
+    pub materials: Vec<Material>,
+    pub items_unlocked: Vec<Technology>,
     #[serde(alias = "MarketID")]
-    market_id: u64,
+    pub market_id: u64,
 }

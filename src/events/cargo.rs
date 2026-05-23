@@ -11,57 +11,57 @@ pub enum Vessel {
 #[serde(rename_all = "PascalCase")]
 pub struct Cargo {
     #[serde(alias = "Name", alias = "Type")]
-    name: String,
+    pub name: String,
     #[serde(alias = "Name_Localised", alias = "Type_Localised")]
-    name_display: Option<String>,
-    count: Option<u64>,
+    pub name_display: Option<String>,
+    pub count: Option<u64>,
 }
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct CargoEvent {
-    count: u64,
-    vessel: Vessel,
-    inventory: Option<Vec<Cargo>>,
+    pub count: u64,
+    pub vessel: Vessel,
+    pub inventory: Option<Vec<Cargo>>,
 }
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct CargoDepotEvent {
-    cargo_type: String,
-    count: u64,
-    progress: f64,
-    items_collected: u64,
-    items_delivered: u64,
-    total_items_to_deliver: u64,
+    pub cargo_type: String,
+    pub count: u64,
+    pub progress: f64,
+    pub items_collected: u64,
+    pub items_delivered: u64,
+    pub total_items_to_deliver: u64,
     #[serde(alias = "MissionID")]
-    mission_id: u64,
+    pub mission_id: u64,
     #[serde(alias = "StartMarketID")]
-    start_market_id: u64,
+    pub start_market_id: u64,
     #[serde(alias = "EndMarketID")]
-    end_market_id: u64,
+    pub end_market_id: u64,
 }
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct CargoTransferEvent {
-    transfers: Vec<Cargo>,
+    pub transfers: Vec<Cargo>,
 }
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct CollectCargoEvent {
-    stolen: bool,
+    pub stolen: bool,
     #[serde(flatten)]
-    cargo: Cargo,
+    pub cargo: Cargo,
     #[serde(alias = "MarketID")]
-    market_id: Option<u64>,
+    pub market_id: Option<u64>,
 }
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct EjectCargoEvent {
-    abandoned: bool,
+    pub abandoned: bool,
     #[serde(flatten)]
-    cargo: Cargo,
+    pub cargo: Cargo,
 }

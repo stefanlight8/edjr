@@ -11,6 +11,6 @@ pub enum CrewRole {
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct Crew {
-    name: String,
-    role: CrewRole,
+    pub name: String,
+    pub role: CrewRole,
 }

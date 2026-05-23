@@ -3,25 +3,25 @@ use {crate::elite::backpack::BackpackItem, serde::Deserialize};
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct BackpackEvent {
-    components: Option<Vec<BackpackItem>>,
-    consumables: Option<Vec<BackpackItem>>,
-    data: Option<Vec<BackpackItem>>,
-    items: Option<Vec<BackpackItem>>,
+    pub components: Option<Vec<BackpackItem>>,
+    pub consumables: Option<Vec<BackpackItem>>,
+    pub data: Option<Vec<BackpackItem>>,
+    pub items: Option<Vec<BackpackItem>>,
     // I guess, TODO: need correction
 }
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct BackpackChangeEvent {
-    added: Option<Vec<BackpackItem>>,
-    removed: Option<Vec<BackpackItem>>,
+    pub added: Option<Vec<BackpackItem>>,
+    pub removed: Option<Vec<BackpackItem>>,
 }
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct CollectItemsEvent {
     #[serde(flatten)]
-    item: BackpackItem,
+    pub item: BackpackItem,
     #[serde(default)]
-    stolen: bool,
+    pub stolen: bool,
 }

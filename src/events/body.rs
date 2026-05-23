@@ -3,9 +3,9 @@ use serde::Deserialize;
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct LeaveBodyEvent {
-    body: String,
+    pub body: String,
     #[serde(alias = "BodyID")]
-    body_id: u64,
-    star_system: String,
-    system_address: u64,
+    pub body_id: u64,
+    pub star_system: String,
+    pub system_address: u64,
 }
