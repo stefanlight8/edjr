@@ -24,3 +24,18 @@ pub struct Powerplay {
     powerplay_state_undermining: u64,
     powers: Vec<String>,
 }
+
+#[derive(Debug, Deserialize)]
+pub enum PowerMicroResouceCategory {
+    Data,
+}
+
+#[derive(Debug, Deserialize)]
+#[serde(rename_all = "PascalCase")]
+pub struct PowerMicroResource {
+    category: PowerMicroResouceCategory,
+    count: u64,
+    name: String,
+    #[serde(alias = "Name_Localised")]
+    name_display: String,
+}

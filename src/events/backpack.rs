@@ -9,9 +9,19 @@ pub struct BackpackEvent {
     items: Option<Vec<BackpackItem>>,
     // I guess, TODO: need correction
 }
+
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct BackpackChangeEvent {
     added: Option<Vec<BackpackItem>>,
     removed: Option<Vec<BackpackItem>>,
+}
+
+#[derive(Debug, Deserialize)]
+#[serde(rename_all = "PascalCase")]
+pub struct CollectItemsEvent {
+    #[serde(flatten)]
+    item: BackpackItem,
+    #[serde(default)]
+    stolen: bool,
 }

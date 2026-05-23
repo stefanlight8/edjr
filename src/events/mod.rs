@@ -22,6 +22,7 @@ pub mod approach;
 pub mod backpack;
 pub mod body;
 pub mod bounty;
+pub mod broker;
 pub mod cargo;
 pub mod codex;
 pub mod colonisation;
@@ -37,7 +38,6 @@ pub mod dock;
 pub mod drones;
 pub mod embark;
 pub mod engineer;
-pub mod exploration;
 pub mod faction;
 pub mod fc;
 pub mod fighter;
@@ -70,14 +70,26 @@ pub mod pvp;
 pub mod ranks;
 pub mod repair;
 pub mod reputation;
+pub mod resurrect;
+pub mod saa;
+pub mod scan;
+pub mod screenshot;
+pub mod search_and_rescue;
+pub mod shield;
+pub mod ship;
+pub mod shipyard;
 pub mod squadron;
 pub mod srv;
+pub mod statistics;
 pub mod supercruise;
+pub mod synthesis;
+pub mod target;
 pub mod taxi;
 pub mod text;
 pub mod touchdown;
 pub mod under_attack;
 pub mod uss;
+pub mod vehicle;
 pub mod voucher;
 pub mod weapon;
 pub mod wing;
@@ -85,9 +97,10 @@ pub mod wing;
 pub use {
     ammo::BuyAmmoEvent,
     approach::{ApproachBodyEvent, ApproachSettlementEvent},
-    backpack::{BackpackChangeEvent, BackpackEvent},
+    backpack::{BackpackChangeEvent, BackpackEvent, CollectItemsEvent},
     body::LeaveBodyEvent,
     bounty::{BountyEvent, PayBountiesEvent},
+    broker::TechnologyBrokerEvent,
     cargo::{CargoDepotEvent, CargoEvent, CargoTransferEvent, CollectCargoEvent, EjectCargoEvent},
     codex::CodexEntryEvent,
     colonisation::ColonisationConstructionDepotEvent,
@@ -103,17 +116,19 @@ pub use {
         NpcCrewPaidWageEvent, QuitACrewEvent,
     },
     crime::{CommitCrimeEvent, CrimeVictimEvent},
-    data::{DataScannedEvent, DatalinkScanEvent, DatalinkVoucherEvent},
+    data::{
+        DataScannedEvent, DatalinkScanEvent, DatalinkVoucherEvent, MultiSellExplorationDataEvent,
+        SellfOrganicDataEvent,
+    },
     died::DiedEvent,
     disembark::DisembarkEvent,
     dock::{
         DockedEvent, DockingCancelledEvent, DockingDeniedEvent, DockingGrantedEvent,
         DockingRequestedEvent, DockingTimeoutEvent, UndockedEvent,
     },
-    drones::{BuyDronesEvent, LaunchDroneEvent},
+    drones::{BuyDronesEvent, LaunchDroneEvent, SellDronesEvent},
     embark::EmbarkEvent,
     engineer::{EngineerContributionEvent, EngineerCraftEvent, EngineerProgressEvent},
-    exploration::MultiSellExplorationDataEvent,
     faction::FactionKillBondEvent,
     fc::{CarrierJumpEvent, FcMaterialsEvent},
     fighter::{DockFighterEvent, FighterDestroyedEvent, FighterRebuiltEvent, LaunchFighterEvent},
@@ -125,7 +140,7 @@ pub use {
         FssAllBodiesFoundEvent, FssBodySignalsEvent, FssDiscoveryScanEvent,
         FssSignalDiscoveredEvent,
     },
-    fuel::{FuelScoopEvent, RefuelAllEvent, RefuelPartialEvent},
+    fuel::{FuelScoopEvent, RefuelAllEvent, RefuelPartialEvent, ReservoirReplenishedEvent},
     game::LoadGameEvent,
     heat::{HeatDamageEvent, HeatWarningEvent},
     hull::HullDamageEvent,
@@ -134,7 +149,7 @@ pub use {
     jetcone::{JetConeBoostEvent, JetConeDamageEvent},
     jump::StartJumpEvent,
     liftoff::LiftoffEvent,
-    loadout::LoadoutEvent,
+    loadout::{LoadoutEvent, SuitLoadoutEvent, SwitchSuitLoadoutEvent},
     location::LocationEvent,
     market::{MarketBuyEvent, MarketEvent, MarketSellEvent},
     material::{
@@ -147,29 +162,47 @@ pub use {
     module::{
         FetchRemoteModuleEvent, MassModuleStoreEvent, ModuleBuyAndStoreEvent, ModuleBuyEvent,
         ModuleRetrieveEvent, ModuleSellEvent, ModuleSellRemoteEvent, ModuleStoreEvent,
-        ModuleSwapEvent,
+        ModuleSwapEvent, StoredModulesEvent,
     },
     music::MusicEvent,
     navigation::NavBeaconScanEvent,
     outfitting::OutfittingEvent,
     passengers::PassengersEvent,
-    powerplay::{PowerplayCollectEvent, PowerplayEvent, PowerplayMeritsEvent, PowerplayRankEvent},
+    powerplay::{
+        PowerplayCollectEvent, PowerplayEvent, PowerplayMeritsEvent, PowerplayRankEvent,
+        RequestPowerMicroResourcesEvent,
+    },
     pvp::PvpKillEvent,
     ranks::{ProgressEvent, PromotionEvent, RankEvent},
     repair::{AfmuRepairsEvent, RebootRepairEvent, RepairAllEvent, RepairDroneEvent, RepairEvent},
     reputation::ReputationEvent,
+    resurrect::ResurrectEvent,
+    saa::{SaaScanCompleteEvent, SaaSignalsFoundEvent},
+    scan::{ScanBaryCentreEvent, ScanEvent, ScanOrganicEvent, ScannedEvent},
+    screenshot::ScreenshotEvent,
+    search_and_rescue::SearchAndRescueEvent,
+    shield::ShieldStateEvent,
+    ship::{SetUserShipNameEvent, ShipLockerEvent, StoredShipsEvent},
+    shipyard::{
+        ShipyardBuyEvent, ShipyardEvent, ShipyardNewEvent, ShipyardSellEvent, ShipyardSwapEvent,
+        ShipyardTransferEvent,
+    },
     squadron::{
         InvitedToSquadronEvent, JoinedSquadronEvent, LeftSquadronEvent, SquadronCreatedEvent,
         SquadronStartupEvent,
     },
-    srv::{DockSrvEvent, LaunchSrvEvent},
+    srv::{DockSrvEvent, LaunchSrvEvent, SrvDestroyedEvent},
+    statistics::StatisticsEvent,
     supercruise::{SupercruiseDestinationDropEvent, SupercruiseEntryEvent, SupercruiseExitEvent},
+    synthesis::SynthesisEvent,
+    target::ShipTargetedEvent,
     taxi::BookTaxiEvent,
-    text::ReceiveTextEvent,
+    text::{ReceiveTextEvent, SendTextEvent},
     touchdown::TouchdownEvent,
     under_attack::UnderAttackEvent,
     uss::UssDropEvent,
+    vehicle::{RestockVehicleEvent, VehicleSwitchEvent},
     voucher::RedeemVoucherEvent,
-    weapon::BuyWeaponEvent,
+    weapon::{BuyWeaponEvent, SellWeaponEvent},
     wing::{WingAddEvent, WingInviteEvent, WingJoinEvent},
 };

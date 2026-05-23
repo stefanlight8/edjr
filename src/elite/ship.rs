@@ -3,12 +3,14 @@ use {crate::elite::module::ModuleEngineering, serde::Deserialize};
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct Ship {
+    #[serde(alias = "ShipType")]
     ship: String,
-    #[serde(default, alias = "Ship_Localised")]
+    #[serde(default, alias = "Ship_Localised", alias = "ShipType_Localised")]
     ship_display: String,
     #[serde(alias = "ShipID")]
     ship_id: u64,
     ship_ident: Option<String>,
+    #[serde(alias = "Name")]
     ship_name: Option<String>,
 }
 

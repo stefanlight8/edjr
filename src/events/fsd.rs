@@ -18,7 +18,7 @@ pub struct FsdJumpEvent {
     boost_used: Option<u8>,
     conflicts: Option<Vec<FactionConflict>>,
     controlling_power: Option<String>,
-    factions: Option<Vec<Faction>>,
+    factions: Option<Vec<Faction>>, // TODO: add active states, pending states, my reputation, happinness and etc. to faction or make a separate faction object for fsd jump
     fuel_level: f64,
     jump_dist: f64,
     population: u64,

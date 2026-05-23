@@ -1,4 +1,4 @@
-use serde::Deserialize;
+use {crate::elite::powerplay::PowerMicroResource, serde::Deserialize};
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
@@ -33,4 +33,13 @@ pub struct PowerplayMeritsEvent {
 pub struct PowerplayRankEvent {
     power: String,
     rank: u64,
+}
+
+#[derive(Debug, Deserialize)]
+#[serde(rename_all = "PascalCase")]
+pub struct RequestPowerMicroResourcesEvent {
+    #[serde(alias = "MarketID")]
+    market_id: u64,
+    micro_resources: Vec<PowerMicroResource>,
+    total_count: u64,
 }

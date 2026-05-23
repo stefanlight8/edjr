@@ -191,56 +191,56 @@ View more examples in [`examples/`](./examples)
 - [x] RepairAll
 - [x] RepairDrone
 - [x] Reputation
-- [ ] RequestPowerMicroResources
-- [ ] ReservoirReplenished
-- [ ] RestockVehicle
-- [ ] Resupply
-- [ ] Resurrect
-- [ ] SAAScanComplete
-- [ ] SAASignalsFound
-- [ ] SRVDestroyed
-- [ ] Scan
-- [ ] ScanBaryCentre
-- [ ] ScanOrganic
-- [ ] Scanned
-- [ ] Screenshot
-- [ ] SearchAndRescue
+- [x] RequestPowerMicroResources
+- [x] ReservoirReplenished
+- [x] RestockVehicle
+- [x] Resupply
+- [x] Resurrect
+- [x] SAAScanComplete
+- [x] SAASignalsFound
+- [x] SRVDestroyed
+- [x] Scan
+- [x] ScanBaryCentre
+- [x] ScanOrganic
+- [x] Scanned
+- [x] Screenshot
+- [x] SearchAndRescue
 - [x] SelfDestruct
-- [ ] SellDrones
-- [ ] SellOrganicData
-- [ ] SellWeapon
-- [ ] SendText
-- [ ] SetUserShipName
-- [ ] ShieldState
-- [ ] ShipLocker
-- [ ] ShipTargeted
-- [ ] Shipyard
-- [ ] ShipyardBuy
-- [ ] ShipyardNew
-- [ ] ShipyardSell
-- [ ] ShipyardSwap
-- [ ] ShipyardTransfer
+- [x] SellDrones
+- [x] SellOrganicData
+- [x] SellWeapon
+- [x] SendText
+- [x] SetUserShipName
+- [x] ShieldState
+- [x] ShipLocker
+- [x] ShipTargeted
+- [x] Shipyard
+- [x] ShipyardBuy
+- [x] ShipyardNew
+- [x] ShipyardSell
+- [x] ShipyardSwap
+- [x] ShipyardTransfer
 - [x] Shutdown
 - [x] SquadronCreated
 - [x] SquadronStartup
 - [x] StartJump
-- [ ] Statistics
-- [ ] StoredModules
-- [ ] StoredShips
-- [ ] SuitLoadout
-- [ ] SupercruiseDestinationDrop
-- [ ] SupercruiseEntry
-- [ ] SupercruiseExit
-- [ ] SwitchSuitLoadout
-- [ ] Synthesis
-- [ ] SystemsShutdown
-- [ ] TechnologyBroker
-- [ ] Touchdown
+- [x] Statistics
+- [x] StoredModules
+- [x] StoredShips
+- [x] SuitLoadout
+- [x] SupercruiseDestinationDrop
+- [x] SupercruiseEntry
+- [x] SupercruiseExit
+- [x] SwitchSuitLoadout
+- [x] Synthesis
+- [x] SystemsShutdown
+- [x] TechnologyBroker
+- [x] Touchdown
 - [x] USSDrop
 - [x] UnderAttack
 - [x] Undocked
 - [x] UseConsumable
-- [ ] VehicleSwitch
+- [x] VehicleSwitch
 - [x] WingAdd
 - [x] WingInvite
 - [x] WingJoin

@@ -21,3 +21,13 @@ pub struct ReceiveTextEvent {
     #[serde(alias = "Message_Localised")]
     message_display: Option<String>,
 }
+
+#[derive(Debug, Deserialize)]
+#[serde(rename_all = "PascalCase")]
+pub struct SendTextEvent {
+    message: String,
+    sent: bool,
+    to: String,
+    #[serde(alias = "To_Localised")]
+    to_display: Option<String>,
+}

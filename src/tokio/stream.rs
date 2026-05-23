@@ -45,7 +45,7 @@ impl Journal<File> {
                 let line = reader.read_line(&mut buffer).await.map_err(JournalReadError::ReadError)?;
 
                 if line == 0 {
-                    break;
+                    break; // TODO(feature): waiting until new lines
                 }
 
                 yield serde_json::from_str::<JournalEntry>(&buffer)

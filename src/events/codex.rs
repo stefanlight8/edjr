@@ -1,12 +1,11 @@
-use serde::Deserialize;
+use {crate::elite::codex::CodexEntryCategory, serde::Deserialize};
+
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct CodexEntryEvent {
     #[serde(alias = "BodyID")]
     body_id: u64,
-    category: String,
-    #[serde(alias = "Category_Localised")]
-    category_display: String,
+    category: CodexEntryCategory,
     #[serde(default)]
     is_new_entry: bool,
     name: String,

@@ -17,10 +17,10 @@ pub struct MarketEvent {
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct MarketBuyEvent {
-    buy_price: u64,
-    count: u64,
     #[serde(alias = "MarketID")]
     market_id: Option<u64>,
+    buy_price: u64,
+    count: u64,
     total_cost: u64,
     #[serde(alias = "Type")]
     commodity: String,
@@ -31,11 +31,11 @@ pub struct MarketBuyEvent {
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct MarketSellEvent {
+    #[serde(alias = "MarketID")]
+    market_id: Option<u64>,
     avg_price_paid: u64,
     sell_price: u64,
     count: u64,
-    #[serde(alias = "MarketID")]
-    market_id: Option<u64>,
     total_sale: u64,
     #[serde(alias = "Type")]
     commodity: String,
