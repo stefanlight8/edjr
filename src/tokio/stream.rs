@@ -34,7 +34,7 @@ impl Journal<File> {
     ///     Ok(())
     /// }
     /// ```
-    #[cfg_attr(docsrs, doc(cfg(feature = "tokio", feature = "stream")))]
+    #[cfg_attr(docsrs, doc(cfg(all(feature = "tokio", feature = "stream"))))]
     pub fn stream(self) -> impl Stream<Item = Result<JournalEntry, JournalReadError>> {
         stream! {
             let mut reader = BufReader::new(self.file);

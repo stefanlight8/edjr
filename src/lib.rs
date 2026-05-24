@@ -1,3 +1,4 @@
+#![cfg_attr(docsrs, feature(doc_cfg))]
 //! # edjr
 //!
 //! Elite Dangerous Journal Reader

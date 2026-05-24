@@ -1,3 +1,6 @@
+# 0.1.3
+- Fix documentation.
+
 # 0.1.2
 - Remove `events::exploration`, `events::heat` modules.
 - Make all events and objects fields public
