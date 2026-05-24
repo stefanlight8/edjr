@@ -1,4 +1,4 @@
-use {crate::elite::passenger::PassengerType, serde::Deserialize};
+use {crate::elite::passengers::PassengerType, serde::Deserialize};
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]

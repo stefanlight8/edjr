@@ -1,4 +1,7 @@
-use {crate::elite::passenger::PassengerType, serde::Deserialize};
+use serde::Deserialize;
+
+#[cfg(feature = "passengers")]
+use crate::elite::passengers::PassengerType;
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
@@ -21,6 +24,7 @@ pub struct Mission {
     pub influence: Option<String>,
     pub kill_count: Option<u64>,
     pub passenger_count: Option<u64>,
+    #[cfg(feature = "passengers")]
     pub passenger_type: Option<PassengerType>,
     #[serde(alias = "PassengerVIPs")]
     pub passenger_vips: Option<bool>,

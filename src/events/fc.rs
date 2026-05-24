@@ -1,12 +1,13 @@
 use {
-    crate::elite::{
-        body::BodyType,
-        faction::{Faction, FactionConflict},
-        powerplay::Powerplay,
-        station::Station,
-    },
+    crate::elite::{body::BodyType, station::Station},
     serde::Deserialize,
 };
+
+#[cfg(feature = "faction")]
+use crate::elite::faction::{Faction, FactionConflict};
+
+#[cfg(feature = "powerplay")]
+use crate::elite::powerplay::Powerplay;
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
@@ -15,12 +16,15 @@ pub struct CarrierJumpEvent {
     #[serde(alias = "BodyID")]
     pub body_id: u64,
     pub body_type: BodyType,
+    #[cfg(feature = "faction")]
+    pub factions: Option<Vec<Faction>>,
+    #[cfg(feature = "faction")]
     pub conflicts: Option<Vec<FactionConflict>>,
     pub controlling_power: Option<String>,
-    pub factions: Option<Vec<Faction>>,
     #[serde(alias = "MarketID")]
     pub market_id: Option<u64>,
     #[serde(flatten)]
+    #[cfg(feature = "powerplay")]
     pub powerplay: Option<Powerplay>,
     pub star_pos: [f64; 3],
     pub star_system: String,

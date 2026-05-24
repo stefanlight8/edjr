@@ -1,12 +1,13 @@
 use {
-    crate::elite::{
-        body::BodyType,
-        faction::{Faction, FactionConflict},
-        powerplay::Powerplay,
-        system::System,
-    },
+    crate::elite::{body::BodyType, system::System},
     serde::Deserialize,
 };
+
+#[cfg(feature = "faction")]
+use crate::elite::faction::{Faction, FactionConflict};
+
+#[cfg(feature = "powerplay")]
+use crate::elite::powerplay::Powerplay;
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
@@ -16,13 +17,16 @@ pub struct FsdJumpEvent {
     pub body_id: u64,
     pub body_type: BodyType,
     pub boost_used: Option<u8>,
+    #[cfg(feature = "faction")]
     pub conflicts: Option<Vec<FactionConflict>>,
     pub controlling_power: Option<String>,
+    #[cfg(feature = "faction")]
     pub factions: Option<Vec<Faction>>, // TODO: add active states, pending states, my reputation, happinness and etc. to faction or make a separate faction object for fsd jump
     pub fuel_level: f64,
     pub jump_dist: f64,
     pub population: u64,
     #[serde(flatten)]
+    #[cfg(feature = "powerplay")]
     pub powerplay: Option<Powerplay>,
     pub star_pos: [f64; 3],
     pub star_system: String,

@@ -1,7 +1,7 @@
-use {
-    crate::elite::{fleet_carriers::DockingAccess, station::StationType},
-    serde::Deserialize,
-};
+use {crate::elite::station::StationType, serde::Deserialize};
+
+#[cfg(feature = "fc")]
+use crate::elite::fc::DockingAccess;
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
@@ -11,6 +11,7 @@ pub struct MarketEvent {
     pub star_system: String,
     pub station_name: String,
     pub station_type: StationType,
+    #[cfg(feature = "fc")]
     pub carrier_docking_access: Option<DockingAccess>,
 }
 

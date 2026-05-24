@@ -1,9 +1,10 @@
 use {
-    crate::elite::{
-        allegiance::Allegiance, economy::Economy, faction::Faction, goverment::Goverment,
-    },
+    crate::elite::{allegiance::Allegiance, economy::Economy, goverment::Goverment},
     serde::Deserialize,
 };
+
+#[cfg(feature = "faction")]
+use crate::elite::faction::Faction;
 
 #[derive(Debug, Deserialize)]
 pub enum SystemSecurity {
@@ -22,8 +23,9 @@ pub enum SystemSecurity {
 pub struct System {
     pub system_allegiance: Option<Allegiance>,
     pub system_economy: Economy,
-    pub system_faction: Option<Faction>,
     pub system_goverment: Goverment,
     pub system_second_economy: Economy,
     pub system_security: SystemSecurity,
+    #[cfg(feature = "faction")]
+    pub system_faction: Option<Faction>,
 }

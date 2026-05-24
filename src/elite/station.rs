@@ -1,9 +1,10 @@
 use {
-    crate::elite::{
-        allegiance::Allegiance, economy::Economy, faction::Faction, goverment::Goverment,
-    },
+    crate::elite::{allegiance::Allegiance, economy::Economy, goverment::Goverment},
     serde::Deserialize,
 };
+
+#[cfg(feature = "faction")]
+use crate::elite::faction::Faction;
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
@@ -62,6 +63,7 @@ pub struct Station {
     pub station_economies: Vec<StationEconomy>,
     pub station_economy: Economy,
     pub system_second_economy: Option<Economy>,
+    #[cfg(feature = "faction")]
     pub station_faction: Faction,
     pub station_goverment: Goverment,
     pub station_services: Vec<StationService>,

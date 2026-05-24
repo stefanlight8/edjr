@@ -1,13 +1,13 @@
 use {
-    crate::elite::{
-        body::BodyType,
-        faction::{Faction, FactionConflict},
-        powerplay::Powerplay,
-        station::Station,
-        system::System,
-    },
+    crate::elite::{body::BodyType, station::Station, system::System},
     serde::Deserialize,
 };
+
+#[cfg(feature = "faction")]
+use crate::elite::faction::{Faction, FactionConflict};
+
+#[cfg(feature = "powerplay")]
+use crate::elite::powerplay::Powerplay;
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
@@ -19,15 +19,18 @@ pub struct LocationEvent {
     pub latitude: Option<f64>,
     pub longitude: Option<f64>,
     #[serde(flatten)]
+    #[cfg(feature = "powerplay")]
     pub powerplay: Option<Powerplay>,
     #[serde(flatten)]
     pub system: Option<System>,
     #[serde(flatten)]
     pub station: Option<Station>,
+    #[cfg(feature = "faction")]
+    pub factions: Option<Vec<Faction>>,
+    #[cfg(feature = "faction")]
     pub conflicts: Option<Vec<FactionConflict>>,
     pub controlling_power: Option<String>,
     pub dist_from_star_ls: Option<f64>,
-    pub factions: Option<Vec<Faction>>,
     pub population: u64,
     pub star_pos: [f64; 3],
     pub star_system: String,

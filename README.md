@@ -11,6 +11,10 @@ edjr supports only Elite Dangerous Odyssey.
 - `full`: enables all journal events. 
 - `tokio`: provide [tokio]-based journal reader.
 - `stream`: provides stream for journal reader.
+- `faction`: enables faction-specific events and fields.
+- `powerplay`: enables powerplay-specific events and fields.
+- `fc`: enables fleet carrier-specific events and fields.
+- `passengers`: enables passengers-specific events and fields.
 
 ## Examples
 ### Read all (sync)
