@@ -8,7 +8,8 @@ A library for parsing Elite Dangerous's journal files.
 edjr supports only Elite Dangerous Odyssey.
 
 ## Features
-- `tokio`: provide tokio-based journal reader. 
+- `full`: enables all journal events. 
+- `tokio`: provide [tokio]-based journal reader.
 - `stream`: provides stream for journal reader.
 
 ## Examples
@@ -254,3 +255,5 @@ $ cargo add edjr
 // or via GitHub repository
 $ cargo add edjr --git https://github.com/stefanlight8/edjr
 ```
+
+[tokio]: https://tokio.rs/
