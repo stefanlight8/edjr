@@ -58,6 +58,7 @@ pub enum StationState {
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct Station {
+    pub station_name: String,
     pub station_allegiance: Allegiance,
     pub station_economies: Vec<StationEconomy>,
     pub station_economy: Economy,
