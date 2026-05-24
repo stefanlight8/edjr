@@ -1,13 +1,11 @@
+#[cfg(feature = "faction")]
+use crate::elite::faction::{Faction, FactionConflict};
+#[cfg(feature = "powerplay")]
+use crate::elite::powerplay::Powerplay;
 use {
     crate::elite::{body::BodyType, system::System},
     serde::Deserialize,
 };
-
-#[cfg(feature = "faction")]
-use crate::elite::faction::{Faction, FactionConflict};
-
-#[cfg(feature = "powerplay")]
-use crate::elite::powerplay::Powerplay;
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]

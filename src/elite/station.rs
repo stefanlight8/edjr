@@ -1,10 +1,9 @@
+#[cfg(feature = "faction")]
+use crate::elite::faction::Faction;
 use {
     crate::elite::{allegiance::Allegiance, economy::Economy, goverment::Goverment},
     serde::Deserialize,
 };
-
-#[cfg(feature = "faction")]
-use crate::elite::faction::Faction;
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]

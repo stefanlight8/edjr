@@ -1,7 +1,6 @@
-use {crate::elite::station::StationType, serde::Deserialize};
-
 #[cfg(feature = "fc")]
 use crate::elite::fc::DockingAccess;
+use {crate::elite::station::StationType, serde::Deserialize};
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]

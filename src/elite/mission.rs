@@ -1,7 +1,6 @@
-use serde::Deserialize;
-
 #[cfg(feature = "passengers")]
 use crate::elite::passengers::PassengerType;
+use serde::Deserialize;
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "PascalCase")]
