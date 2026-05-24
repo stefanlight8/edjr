@@ -1,12 +1,12 @@
 [package]
 name = "edjr"
 version = "0.1.3"
-rust-version = "1.85.1"
-edition = "2024"
+rust-version.workspace = true
+edition.workspace = true
 description = "Elite Dangerous Journal Reader"
 authors = ["stefanlight8 <64615032+stefanlight8@users.noreply.github.com>"]
 readme = "README.md"
-license = "MIT"
+license.workspace = true
 repository = "https://github.com/stefanlight8/edjr"
 keywords = ["elite-dangerous", "journal"]
 
@@ -19,6 +19,11 @@ all-features = true
 [workspace]
 resolver = "3"
 members = ["examples/*"]
+
+[workspace.package]
+rust-version = "1.85.1"
+edition = "2024"
+license = "MIT"
 
 [workspace.dependencies]
 edjr = { path = "." }
