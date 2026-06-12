@@ -2,9 +2,11 @@ use {
     crate::{Journal, JournalEntry, error::JournalReadError},
     async_stream::stream,
     futures_lite::Stream,
+    std::time::Duration,
     tokio::{
         fs::File,
         io::{AsyncBufReadExt, BufReader},
+        time::sleep,
     },
 };
 
@@ -45,7 +47,54 @@ impl Journal<File> {
                 let line = reader.read_line(&mut buffer).await.map_err(JournalReadError::ReadError)?;
 
                 if line == 0 {
-                    break; // TODO(feature): waiting until new lines
+                    break;
+                }
+
+                yield serde_json::from_str::<JournalEntry>(&buffer)
+                    .map_err(JournalReadError::ParsingError)
+            }
+        }
+    }
+
+    /// Returns continues stream of journal entries.
+    ///
+    /// Stream will poll results continuously with duration between reading next entries.
+    ///
+    /// # Example
+    /// ```no_run
+    /// use {std::{error::Error, time::Duration}, edjr::Journal, tokio::fs::File, futures_lite::StreamExt};
+    ///
+    /// #[tokio::main]
+    /// async fn main() -> Result<(), Box<dyn Error>> {
+    ///     let journal = Journal::<File>::open("/Path/to/my/journals/Journal.date.log").await?;
+    ///     let mut stream = journal.poll(Duration::from_secs(5)).boxed();
+    ///
+    ///     while let Some(entry) = stream.next().await {
+    ///         match entry {
+    ///             Ok(entry) => println!("{:?}", entry),
+    ///             Err(err) => eprintln!("failed to read event: {}", err),
+    ///         }
+    ///     }
+    ///
+    ///     unreachable!()
+    /// }
+    /// ```
+    #[cfg_attr(docsrs, doc(cfg(all(feature = "tokio", feature = "stream"))))]
+    pub fn poll(
+        self,
+        duration: Duration,
+    ) -> impl Stream<Item = Result<JournalEntry, JournalReadError>> {
+        stream! {
+            let mut reader = BufReader::new(self.file);
+            let mut buffer = String::new();
+
+            loop {
+                buffer.clear();
+                let line = reader.read_line(&mut buffer).await.map_err(JournalReadError::ReadError)?;
+
+                if line == 0 {
+                    sleep(duration).await;
+                    continue
                 }
 
                 yield serde_json::from_str::<JournalEntry>(&buffer)

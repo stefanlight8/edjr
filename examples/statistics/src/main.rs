@@ -20,6 +20,10 @@ struct Session {
     duration: f64,
     jumps: u64,
     ships: HashMap<u64, Ship>,
+    ships_destroyed: u64,
+    bounty_received: u64,
+    bonds_received: u64,
+    merits_gained: u64,
     visited_systems: HashSet<String>,
     visited_stations: HashSet<String>,
 }
@@ -73,6 +77,11 @@ impl fmt::Display for Session {
                 writeln!(f, "- {}", system,)?;
             }
         }
+
+        writeln!(f, "Ships destroyed (apparently): {}", self.ships_destroyed)?;
+        writeln!(f, "Bounty Received: {}", self.bounty_received)?;
+        writeln!(f, "Bonds Received: {}", self.bonds_received)?;
+        writeln!(f, "Merits Gained: {}", self.merits_gained)?;
 
         Ok(())
     }
@@ -141,6 +150,17 @@ async fn main() -> Result<(), Box<dyn Error>> {
             }
             JournalEvent::Location(event) => {
                 session.visited_systems.insert(event.star_system);
+            }
+            JournalEvent::Bounty(event) => {
+                session.bounty_received += event.total_reward;
+                session.ships_destroyed += 1;
+            }
+            JournalEvent::FactionKillBond(event) => {
+                session.bonds_received += event.reward;
+                session.ships_destroyed += 1;
+            }
+            JournalEvent::PowerplayMerits(event) => {
+                session.merits_gained += event.merits_gained;
             }
             _ => (),
         }
