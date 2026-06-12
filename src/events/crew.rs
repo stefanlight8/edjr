@@ -1,6 +1,9 @@
-use {crate::elite::crew::CrewRole, serde::Deserialize};
+use {
+    crate::elite::crew::CrewRole,
+    serde::{Deserialize, Serialize},
+};
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct CrewAssignEvent {
     #[serde(alias = "CrewID")]
@@ -9,7 +12,7 @@ pub struct CrewAssignEvent {
     pub role: String,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct CrewLaunchFighterEvent {
     pub crew: String,
@@ -17,7 +20,7 @@ pub struct CrewLaunchFighterEvent {
     pub telepresense: bool,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct CrewMemberJoinsEvent {
     pub crew: String,
@@ -25,7 +28,7 @@ pub struct CrewMemberJoinsEvent {
     pub telepresense: bool,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct CrewMemberQuitsEvent {
     pub crew: String,
@@ -33,7 +36,7 @@ pub struct CrewMemberQuitsEvent {
     pub telepresense: bool,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct CrewMemberRoleChangeEvent {
     pub crew: String,
@@ -42,7 +45,7 @@ pub struct CrewMemberRoleChangeEvent {
     pub telepresense: bool,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct ChangeCrewRoleEvent {
     pub role: CrewRole,
@@ -50,7 +53,7 @@ pub struct ChangeCrewRoleEvent {
     pub telepresence: bool,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct EndCrewSessionEvent {
     pub on_crime: bool,
@@ -58,7 +61,7 @@ pub struct EndCrewSessionEvent {
     pub telepresence: bool,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct JoinACrewEvent {
     pub captain: String,
@@ -66,7 +69,7 @@ pub struct JoinACrewEvent {
     pub telepresence: bool,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct NpcCrewPaidWageEvent {
     pub amount: u64,
@@ -74,7 +77,7 @@ pub struct NpcCrewPaidWageEvent {
     pub npc_crew_name: String,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct QuitACrewEvent {
     pub captain: String,

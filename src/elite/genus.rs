@@ -1,6 +1,6 @@
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 pub enum Genus {
     #[serde(alias = "$Codex_Ent_Bacterial_Genus_Name;")]
     Bacterium,

@@ -1,6 +1,6 @@
-use serde_repr::Deserialize_repr;
+use serde_repr::{Deserialize_repr, Serialize_repr};
 
-#[derive(Debug, Deserialize_repr)]
+#[derive(Debug, Serialize_repr, Deserialize_repr)]
 #[repr(u8)]
 pub enum Rank {
     Harmless = 0,
@@ -19,7 +19,7 @@ pub enum Rank {
     EliteV = 13,
 }
 
-#[derive(Debug, Deserialize_repr)]
+#[derive(Debug, Serialize_repr, Deserialize_repr)]
 #[repr(u8)]
 pub enum EmpireRank {
     None = 0,
@@ -39,7 +39,7 @@ pub enum EmpireRank {
     King = 14,
 }
 
-#[derive(Debug, Deserialize_repr)]
+#[derive(Debug, Serialize_repr, Deserialize_repr)]
 #[repr(u8)]
 pub enum FederationRank {
     None = 0,

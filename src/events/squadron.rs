@@ -1,12 +1,12 @@
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct InvitedToSquadronEvent {
     pub squadron_name: String,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct JoinedSquadronEvent {
     #[serde(alias = "SquadronID")]
@@ -14,7 +14,7 @@ pub struct JoinedSquadronEvent {
     pub squadron_name: String,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct LeftSquadronEvent {
     #[serde(alias = "SquadronID")]
@@ -22,7 +22,7 @@ pub struct LeftSquadronEvent {
     pub squadron_name: Option<String>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct SquadronCreatedEvent {
     #[serde(alias = "SquadronID")]
@@ -30,7 +30,7 @@ pub struct SquadronCreatedEvent {
     pub squadron_name: String,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct SquadronStartupEvent {
     #[serde(alias = "SquadronID")]

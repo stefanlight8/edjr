@@ -1,6 +1,9 @@
-use {crate::elite::ship::Ship, serde::Deserialize};
+use {
+    crate::elite::ship::Ship,
+    serde::{Deserialize, Serialize},
+};
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct ShipyardEvent {
     #[serde(alias = "MarketID")]
@@ -9,7 +12,7 @@ pub struct ShipyardEvent {
     pub station_name: String,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct ShipyardBuyEvent {
     #[serde(alias = "MarketID")]
@@ -24,7 +27,7 @@ pub struct ShipyardBuyEvent {
     pub store_ship_id: u64,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct ShipyardNewEvent {
     #[serde(alias = "ShipType")]
@@ -35,7 +38,7 @@ pub struct ShipyardNewEvent {
     pub ship_id: u64,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct ShipyardSellEvent {
     #[serde(alias = "MarketID")]
@@ -52,7 +55,7 @@ pub struct ShipyardSellEvent {
     pub system: Option<String>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct ShipyardSwapEvent {
     #[serde(alias = "MarketID")]
@@ -64,7 +67,7 @@ pub struct ShipyardSwapEvent {
     pub store_ship_id: u64,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct ShipyardTransferEvent {
     #[serde(alias = "MarketID")]

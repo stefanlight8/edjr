@@ -1,6 +1,9 @@
-use {crate::elite::passengers::PassengerType, serde::Deserialize};
+use {
+    crate::elite::passengers::PassengerType,
+    serde::{Deserialize, Serialize},
+};
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct PassengersManifest {
     #[serde(alias = "MissionID")]
@@ -14,7 +17,7 @@ pub struct PassengersManifest {
     pub wanted: bool,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct PassengersEvent {
     pub manifest: Vec<PassengersManifest>,

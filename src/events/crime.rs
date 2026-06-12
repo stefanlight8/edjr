@@ -1,6 +1,9 @@
-use {crate::elite::crime::CrimeType, serde::Deserialize};
+use {
+    crate::elite::crime::CrimeType,
+    serde::{Deserialize, Serialize},
+};
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct CommitCrimeEvent {
     pub crime_type: CrimeType,
@@ -12,7 +15,7 @@ pub struct CommitCrimeEvent {
     pub victim_display: Option<String>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct CrimeVictimEvent {
     pub crime_type: CrimeType,

@@ -1,6 +1,6 @@
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 pub enum CodexEntryCategory {
     #[serde(alias = "$Codex_Category_StellarBodies;")]
     StellarBodies,

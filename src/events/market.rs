@@ -1,8 +1,11 @@
 #[cfg(feature = "fc")]
 use crate::elite::fc::DockingAccess;
-use {crate::elite::station::StationType, serde::Deserialize};
+use {
+    crate::elite::station::StationType,
+    serde::{Deserialize, Serialize},
+};
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct MarketEvent {
     #[serde(alias = "MarketID")]
@@ -14,7 +17,7 @@ pub struct MarketEvent {
     pub carrier_docking_access: Option<DockingAccess>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct MarketBuyEvent {
     #[serde(alias = "MarketID")]
@@ -28,7 +31,7 @@ pub struct MarketBuyEvent {
     pub commodity_display: Option<String>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct MarketSellEvent {
     #[serde(alias = "MarketID")]

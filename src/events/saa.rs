@@ -1,6 +1,9 @@
-use {crate::elite::genus::Genus, serde::Deserialize};
+use {
+    crate::elite::genus::Genus,
+    serde::{Deserialize, Serialize},
+};
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "lowercase")]
 pub enum SaaSignalType {
     #[serde(alias = "$SAA_SignalType_Biological;")]
@@ -17,7 +20,7 @@ pub enum SaaSignalType {
     Other,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct SaaSignal {
     pub count: u64,
@@ -25,13 +28,13 @@ pub struct SaaSignal {
     pub signal_type: SaaSignalType,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct GenusSignal {
     pub genus: Genus,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct SaaScanCompleteEvent {
     pub body_name: String,
@@ -42,7 +45,7 @@ pub struct SaaScanCompleteEvent {
     pub system_address: u64,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct SaaSignalsFoundEvent {
     pub body_name: String,

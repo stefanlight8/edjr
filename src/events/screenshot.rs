@@ -1,6 +1,9 @@
-use {serde::Deserialize, std::path::PathBuf};
+use {
+    serde::{Deserialize, Serialize},
+    std::path::PathBuf,
+};
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct ScreenshotEvent {
     pub filename: PathBuf,

@@ -1,5 +1,8 @@
-use {crate::elite::combat::Killer, serde::Deserialize};
-#[derive(Debug, Deserialize)]
+use {
+    crate::elite::combat::Killer,
+    serde::{Deserialize, Serialize},
+};
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct DiedEvent {
     pub killer_name: Option<String>,

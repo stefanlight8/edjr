@@ -1,6 +1,6 @@
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 pub enum FactionState {
     Boom,
     Bust,
@@ -12,14 +12,14 @@ pub enum FactionState {
     Unknown,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct Faction {
     pub name: String,
     pub faction_state: Option<FactionState>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "lowercase")]
 pub enum FactionWarStatus {
     Active,
@@ -28,7 +28,7 @@ pub enum FactionWarStatus {
     None,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "lowercase")]
 pub enum FactionWarType {
     War,
@@ -38,7 +38,7 @@ pub enum FactionWarType {
     None,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct FactionWarState {
     pub name: String,
@@ -46,7 +46,7 @@ pub struct FactionWarState {
     pub won_days: u64,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct FactionConflict {
     pub faction_1: FactionWarState,

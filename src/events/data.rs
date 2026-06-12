@@ -1,9 +1,9 @@
 use {
     crate::elite::{allegiance::Allegiance, genus::Genus},
-    serde::Deserialize,
+    serde::{Deserialize, Serialize},
 };
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct DataScannedEvent {
     #[serde(alias = "Type")]
@@ -12,7 +12,7 @@ pub struct DataScannedEvent {
     pub data_type_display: Option<String>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct DatalinkScanEvent {
     pub message: String,
@@ -20,7 +20,7 @@ pub struct DatalinkScanEvent {
     pub message_display: String,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct DatalinkVoucherEvent {
     pub reward: u64,
@@ -28,14 +28,14 @@ pub struct DatalinkVoucherEvent {
     pub victim_faction: Option<Allegiance>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct Discover {
     pub num_bodies: u64,
     pub system_name: String,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct MultiSellExplorationDataEvent {
     pub base_value: u64,
@@ -44,7 +44,7 @@ pub struct MultiSellExplorationDataEvent {
     pub total_earnings: u64,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct BioData {
     pub genus: Genus,
@@ -58,7 +58,7 @@ pub struct BioData {
     pub bonus: u64,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct SellfOrganicDataEvent {
     #[serde(alias = "BioData")] // TODO: alias or bio_data?

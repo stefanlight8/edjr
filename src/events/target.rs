@@ -1,6 +1,6 @@
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 pub enum LegalStatus {
     Clean,
     Enemy,
@@ -12,7 +12,7 @@ pub enum LegalStatus {
     Unknown,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct Pilot {
     pub pilot_name: String,
@@ -25,7 +25,7 @@ pub struct Pilot {
     pub bounty: Option<u64>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct Subsystem {
     pub subsystem: String,
@@ -34,7 +34,7 @@ pub struct Subsystem {
     pub subsystem_display: String,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct ShipTargetedEvent {
     pub target_locked: bool,

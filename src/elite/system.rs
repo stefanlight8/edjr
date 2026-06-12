@@ -2,10 +2,10 @@
 use crate::elite::faction::Faction;
 use {
     crate::elite::{allegiance::Allegiance, economy::Economy, goverment::Goverment},
-    serde::Deserialize,
+    serde::{Deserialize, Serialize},
 };
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 pub enum SystemSecurity {
     #[serde(alias = "$GAlAXY_MAP_INFO_state_anarchy;")]
     Anarchy,
@@ -17,7 +17,7 @@ pub enum SystemSecurity {
     High,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct System {
     pub system_allegiance: Option<Allegiance>,

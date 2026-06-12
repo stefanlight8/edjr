@@ -1,6 +1,9 @@
-use {crate::elite::module::ModuleEngineering, serde::Deserialize};
+use {
+    crate::elite::module::ModuleEngineering,
+    serde::{Deserialize, Serialize},
+};
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct Ship {
     #[serde(alias = "ShipType")]
@@ -14,7 +17,7 @@ pub struct Ship {
     pub ship_name: Option<String>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct ShipModule {
     pub slot: String,
@@ -27,7 +30,7 @@ pub struct ShipModule {
     pub ammo_in_hopper: Option<u64>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct FuelCapacity {
     pub main: f64,

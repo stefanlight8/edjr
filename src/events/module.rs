@@ -1,9 +1,9 @@
 use {
     crate::elite::{module::Module, ship::Ship},
-    serde::Deserialize,
+    serde::{Deserialize, Serialize},
 };
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct FetchRemoteModuleEvent {
     pub server_id: u64, // ServerId – nicee!
@@ -17,7 +17,7 @@ pub struct FetchRemoteModuleEvent {
     pub transfer_time: u64,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct MassModuleStoreEvent {
     pub items: Vec<Module>,
@@ -27,7 +27,7 @@ pub struct MassModuleStoreEvent {
     pub ship: Ship,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct ModuleRetrieveEvent {
     pub ship: String,
@@ -52,7 +52,7 @@ pub struct ModuleRetrieveEvent {
     pub hot: bool,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct ModuleSellEvent {
     #[serde(alias = "MarketID")]
@@ -66,7 +66,7 @@ pub struct ModuleSellEvent {
     pub slot: String,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct ModuleSellRemoteEvent {
     pub server_id: u64,
@@ -79,7 +79,7 @@ pub struct ModuleSellRemoteEvent {
     pub storage_slot: u16,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct ModuleStoreEvent {
     #[serde(flatten)]
@@ -95,7 +95,7 @@ pub struct ModuleStoreEvent {
     pub hot: bool,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct ModuleSwapEvent {
     #[serde(alias = "MarketID")]
@@ -114,7 +114,7 @@ pub struct ModuleSwapEvent {
     pub hot: bool,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct ModuleBuyEvent {
     #[serde(alias = "MarketID")]
@@ -135,7 +135,7 @@ pub struct ModuleBuyEvent {
     pub stored_item_display: Option<String>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct ModuleBuyAndStoreEvent {
     #[serde(alias = "MarketID")]
@@ -148,7 +148,7 @@ pub struct ModuleBuyAndStoreEvent {
     pub ship: Ship,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct RemoteModule {
     #[serde(flatten)]
@@ -164,7 +164,7 @@ pub struct RemoteModule {
     pub in_transit: bool,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct StoredModulesEvent {
     #[serde(alias = "MarketID")]

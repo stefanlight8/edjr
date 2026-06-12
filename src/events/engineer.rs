@@ -1,9 +1,9 @@
 use {
     crate::elite::{engineer::Engineer, material::Material, module::ModuleEngineering},
-    serde::Deserialize,
+    serde::{Deserialize, Serialize},
 };
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct EngineerContributionEvent {
     pub commodity: Option<String>,
@@ -16,7 +16,7 @@ pub struct EngineerContributionEvent {
     #[serde(alias = "Type")]
     pub contribution_type: String,
 }
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct EngineerCraftEvent {
     pub apply_experimental_effect: Option<String>,
@@ -26,7 +26,7 @@ pub struct EngineerCraftEvent {
     #[serde(flatten)]
     pub modification: ModuleEngineering,
 }
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct EngineerProgressEvent {
     #[serde(flatten)]

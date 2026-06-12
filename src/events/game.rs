@@ -1,13 +1,16 @@
-use {crate::elite::ship::Ship, serde::Deserialize};
+use {
+    crate::elite::ship::Ship,
+    serde::{Deserialize, Serialize},
+};
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 pub enum GameMode {
     Open,
     Solo,
     Group,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct LoadGameEvent {
     pub commander: String,

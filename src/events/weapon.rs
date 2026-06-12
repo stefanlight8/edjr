@@ -1,6 +1,6 @@
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct BuyWeaponEvent {
     pub class: u64,
@@ -13,7 +13,7 @@ pub struct BuyWeaponEvent {
     // TODO: WeaponMods
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct SellWeaponEvent {
     pub class: u64,

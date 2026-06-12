@@ -1,6 +1,9 @@
-use {crate::elite::ship::Ship, serde::Deserialize};
+use {
+    crate::elite::ship::Ship,
+    serde::{Deserialize, Serialize},
+};
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct SetUserShipNameEvent {
     #[serde(flatten)]
@@ -9,7 +12,7 @@ pub struct SetUserShipNameEvent {
     pub user_ship_name: String,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct Cargo {
     #[serde(alias = "Name", alias = "Type")]
@@ -21,7 +24,7 @@ pub struct Cargo {
     pub owner_id: u64,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct ShipLockerEvent {
     pub components: Option<Vec<Cargo>>,
@@ -30,7 +33,7 @@ pub struct ShipLockerEvent {
     pub items: Option<Vec<Cargo>>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct StoredShip {
     #[serde(flatten)]
@@ -40,7 +43,7 @@ pub struct StoredShip {
     pub hot: bool,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct RemoteShip {
     #[serde(flatten)]
@@ -57,7 +60,7 @@ pub struct RemoteShip {
     pub hot: bool,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct StoredShipsEvent {
     #[serde(alias = "MarketID")]

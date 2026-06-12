@@ -1,6 +1,9 @@
-use {crate::elite::powerplay::PowerMicroResource, serde::Deserialize};
+use {
+    crate::elite::powerplay::PowerMicroResource,
+    serde::{Deserialize, Serialize},
+};
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct PowerplayEvent {
     pub merits: u64,
@@ -9,7 +12,7 @@ pub struct PowerplayEvent {
     pub time_pledged: u64,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct PowerplayCollectEvent {
     pub power: String,
@@ -20,7 +23,7 @@ pub struct PowerplayCollectEvent {
     pub collected_display: String,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct PowerplayMeritsEvent {
     pub merits_gained: u64,
@@ -28,14 +31,14 @@ pub struct PowerplayMeritsEvent {
     pub total_merits: u64,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct PowerplayRankEvent {
     pub power: String,
     pub rank: u64,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct RequestPowerMicroResourcesEvent {
     #[serde(alias = "MarketID")]

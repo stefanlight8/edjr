@@ -1,6 +1,6 @@
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct Module {
     pub name: String,
@@ -12,9 +12,10 @@ pub struct Module {
     #[serde(default)]
     pub hot: bool,
     pub slot: Option<String>,
+    pub modifier: Option<Vec<Modifier>>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct Modifier {
     pub label: String,
@@ -26,14 +27,15 @@ pub struct Modifier {
     pub value_str_display: Option<String>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct ModuleEngineering {
     #[serde(alias = "BlueprintID")]
     pub blueprint_id: Option<u64>,
     pub blueprint_name: String,
     pub level: u8,
-    pub modifier: Option<Vec<Modifier>>,
+    pub quality: f64,
+    pub modifiers: Option<Vec<Modifier>>,
     pub engineer: Option<String>,
     #[serde(alias = "EngineerID")]
     pub engineer_id: Option<u64>,

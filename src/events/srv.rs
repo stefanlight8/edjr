@@ -1,6 +1,9 @@
-use {crate::elite::srv::SrvType, serde::Deserialize};
+use {
+    crate::elite::srv::SrvType,
+    serde::{Deserialize, Serialize},
+};
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct DockSrvEvent {
     #[serde(alias = "ID")]
@@ -9,7 +12,7 @@ pub struct DockSrvEvent {
     pub srv_type: SrvType,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct LaunchSrvEvent {
     #[serde(alias = "ID")]
@@ -20,7 +23,7 @@ pub struct LaunchSrvEvent {
     pub srv_type: SrvType,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct SrvDestroyedEvent {
     #[serde(alias = "ID")]

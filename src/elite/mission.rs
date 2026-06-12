@@ -1,8 +1,8 @@
 #[cfg(feature = "passengers")]
 use crate::elite::passengers::PassengerType;
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct Mission {
     #[serde(alias = "MissionID")]
@@ -43,14 +43,14 @@ pub struct Mission {
     pub wing: Option<bool>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 pub enum Trend {
     DownBad,
     DownGood,
     UpGood,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct Effect {
     pub effect: String,
@@ -59,7 +59,7 @@ pub struct Effect {
     pub trend: Trend,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct Influence {
     pub influence: String,
@@ -67,7 +67,7 @@ pub struct Influence {
     pub trend: Trend,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct FactionEffect {
     pub faction: String,

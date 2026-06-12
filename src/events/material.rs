@@ -1,23 +1,23 @@
 use {
     crate::elite::material::{Material, TraderType},
-    serde::Deserialize,
+    serde::{Deserialize, Serialize},
 };
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct MaterialCollectedEvent {
     #[serde(flatten)]
     pub material: Material,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct MaterialDiscoveredEvent {
     #[serde(flatten)]
     pub material: Material,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct MaterialTradeEvent {
     #[serde(alias = "MarketID")]
@@ -27,7 +27,7 @@ pub struct MaterialTradeEvent {
     pub trader_type: TraderType,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct MaterialsEvent {
     pub encoded: Vec<Material>,

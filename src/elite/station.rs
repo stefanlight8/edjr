@@ -2,10 +2,10 @@
 use crate::elite::faction::Faction;
 use {
     crate::elite::{allegiance::Allegiance, economy::Economy, goverment::Goverment},
-    serde::Deserialize,
+    serde::{Deserialize, Serialize},
 };
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct StationEconomy {
     #[serde(alias = "Name")] // a bit hacky
@@ -13,7 +13,7 @@ pub struct StationEconomy {
     pub proportion: f64,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "lowercase")]
 pub enum StationService {
     Dock,
@@ -28,7 +28,7 @@ pub enum StationService {
     Unknown,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 pub enum StationType {
     Coriolis,
     Dodec,
@@ -49,13 +49,13 @@ pub enum StationType {
     Unknown,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 pub enum StationState {
     Construction,
     UnderAttack,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct Station {
     pub station_name: String,

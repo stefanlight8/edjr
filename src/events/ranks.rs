@@ -1,9 +1,9 @@
 use {
     crate::elite::rank::{EmpireRank, FederationRank, Rank},
-    serde::Deserialize,
+    serde::{Deserialize, Serialize},
 };
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct ProgressEvent {
     #[serde(alias = "CQC")]
@@ -17,7 +17,7 @@ pub struct ProgressEvent {
     pub trade: u64,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct PromotionEvent {
     pub combat: Option<Rank>,
@@ -29,7 +29,7 @@ pub struct PromotionEvent {
     pub trade: Option<Rank>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct RankEvent {
     #[serde(alias = "CQC")]

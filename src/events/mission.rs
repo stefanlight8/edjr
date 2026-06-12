@@ -3,24 +3,24 @@ use {
         material::Material,
         mission::{FactionEffect, Mission},
     },
-    serde::Deserialize,
+    serde::{Deserialize, Serialize},
 };
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct MissionAbandonedEvent {
     #[serde(flatten)]
     pub mission: Mission,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct MissionAcceptedEvent {
     #[serde(flatten)]
     pub mission: Mission,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct MissionCompletedEvent {
     #[serde(flatten)]
@@ -30,14 +30,14 @@ pub struct MissionCompletedEvent {
     pub materials_reward: Option<Vec<Material>>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct MissionFailedEvent {
     #[serde(flatten)]
     pub mission: Mission,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct MissionRedirectedEvent {
     #[serde(flatten)]
@@ -48,7 +48,7 @@ pub struct MissionRedirectedEvent {
     pub old_destination_system: String,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct MissionsEvent {
     pub active: Option<Vec<Mission>>,

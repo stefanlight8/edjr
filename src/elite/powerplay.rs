@@ -1,20 +1,20 @@
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct PowerplayConflict {
     pub power: String,
     pub conflict_progress: f64,
 }
 
-#[derive(Debug, Deserialize, Default)]
+#[derive(Debug, Serialize, Deserialize, Default)]
 pub enum PowerplayState {
     Exploited,
     #[default]
     Unoccupied,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct Powerplay {
     pub powerplay_conflict_progress: Vec<PowerplayConflict>,
@@ -25,12 +25,12 @@ pub struct Powerplay {
     pub powers: Vec<String>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 pub enum PowerMicroResouceCategory {
     Data,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct PowerMicroResource {
     pub category: PowerMicroResouceCategory,

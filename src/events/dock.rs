@@ -1,9 +1,9 @@
 use {
     crate::elite::station::{Station, StationType},
-    serde::Deserialize,
+    serde::{Deserialize, Serialize},
 };
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct LandingPads {
     pub large: u64,
@@ -11,7 +11,7 @@ pub struct LandingPads {
     pub small: u64,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 pub enum Reason {
     Distance,
     Hostile,
@@ -20,9 +20,10 @@ pub enum Reason {
     Offences,
     RestrictedAccess,
     TooLarge,
+    JumpImminent,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct DockedEvent {
     pub dist_from_star_ls: Option<f64>,
@@ -45,7 +46,7 @@ pub struct DockedEvent {
     pub wanted: bool,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct DockingCancelledEvent {
     #[serde(alias = "MarketID")]
@@ -54,7 +55,7 @@ pub struct DockingCancelledEvent {
     pub station_type: StationType,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct DockingGrantedEvent {
     pub landing_pad: u64,
@@ -64,7 +65,7 @@ pub struct DockingGrantedEvent {
     pub station_type: StationType,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct DockingDeniedEvent {
     pub reason: Reason,
@@ -74,7 +75,7 @@ pub struct DockingDeniedEvent {
     pub station_type: StationType,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct DockingRequestedEvent {
     pub landing_pads: Option<LandingPads>,
@@ -84,7 +85,7 @@ pub struct DockingRequestedEvent {
     pub station_type: StationType,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct DockingTimeoutEvent {
     #[serde(alias = "MarketID")]
@@ -93,7 +94,7 @@ pub struct DockingTimeoutEvent {
     pub station_type: StationType,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct UndockedEvent {
     pub station_name: String,

@@ -4,10 +4,10 @@ use crate::elite::faction::{Faction, FactionConflict};
 use crate::elite::powerplay::Powerplay;
 use {
     crate::elite::{body::BodyType, station::Station},
-    serde::Deserialize,
+    serde::{Deserialize, Serialize},
 };
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct CarrierJumpEvent {
     pub body: String,
@@ -39,7 +39,7 @@ pub struct CarrierJumpEvent {
     pub on_foot: bool,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct FcMaterialsEvent {
     pub carrier_name: String,

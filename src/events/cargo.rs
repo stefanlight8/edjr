@@ -1,13 +1,13 @@
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 pub enum Vessel {
     Ship,
     #[serde(alias = "SRV")]
     Srv,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct Cargo {
     #[serde(alias = "Name", alias = "Type")]
@@ -17,7 +17,7 @@ pub struct Cargo {
     pub count: Option<u64>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct CargoEvent {
     pub count: u64,
@@ -25,7 +25,7 @@ pub struct CargoEvent {
     pub inventory: Option<Vec<Cargo>>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct CargoDepotEvent {
     pub cargo_type: String,
@@ -42,13 +42,13 @@ pub struct CargoDepotEvent {
     pub end_market_id: u64,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct CargoTransferEvent {
     pub transfers: Vec<Cargo>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct CollectCargoEvent {
     pub stolen: bool,
@@ -58,7 +58,7 @@ pub struct CollectCargoEvent {
     pub market_id: Option<u64>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct EjectCargoEvent {
     pub abandoned: bool,

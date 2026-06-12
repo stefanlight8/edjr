@@ -1,9 +1,9 @@
 use {
     crate::elite::signal::{Signal, SignalType},
-    serde::Deserialize,
+    serde::{Deserialize, Serialize},
 };
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct FssAllBodiesFoundEvent {
     pub count: u64,
@@ -11,7 +11,7 @@ pub struct FssAllBodiesFoundEvent {
     pub system_name: String,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct FssBodySignalsEvent {
     #[serde(alias = "BodyID")]
@@ -21,7 +21,7 @@ pub struct FssBodySignalsEvent {
     pub signals: Vec<Signal>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct FssDiscoveryScanEvent {
     pub body_count: u64,
@@ -31,7 +31,7 @@ pub struct FssDiscoveryScanEvent {
     pub system_name: String,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct FssSignalDiscoveredEvent {
     #[serde(default)]

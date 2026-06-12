@@ -1,6 +1,9 @@
-use {crate::elite::body::BodyType, serde::Deserialize};
+use {
+    crate::elite::body::BodyType,
+    serde::{Deserialize, Serialize},
+};
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct SupercruiseDestinationDropEvent {
     pub threat: u8,
@@ -12,7 +15,7 @@ pub struct SupercruiseDestinationDropEvent {
     pub market_id: Option<u64>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct SupercruiseEntryEvent {
     pub star_system: String,
@@ -23,7 +26,7 @@ pub struct SupercruiseEntryEvent {
     pub taxi: bool,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct SupercruiseExitEvent {
     pub body: String,

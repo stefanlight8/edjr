@@ -1,6 +1,9 @@
-use {crate::elite::ship::Ship, serde::Deserialize};
+use {
+    crate::elite::ship::Ship,
+    serde::{Deserialize, Serialize},
+};
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct ClearImpoundEvent {
     #[serde(alias = "MarketID")]

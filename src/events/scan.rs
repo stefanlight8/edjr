@@ -1,6 +1,9 @@
-use {crate::elite::genus::Genus, serde::Deserialize};
+use {
+    crate::elite::genus::Genus,
+    serde::{Deserialize, Serialize},
+};
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 pub enum ScanType {
     AutoScan,
     Basic,
@@ -8,14 +11,14 @@ pub enum ScanType {
     NavBeaconDetail,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct Atmosphere {
     pub name: String,
     pub percent: f64,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct Composition {
     pub ice: f64,
@@ -23,14 +26,14 @@ pub struct Composition {
     pub rock: f64,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct Material {
     pub name: String,
     pub percent: f64,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct Parent {
     pub null: Option<u64>,
@@ -39,7 +42,7 @@ pub struct Parent {
     pub star: Option<u64>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 pub enum ReserveLevel {
     CommonResources,
     DepletedResources,
@@ -48,7 +51,7 @@ pub enum ReserveLevel {
     PristineResources,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 pub enum RingClass {
     #[serde(alias = "eRingClass_Icy")]
     Icy,
@@ -60,7 +63,7 @@ pub enum RingClass {
     Rocky,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct Ring {
     pub name: String,
@@ -71,7 +74,7 @@ pub struct Ring {
     pub ring_class: RingClass,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 pub enum TerraformState {
     Terraformable,
     Terraforming,
@@ -80,7 +83,7 @@ pub enum TerraformState {
     None,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct Star {
     pub star_type: String,
@@ -94,7 +97,7 @@ pub struct Star {
     pub absolute_magnitude: Option<f64>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct Planet {
     pub planet_class: Option<String>,
@@ -115,7 +118,7 @@ pub struct Planet {
 
 // TODO: maybe planet class enum and move everything
 // to elite if its not associated to scan event?
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct ScanEvent {
     pub scan_type: ScanType,
@@ -151,7 +154,7 @@ pub struct ScanEvent {
     pub was_mapped: bool,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct ScanBaryCentreEvent {
     #[serde(alias = "BodyID")]
@@ -166,14 +169,14 @@ pub struct ScanBaryCentreEvent {
     pub system_address: u64,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 pub enum OrganicScanType {
     Analyse,
     Log,
     Sample,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct ScanOrganicEvent {
     #[serde(alias = "Body")]
@@ -191,7 +194,7 @@ pub struct ScanOrganicEvent {
     pub was_logged: bool,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 pub enum TargetScanType {
     Cargo,
     Crime,
@@ -201,7 +204,7 @@ pub enum TargetScanType {
 // because as I remember it's event when
 // you're begin scanned, so I can't put it
 // here or in target-associated events ig
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct ScannedEvent {
     pub scan_type: TargetScanType,

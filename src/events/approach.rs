@@ -1,6 +1,9 @@
-use {crate::elite::station::Station, serde::Deserialize};
+use {
+    crate::elite::station::Station,
+    serde::{Deserialize, Serialize},
+};
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct ApproachBodyEvent {
     pub body: String,
@@ -10,7 +13,7 @@ pub struct ApproachBodyEvent {
     pub system_address: u64,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct ApproachSettlementEvent {
     #[serde(alias = "BodyID")]

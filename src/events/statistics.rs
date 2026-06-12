@@ -1,6 +1,6 @@
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 pub struct BankAccountStatistics {
     #[serde(rename = "Current_Wealth")]
     pub current_wealth: u64,
@@ -36,7 +36,7 @@ pub struct BankAccountStatistics {
     pub weapons_owned: Option<u64>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 pub struct CqcStatistics {
     #[serde(rename = "CQC_Credits_Earned")]
     pub credits_earned: u64,
@@ -50,7 +50,7 @@ pub struct CqcStatistics {
     pub wl: u64,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 pub struct CombatStatistics {
     #[serde(rename = "Assassination_Profits")]
     pub assassination_profits: u64,
@@ -108,7 +108,7 @@ pub struct CombatStatistics {
     pub skimmers_killed: u64,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 pub struct ExplorationStatistics {
     #[serde(rename = "Efficient_Scans")]
     pub efficient_scans: u64,
@@ -144,7 +144,7 @@ pub struct ExplorationStatistics {
     pub total_hyperspace_jumps: u64,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 pub struct CraftingStatistics {
     #[serde(rename = "Count_Of_Used_Engineers")]
     pub count_of_used_engineers: u64,
@@ -178,7 +178,7 @@ pub struct CraftingStatistics {
     pub weapons_ugraded_full: Option<u64>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 pub struct MaterialTradeStatistics {
     #[serde(rename = "Assets_Traded_In")]
     pub assets_traded_in: Option<u64>,
@@ -204,7 +204,7 @@ pub struct MaterialTradeStatistics {
     pub trades_completed: u64,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 pub struct MiningStatistics {
     #[serde(rename = "Materials_Collected")]
     pub materials_collected: u64,
@@ -214,7 +214,7 @@ pub struct MiningStatistics {
     pub quantity_mined: u64,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 pub struct PassengersStatistics {
     #[serde(rename = "Passengers_Missions_Accepted")]
     pub passengers_missions_accepted: u64,
@@ -228,7 +228,7 @@ pub struct PassengersStatistics {
     pub passengers_missions_vip: u64,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 pub struct SearchAndRescueStatistics {
     #[serde(rename = "Maglocks_Opened")]
     pub maglocks_opened: u64,
@@ -254,7 +254,7 @@ pub struct SearchAndRescueStatistics {
     pub settlements_state_reboot: u64,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 pub struct SmugglingStatistics {
     #[serde(rename = "Average_Profit")]
     pub average_profit: u64,
@@ -268,7 +268,7 @@ pub struct SmugglingStatistics {
     pub resources_smuggled: u64,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 pub struct SquadronStatistics {
     #[serde(rename = "Squadron_Bank_Commodities_Deposited_Num")]
     pub bank_commodities_deposited_num: u64,
@@ -320,7 +320,7 @@ pub struct SquadronStatistics {
     pub leaderbord_trade_illicit_highest_contribution: u64,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 pub struct ThargoidStatistics {
     #[serde(rename = "TG_ENCOUNTER_KILLED")]
     pub encounter_killed: u64,
@@ -334,7 +334,7 @@ pub struct ThargoidStatistics {
     pub encounter_last_timestamp: String,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 pub struct TradingStatistics {
     #[serde(rename = "Average_Profit")]
     pub average_profit: f64,
@@ -354,7 +354,7 @@ pub struct TradingStatistics {
     pub resources_traded: u64,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 pub struct CrewStatistics {
     #[serde(rename = "NpcCrew_Died")]
     pub npc_crew_died: u64,
@@ -366,7 +366,7 @@ pub struct CrewStatistics {
     pub npc_crew_total_wages: u64,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 pub struct CrimeStatistics {
     #[serde(rename = "Bounties_Received")]
     pub bounties_received: u64,
@@ -416,7 +416,7 @@ pub struct CrimeStatistics {
     pub value_stolen_state_change: Option<u64>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 pub struct ExobiologyStatistics {
     #[serde(rename = "First_Logged")]
     pub first_logged: u64,
@@ -442,7 +442,7 @@ pub struct ExobiologyStatistics {
     pub organic_systems_encountered: u64,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 pub struct MulticrewStatistics {
     #[serde(rename = "Multicrew_Credits_Total")]
     pub multicrew_credits_total: u64,
@@ -456,7 +456,7 @@ pub struct MulticrewStatistics {
     pub multicrew_time_total: u64,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct StatisticsEvent {
     #[serde(rename = "Bank_Account")]

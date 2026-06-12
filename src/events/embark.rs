@@ -1,9 +1,9 @@
 use {
     crate::elite::{crew::Crew, station::StationType},
-    serde::Deserialize,
+    serde::{Deserialize, Serialize},
 };
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct EmbarkEvent {
     pub body: String,

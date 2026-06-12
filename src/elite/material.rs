@@ -1,6 +1,6 @@
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 pub enum MaterialCategory {
     #[serde(alias = "$MICRORESOURCE_CATEGORY_Encoded;")]
     Encoded,
@@ -13,7 +13,7 @@ pub enum MaterialCategory {
     // but I'm quite good about to provide unified API.
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct Material {
     pub category: Option<MaterialCategory>,
@@ -25,7 +25,7 @@ pub struct Material {
     pub count: Option<u64>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "lowercase")]
 pub enum TraderType {
     Encoded,

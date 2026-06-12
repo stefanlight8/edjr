@@ -1,6 +1,9 @@
-use {crate::elite::codex::CodexEntryCategory, serde::Deserialize};
+use {
+    crate::elite::codex::CodexEntryCategory,
+    serde::{Deserialize, Serialize},
+};
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct CodexEntryEvent {
     #[serde(alias = "BodyID")]

@@ -1,9 +1,9 @@
 use {
     crate::elite::ship::{FuelCapacity, Ship, ShipModule},
-    serde::Deserialize,
+    serde::{Deserialize, Serialize},
 };
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct LoadoutEvent {
     pub cargo_capacity: u64,
@@ -22,7 +22,7 @@ pub struct LoadoutEvent {
     pub hot: bool,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct SuitModule {
     pub class: u8,
@@ -35,7 +35,7 @@ pub struct SuitModule {
     pub weapon_mods: Vec<String>, // TODO?: weapon mods, maybe weapons too
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct SuitLoadoutEvent {
     #[serde(rename = "LoadoutID")]
@@ -52,7 +52,7 @@ pub struct SuitLoadoutEvent {
 // I need more information to make enums, because I didn't play
 // odyssey content a lot tbh
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct SwitchSuitLoadoutEvent {
     #[serde(rename = "LoadoutID")]

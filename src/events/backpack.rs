@@ -1,6 +1,9 @@
-use {crate::elite::backpack::BackpackItem, serde::Deserialize};
+use {
+    crate::elite::backpack::BackpackItem,
+    serde::{Deserialize, Serialize},
+};
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct BackpackEvent {
     pub components: Option<Vec<BackpackItem>>,
@@ -10,14 +13,14 @@ pub struct BackpackEvent {
     // I guess, TODO: need correction
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct BackpackChangeEvent {
     pub added: Option<Vec<BackpackItem>>,
     pub removed: Option<Vec<BackpackItem>>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct CollectItemsEvent {
     #[serde(flatten)]

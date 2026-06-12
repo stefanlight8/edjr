@@ -1,12 +1,15 @@
-use {crate::elite::community_goal::CommunityGoal, serde::Deserialize};
+use {
+    crate::elite::community_goal::CommunityGoal,
+    serde::{Deserialize, Serialize},
+};
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct CommunityGoalEvent {
     pub current_goals: Vec<CommunityGoal>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct CommunityGoalDiscardEvent {
     #[serde(alias = "CGID")]
@@ -15,7 +18,7 @@ pub struct CommunityGoalDiscardEvent {
     pub system: String,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct CommunityGoalJoinEvent {
     #[serde(alias = "CGID")]
@@ -24,7 +27,7 @@ pub struct CommunityGoalJoinEvent {
     pub system: String,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct CommunityGoalRewardEvent {
     #[serde(alias = "CGID")]

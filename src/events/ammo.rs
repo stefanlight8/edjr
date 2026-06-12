@@ -1,5 +1,5 @@
-use serde::Deserialize;
-#[derive(Debug, Deserialize)]
+use serde::{Deserialize, Serialize};
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct BuyAmmoEvent {
     pub cost: u64,

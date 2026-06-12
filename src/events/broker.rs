@@ -1,9 +1,9 @@
 use {
     crate::elite::{broker::BrokerType, material::Material},
-    serde::Deserialize,
+    serde::{Deserialize, Serialize},
 };
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct Commodity {
     pub count: u64,
@@ -12,7 +12,7 @@ pub struct Commodity {
     pub name_display: String,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct Technology {
     pub name: String,
@@ -20,7 +20,7 @@ pub struct Technology {
     pub name_display: String,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct TechnologyBrokerEvent {
     pub broker_type: BrokerType,

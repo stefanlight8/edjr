@@ -1,10 +1,13 @@
 //! Journal event
-use {crate::events::*, serde::Deserialize};
+use {
+    crate::events::*,
+    serde::{Deserialize, Serialize},
+};
 
 /// Journal Event.
 ///
 /// Each variant represents journal event and contains its body.
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(tag = "event", rename_all_fields = "PascalCase")]
 pub enum JournalEvent {
     #[cfg(feature = "repair")]

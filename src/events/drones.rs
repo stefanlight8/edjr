@@ -1,20 +1,20 @@
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 pub enum LaunchDroneType {
     Collection,
     Repair,
     FuelTransfer,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct LaunchDroneEvent {
     #[serde(alias = "Type")]
     pub launch_type: LaunchDroneType,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct BuyDronesEvent {
     pub buy_price: u64,
@@ -22,7 +22,7 @@ pub struct BuyDronesEvent {
     pub total_cost: u64,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
 pub struct SellDronesEvent {
     pub sell_price: u64,
