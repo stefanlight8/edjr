@@ -25,7 +25,7 @@ pub struct EmbarkEvent {
     #[serde(default)]
     pub on_station: bool,
     #[serde(default, alias = "SRV")]
-    pub srv: bool,
+    pub in_srv: bool,
     #[serde(default)]
     pub taxi: bool,
 }

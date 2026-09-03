@@ -14,6 +14,14 @@ pub struct CrewAssignEvent {
 
 #[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "PascalCase")]
+pub struct CrewFireEvent {
+    #[serde(alias = "CrewID")]
+    pub crew_id: u64,
+    pub name: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+#[serde(rename_all = "PascalCase")]
 pub struct CrewLaunchFighterEvent {
     pub crew: String,
     #[serde(default)]

@@ -1,4 +1,10 @@
 //! Journal event
+#[cfg(feature = "crew")]
+use crate::events::crew::CrewFireEvent;
+#[cfg(feature = "fc")]
+use crate::events::fc::{
+    CarrierDepositFuelEvent, CarrierJumpRequestEvent, CarrierLocationEvent, CarrierStatsEvent,
+};
 use {
     crate::events::*,
     serde::{Deserialize, Serialize},
@@ -50,7 +56,19 @@ pub enum JournalEvent {
     CargoTransfer(CargoTransferEvent),
 
     #[cfg(feature = "fc")]
+    CarrierDepositFuel(CarrierDepositFuelEvent),
+
+    #[cfg(feature = "fc")]
     CarrierJump(CarrierJumpEvent),
+
+    #[cfg(feature = "fc")]
+    CarrierJumpRequest(CarrierJumpRequestEvent),
+
+    #[cfg(feature = "fc")]
+    CarrierLocation(CarrierLocationEvent),
+
+    #[cfg(feature = "fc")]
+    CarrierStats(CarrierStatsEvent),
 
     #[cfg(feature = "crew")]
     ChangeCrewRole(ChangeCrewRoleEvent),
@@ -92,6 +110,9 @@ pub enum JournalEvent {
 
     #[cfg(feature = "crew")]
     CrewAssign(CrewAssignEvent),
+
+    #[cfg(feature = "crew")]
+    CrewFire(CrewFireEvent),
 
     #[cfg(feature = "crew")]
     CrewLaunchFighter(CrewLaunchFighterEvent),

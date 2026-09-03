@@ -227,7 +227,10 @@ pub use engineer::{EngineerContributionEvent, EngineerCraftEvent, EngineerProgre
 #[cfg(feature = "faction")]
 pub use faction::FactionKillBondEvent;
 #[cfg(feature = "fc")]
-pub use fc::{CarrierJumpEvent, FcMaterialsEvent};
+pub use fc::{
+    CarrierDepositFuelEvent, CarrierJumpEvent, CarrierJumpRequestEvent, CarrierLocationEvent,
+    CarrierStatsEvent, FcMaterialsEvent,
+};
 #[cfg(feature = "fighter")]
 pub use fighter::{
     DockFighterEvent, FighterDestroyedEvent, FighterRebuiltEvent, LaunchFighterEvent,

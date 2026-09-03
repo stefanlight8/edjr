@@ -48,19 +48,15 @@
 //!
 //! ```
 //! View more examples in [`examples/`](./examples)
-pub mod async_read;
 pub mod elite;
 pub mod entry;
 pub mod error;
 pub mod event;
 pub mod events;
 pub mod journal;
-pub mod read;
 
 #[cfg(feature = "tokio")]
 #[cfg_attr(docsrs, doc(cfg(feature = "tokio")))]
 pub mod tokio;
 
-pub use {
-    async_read::AsyncRead, entry::JournalEntry, event::JournalEvent, journal::Journal, read::Read,
-};
+pub use {entry::JournalEntry, event::JournalEvent, journal::Journal};

@@ -38,4 +38,6 @@ pub mod signal;
 #[cfg(feature = "srv")]
 pub mod srv;
 pub mod station;
+#[cfg(feature = "statistics")]
+pub mod statistics;
 pub mod system;

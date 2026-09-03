@@ -1,7 +1,14 @@
 //! Journal
 use {
-    crate::error::JournalError,
-    std::{fs::File, path::Path},
+    crate::{
+        JournalEntry,
+        error::{JournalError, JournalReadError},
+    },
+    std::{
+        fs::File,
+        io::{BufRead, BufReader},
+        path::Path,
+    },
 };
 
 /// Journal file handler.
@@ -32,5 +39,57 @@ impl Journal<File> {
         let file = File::open(path).map_err(|err| JournalError::OpenError(err))?;
 
         Ok(Self { file })
+    }
+
+    // Read all entries from journal.
+    ///
+    /// # Example
+    /// ```no_run
+    /// use {std::{error::Error, fs::File}, edjr::Journal};
+    ///
+    /// fn main() -> Result<(), Box<dyn Error>> {
+    ///     let journal = Journal::<File>::open("/Path/to/my/journals/Journal.date.log")?;
+    ///     let entries = journal.read_all()?;
+    ///
+    ///     println!("{:?}", entries);
+    ///
+    ///     Ok(())
+    /// }
+    /// ```
+    pub fn read_all(&mut self) -> Result<Vec<JournalEntry>, JournalReadError> {
+        let reader = BufReader::new(&self.file);
+
+        serde_json::Deserializer::from_reader(reader)
+            .into_iter::<JournalEntry>()
+            .map(|entry| entry.map_err(|err| JournalReadError::ParsingError(err)))
+            .collect()
+    }
+
+    /// Get iterator over journal.
+    ///
+    /// # Example
+    /// ```no_run
+    /// use {std::{error::Error, fs::File}, edjr::Journal};
+    ///
+    /// fn main() -> Result<(), Box<dyn Error>> {
+    ///     let journal = Journal::<File>::open("/Path/to/my/journals/Journal.date.log")?;
+    ///
+    ///     for event in journal.iter() {
+    ///         let event = event?;
+    ///
+    ///         println!("{:?}", event);
+    ///     }
+    ///
+    ///     Ok(())
+    /// }
+    /// ```
+    pub fn iter(self) -> impl Iterator<Item = Result<JournalEntry, JournalReadError>> {
+        let reader = BufReader::new(self.file);
+
+        reader.lines().map(|line| {
+            let line = line.map_err(JournalReadError::ReadError)?;
+
+            serde_json::from_str::<JournalEntry>(&line).map_err(JournalReadError::ParsingError)
+        })
     }
 }
