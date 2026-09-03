@@ -1,10 +1,4 @@
 //! Journal event
-#[cfg(feature = "crew")]
-use crate::events::crew::CrewFireEvent;
-#[cfg(feature = "fc")]
-use crate::events::fc::{
-    CarrierDepositFuelEvent, CarrierJumpRequestEvent, CarrierLocationEvent, CarrierStatsEvent,
-};
 use {
     crate::events::*,
     serde::{Deserialize, Serialize},

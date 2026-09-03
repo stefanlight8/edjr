@@ -198,9 +198,9 @@ pub use community_goal::{
 pub use consumable::UseConsumableEvent;
 #[cfg(feature = "crew")]
 pub use crew::{
-    ChangeCrewRoleEvent, CrewAssignEvent, CrewLaunchFighterEvent, CrewMemberJoinsEvent,
-    CrewMemberQuitsEvent, CrewMemberRoleChangeEvent, EndCrewSessionEvent, JoinACrewEvent,
-    NpcCrewPaidWageEvent, QuitACrewEvent,
+    ChangeCrewRoleEvent, CrewAssignEvent, CrewFireEvent, CrewLaunchFighterEvent,
+    CrewMemberJoinsEvent, CrewMemberQuitsEvent, CrewMemberRoleChangeEvent, EndCrewSessionEvent,
+    JoinACrewEvent, NpcCrewPaidWageEvent, QuitACrewEvent,
 };
 #[cfg(feature = "crime")]
 pub use crime::{CommitCrimeEvent, CrimeVictimEvent};
