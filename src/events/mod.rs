@@ -250,7 +250,7 @@ pub use fss::{
 #[cfg(feature = "fuel")]
 pub use fuel::{FuelScoopEvent, RefuelAllEvent, RefuelPartialEvent, ReservoirReplenishedEvent};
 #[cfg(feature = "game")]
-pub use game::LoadGameEvent;
+pub use game::{GameModeChangeEvent, LoadGameEvent};
 #[cfg(feature = "hull")]
 pub use hull::HullDamageEvent;
 #[cfg(feature = "impound")]

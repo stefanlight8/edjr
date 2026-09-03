@@ -20,7 +20,7 @@ edjr supports only Elite Dangerous Odyssey.
 ### Read all (sync)
 ```rs
 use {
-    edjr::{journal::Journal, read::Read},
+    edjr::journal::Journal,
     std::{error::Error, fs::File, path::PathBuf},
 };
 
@@ -37,7 +37,7 @@ fn main() -> Result<(), Box<dyn Error>> {
 ### Read all (async, features = [tokio])
 ```rs
 use {
-    edjr::{journal::Journal, async_read::AsyncRead},
+    edjr::journal::Journal,
     std::{error::Error, path::PathBuf},
     tokio::fs::File,
 };
@@ -72,7 +72,11 @@ View more examples in [`examples/`](./examples)
 - [x] Cargo
 - [x] CargoDepot
 - [x] CargoTransfer
+- [x] CarrierDepositFuel
 - [x] CarrierJump
+- [x] CarrierJumpRequest 
+- [x] CarrierLocation
+- [x] CarrierStats
 - [x] ChangeCrewRole
 - [x] ClearImpound
 - [x] CockpitBreached
@@ -87,6 +91,7 @@ View more examples in [`examples/`](./examples)
 - [x] CommunityGoalJoin
 - [x] CommunityGoalReward
 - [x] CrewAssign
+- [x] CrewFire 
 - [x] CrewLaunchFighter
 - [x] CrewMemberJoins
 - [x] CrewMemberQuits

@@ -233,6 +233,9 @@ pub enum JournalEvent {
     #[cfg(feature = "fuel")]
     FuelScoop(FuelScoopEvent),
 
+    #[cfg(feature = "game")]
+    GameModeChange(GameModeChangeEvent),
+
     HeatDamage,
     HeatWarning,
 

@@ -8,6 +8,8 @@ pub enum GameMode {
     Open,
     Solo,
     Group,
+    MainGame,
+    Operation,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -38,4 +40,10 @@ pub struct LoadGameEvent {
     pub game_version: Option<String>,
     #[serde(alias = "language")]
     pub language: Option<String>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+#[serde(rename_all = "PascalCase")]
+pub struct GameModeChangeEvent {
+    game_mode: GameMode,
 }

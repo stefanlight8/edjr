@@ -110,7 +110,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
     let mut stream = journal.stream().boxed();
 
     let mut session = Session::default();
-    let mut last_event_ts: Option<DateTime<Utc>> = None;
+    let mut last_event_ts: Option<DateTime<Utc>>;
 
     if let Some(Ok(entry)) = stream.next().await {
         last_event_ts = Some(entry.timestamp);
